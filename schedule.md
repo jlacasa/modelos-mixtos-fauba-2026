@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Schedule
-description: The weekly schedule.
+title: Calendario
+description: 
 nav_order: 2
 ---
 
-# Schedule
+# Calendario
 
 {% for module in site.modules %}
 {{ module }}
