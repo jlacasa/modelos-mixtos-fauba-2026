@@ -1,14 +1,14 @@
 ---
 layout: home
-title: STAT 800
+title: Modelos Lineales Mixtos Aplicados
 nav_exclude: true
 permalink: /:path/
 seo:
   type: Course
-  name: STAT 800
+  name: Modelos Lineales Mixtos Aplicados
 ---
 
-Modelos Lineales Mixtos Splicados  
+Modelos Lineales Mixtos Aplicados  
 Octubre 2026   
 Kansas State University
 
