@@ -10,9 +10,9 @@ seo:
 
 Modelos Lineales Mixtos Aplicados  
 Octubre 2026   
-Kansas State University
+FAUBA
 
-**Docente:** Dra. Josefina Lacasa  
+**Docente:** Dra. Josefina Lacasa (Kansas State University, EEUU) 
 
 **Fechas:** 05/10/2026 - 10/10/2026   
 
