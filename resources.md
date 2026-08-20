@@ -1,18 +1,16 @@
 ---
 layout: page
-title: Resources
-description: Listing of recommended textbooks and papers.
+title: Bibliografía
+description: Lista de libros y artículos recomendados.
 nav_order: 5
 ---
 
-**Required Textbooks:**
+**Libros:**
 - Stroup, W.W., Ptukhina, M., & Garai, J. (2024). Generalized Linear Mixed Models: Modern Concepts, Methods and Applications (2nd ed.). Chapman and Hall/CRC. [[link](https://www.routledge.com/Generalized-Linear-Mixed-Models-Modern-Concepts-Methods-and-Applications/Stroup-Ptukhina-Garai/p/book/9781498755566?srsltid=AfmBOop80SBSwTFMCIzkiTtYe-5uir_Xnw2KVZxa1oXb4LJWrLRx0Wwq)] | *Note: First edition of this book has a very nicely written Chapter 2!* 
 - Wood, S.N. (2017). Generalized Additive Models. Chapman and Hall/CRC. [[link](https://www.taylorfrancis.com/books/mono/10.1201/9781315370279/generalized-additive-models-simon-wood)] 
-
-**Recommended Textbooks:** 
 - Milliken, G.A., & Johnson, D.E. (2009). Analysis of Messy Data Volume 1: Designed Experiments, Second Edition (2nd ed.). Chapman and Hall/CRC. [[link](https://doi.org/10.1201/EBK1584883340)]
 
-**Recommended software-related resources:**
+**Otras recomendaciones:**
 - R Core Team (2023) R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. [[link](https://cran.r-project.org/)]
 - Wickham et al. (2023). R for Data Science (2nd ed.). O'Reilly Media. [[link](https://r4ds.hadley.nz/)]
 
