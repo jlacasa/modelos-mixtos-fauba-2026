@@ -1,19 +1,19 @@
 --- 
-title: "STAT NNN - Design of Experiments"
+title: "Modelos Lineales Mixtos Aplicados"
 author: "Josefina Lacasa"
-date: Semester Year #"`r Sys.Date()`"
+date: Octubre 2026 #"`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-# Welcome to STAT 720!  
-June 9th, 2025  
+# Bienvenidos!  
+  
 
-## About this course:  
+## Sobre el curso:  
 
-- [About me](https://jlacasa.github.io/) 
-- About you: 
+- [Sobre mí](https://jlacasa.github.io/) 
+- Sobre ustedes: 
 
-```{r message=F, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 # read.csv("../../students_STAT_720_C.csv") %>% 
 #   ggplot(aes(x = degreeProgram))+
@@ -25,29 +25,28 @@ library(tidyverse)
 #         axis.text.x = element_text(angle = 50, vjust = 1, hjust=1))
 ```
 
-- In rounds: What's your major, what do you expect to learn?  
+- Presentaciones: 
+  - Cuál es el tema de tu tesis? 
+  - Qué esperás aprender?  
 
-### Logistics  
+### Logística  
 
-- [Website](#)
-- Syllabus
-- Statistical programming requirements  
+- [Página web](#)
+- Idioma 
+- Requerimientos de programación  
 - Rough mindmap of the course (on whiteboard)  
-- [Semester project - design your own experiment.](https://stat720.github.io/2025summer/summer2025/notes/semester-project.html)   
-- Grades: A (100-89.999999999(!!!)), B (89.99-79.99), C (79.99-69.99), D (69.99-59.99), F (<59.99).
-- Attendance policies  
-- Semester projects
+- Notas.
+- Asistencia  
+- Examen final
 
-## Learning goals   
+## Objetivos de aprendizaje   
 
-By the end of this course, you should be able to:  
-- Be able to identify the treatment design, experiment design, experimental unit and observational unit.  
-- Be able to write the statistical model that corresponds to (simple) designed experiments.  
-- Be able to write the Materials and Methods section in a paper (or thesis) that describes the designed experiment.  
-- Distinguish the benefits/disadvantages of different experiment designs.  
+Al final de este curso, deberían saber: 
+- Escribir el modelo estadístico que represente el proceso generador de datos, usando notación matemática. 
+- Escribir la sección correspondiente al análisis estadístio en materiales y métodos. 
+- Reconocer los beneficios y desventajas de distintos modelos.
 
-
-## On notation  
+## Notación utilizada en este curso  
 
 - scalars: $y$, $\sigma$, $\beta_0$  
 - vectors: $\mathbf{y} \equiv [y_1, y_2, ..., y_n]'$, $\boldsymbol{\beta} \equiv [\beta_1, \beta_2, ..., \beta_p]'$, $\boldsymbol{u}$  
@@ -55,6 +54,3 @@ By the end of this course, you should be able to:
 - probability distribution: $y \sim N(0, \sigma^2)$, $\mathbf{y} \sim N(\boldsymbol{0}, \sigma^2\mathbf{I})$.     
 
 
-## For tomorrow    
-
-- Install R and RStudio. 

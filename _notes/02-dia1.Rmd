@@ -1,0 +1,16 @@
+# Día 1: Introducción y repaso.     
+
+5 de octubre de 2026 
+
+## Housekeeping 
+
+- We will have relatively low proportion of R code in this workshop. Instead, we will focus on the understanding of the components of mixed-effects models. Questions/concerns via e-mail are encouraged.
+- Emphasis on modeling and figuring out what mixed-effects models actually do.
+- The statistical notation we will use throughout this workshop is presented here.
+- DON’T PANIC when you see all the math notation and matrices. We will go slowly together. It is also not expected that you walk out of this workshop as a math notation wizard!
+
+## Linear Models Review
+
+### The quadratic regression is a linear model, too, you know!
+
+

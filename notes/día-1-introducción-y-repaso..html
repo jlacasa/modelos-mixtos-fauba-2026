@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Modelos Lineales Mixtos Aplicados</title>
-  <meta name="description" content="Modelos Lineales Mixtos Aplicados" />
+  <title>2 Día 1: Introducción y repaso. | Modelos Lineales Mixtos Aplicados</title>
+  <meta name="description" content="2 Día 1: Introducción y repaso. | Modelos Lineales Mixtos Aplicados" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Modelos Lineales Mixtos Aplicados" />
+  <meta property="og:title" content="2 Día 1: Introducción y repaso. | Modelos Lineales Mixtos Aplicados" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Modelos Lineales Mixtos Aplicados" />
+  <meta name="twitter:title" content="2 Día 1: Introducción y repaso. | Modelos Lineales Mixtos Aplicados" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="día-1-introducción-y-repaso..html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="examen-final.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -115,59 +115,24 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Modelos Lineales Mixtos Aplicados</h1>
-<p class="author"><em>Josefina Lacasa</em></p>
-<p class="date"><em>Octubre 2026</em></p>
-</div>
-<div id="bienvenidos" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Bienvenidos!<a href="index.html#bienvenidos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="sobre-el-curso" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Sobre el curso:<a href="index.html#sobre-el-curso" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="día-1-introducción-y-repaso." class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Día 1: Introducción y repaso.<a href="día-1-introducción-y-repaso..html#d%C3%ADa-1-introducci%C3%B3n-y-repaso." class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>5 de octubre de 2026</p>
+<div id="housekeeping" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Housekeeping<a href="día-1-introducción-y-repaso..html#housekeeping" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p><a href="https://jlacasa.github.io/">Sobre mí</a></p></li>
-<li><p>Sobre ustedes:</p></li>
-<li><p>Presentaciones:</p>
-<ul>
-<li>Cuál es el tema de tu tesis?</li>
-<li>Qué esperás aprender?</li>
-</ul></li>
-</ul>
-<div id="logística" class="section level3 hasAnchor" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> Logística<a href="index.html#log%C3%ADstica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><a href="#">Página web</a></li>
-<li>Idioma</li>
-<li>Requerimientos de programación<br />
-</li>
-<li>Rough mindmap of the course (on whiteboard)<br />
-</li>
-<li>Notas.</li>
-<li>Asistencia<br />
-</li>
-<li>Examen final</li>
+<li>We will have relatively low proportion of R code in this workshop. Instead, we will focus on the understanding of the components of mixed-effects models. Questions/concerns via e-mail are encouraged.</li>
+<li>Emphasis on modeling and figuring out what mixed-effects models actually do.</li>
+<li>The statistical notation we will use throughout this workshop is presented here.</li>
+<li>DON’T PANIC when you see all the math notation and matrices. We will go slowly together. It is also not expected that you walk out of this workshop as a math notation wizard!</li>
 </ul>
 </div>
-</div>
-<div id="objetivos-de-aprendizaje" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Objetivos de aprendizaje<a href="index.html#objetivos-de-aprendizaje" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Al final de este curso, deberían saber:
-- Escribir el modelo estadístico que represente el proceso generador de datos, usando notación matemática.
-- Escribir la sección correspondiente al análisis estadístio en materiales y métodos.
-- Reconocer los beneficios y desventajas de distintos modelos.</p>
-</div>
-<div id="notación-utilizada-en-este-curso" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Notación utilizada en este curso<a href="index.html#notaci%C3%B3n-utilizada-en-este-curso" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>scalars: <span class="math inline">\(y\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\beta_0\)</span><br />
-</li>
-<li>vectors: <span class="math inline">\(\mathbf{y} \equiv [y_1, y_2, ..., y_n]&#39;\)</span>, <span class="math inline">\(\boldsymbol{\beta} \equiv [\beta_1, \beta_2, ..., \beta_p]&#39;\)</span>, <span class="math inline">\(\boldsymbol{u}\)</span><br />
-</li>
-<li>matrices: <span class="math inline">\(\mathbf{X}\)</span>, <span class="math inline">\(\Sigma\)</span><br />
-</li>
-<li>probability distribution: <span class="math inline">\(y \sim N(0, \sigma^2)\)</span>, <span class="math inline">\(\mathbf{y} \sim N(\boldsymbol{0}, \sigma^2\mathbf{I})\)</span>.</li>
-</ul>
+<div id="linear-models-review" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Linear Models Review<a href="día-1-introducción-y-repaso..html#linear-models-review" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-quadratic-regression-is-a-linear-model-too-you-know" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> The quadratic regression is a linear model, too, you know!<a href="día-1-introducción-y-repaso..html#the-quadratic-regression-is-a-linear-model-too-you-know" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
+</div>
 </div>
 </div>
             </section>
@@ -175,8 +140,8 @@
           </div>
         </div>
       </div>
-
-<a href="día-1-introducción-y-repaso..html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="examen-final.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -207,7 +172,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/index.Rmd",
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/02-dia1.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -215,7 +180,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/index.Rmd",
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/02-dia1.Rmd",
     "text": null
   },
   "download": null,
