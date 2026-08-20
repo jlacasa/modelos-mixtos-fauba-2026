@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Notas
-permalink: /notas/
+permalink: /notes/
 has_children: false
 nav_order: 3
 ---
