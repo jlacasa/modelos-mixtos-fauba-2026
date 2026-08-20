@@ -1,5 +1,5 @@
 ---
-title: Introduction 
+title:  
 ---
 
 5 de octubre 
