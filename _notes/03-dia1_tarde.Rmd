@@ -1,0 +1,9 @@
+# Día 1 tarde: modelos mixtos
+
+## Entonces... qué hacen los modelos mixtos? 
+
+
+
+
+## Impacto de asumir efectos aleatorios
+
