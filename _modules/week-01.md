@@ -2,30 +2,29 @@
 title: Semana del 5 de octubre  
 ---
 
-5 de octubre 
+05/10 
 : Introducción a los modelos mixtos
   : [html]()
-    : [Lectura: Dixon (2016)](https://doi.org/10.4148/2475-7772.1474)
+    : [Leer Dixon (2016)](https://doi.org/10.4148/2475-7772.1474)
 
-6 de octubre 
+06/10 
 : Conexión entre diseños experimentales y modelos mixtos
   : [html]()
-    : [Lectura: Gelman (2005)]()
+    : [Leer Gelman (2005)]()
   
-7 de octubre
+07/10
 : Pensar un modelo jerárquico. Selección y diagnóstico de modelos
   : [html]()
+    : [Leer Hooten & Hobbs (2025), cap. 10]()
 
-8 de octubre
+08/10
 : Recuperación de información intergrupos y casos de datos desbalanceados.
   : [html]()
+    : [Leer Yates ()]()
 
-9 de octubre
+09/10
 : Análisis de un caso integrador  
   : [html]()
 
-10 de octubre
-: Evaluación
-  : [html]()
 
   
