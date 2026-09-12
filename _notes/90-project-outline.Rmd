@@ -2,6 +2,10 @@
 
 
 
+- Respuestas a desarrollar a mano 
+
+- Respuestas a resolver utilizando R 
+
 
 ### Practical reads  
 

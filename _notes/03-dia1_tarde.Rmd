@@ -1,9 +1,54 @@
 # Día 1 tarde: modelos mixtos
 
-## Entonces... qué hacen los modelos mixtos? 
+## Estimation of variance components
+
+For any unknown parameter, there are multiple ways to estimate it. We call those the methods of estimation.
+
+### Maximum Likelihood Estimation (MLE)
+
+**Maximum Likelihood Estimation** of variance components provides downward biased estimates for small data (most experimental data). 
+$\ell_{ML}(\boldsymbol{\sigma; \boldsymbol{\beta}, \mathbf{y}}) = - (\frac{n}{2}) \log(2\pi)-(\frac{1}{2}) \log ( \vert \mathbf{V}(\boldsymbol\sigma) \vert ) - (\frac{1}{2}) (\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T[\mathbf{V}(\boldsymbol\sigma)]^{-1}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})$  
+
+### Restricted Maximum Likelihood (REML)
+
+**Restricted Maximum Likelihood** (REML) avoids MLE's downward bias under small data and is thus is the default in most mixed effects models. 
+
+- In REML, the likelihood is maximized **after** accounting for the model’s fixed effects.  
+- In REML, $\ell_{REML}(\boldsymbol{\sigma};\mathbf{y}) = - (\frac{n-p}{2}) \log (2\pi) - (\frac{1}{2}) \log ( \vert \mathbf{V}(\boldsymbol\sigma) \vert ) - (\frac{1}{2})log \left(  \vert \mathbf{X}^T[\mathbf{V}(\boldsymbol\sigma)]^{-1}\mathbf{X} \vert \right) - (\frac{1}{2})\mathbf{r}[\mathbf{V}(\boldsymbol\sigma)]^{-1}\mathbf{r}$, 
+where $p = rank(\mathbf{X})$, $\mathbf{r} = \mathbf{y}-\mathbf{X}\hat{\boldsymbol{\beta}}_{ML}$.  
+  - Start with initial values for $\boldsymbol{\sigma}$, $\tilde{\boldsymbol{\sigma}}$.  
+  - Compute $\mathbf{G}(\tilde{\boldsymbol{\sigma}})$ and $\mathbf{R}(\tilde{\boldsymbol{\sigma}})$.  
+  - Obtain $\boldsymbol{\beta}$ and $\mathbf{b}$.   
+  - Update $\tilde{\boldsymbol{\sigma}}$.  
+  - Repeat until convergence.  
+- Variance components may be $<0$; in that case they are set to zero. 
+
+### Method of moments (MoM)
+
+**Method of moments** (MoM) is derived from ANOVA tables that include the expected mean squares. 
+
+- Use actual sums of squares and expected mean squares (EMS) from ANOVA to clear for the different variance components. 
+- e.g., $\tilde{\sigma}^2_{w} = \frac{SSw - SS_e}{c}$ (See table above). However, if $\tilde{\sigma}^2_{w} < 0$, $\hat{\sigma}^2_{w} = 0$. 
+
+- Issues with variance estimates equal to zero 
+  - Type I error inflation 
+  - [Frey et al. (2024)](https://acsess.onlinelibrary.wiley.com/doi/10.1002/agj2.21570) 
+
+
+## Shrinkage due to assuming random effects
 
 
 
+## Degrees of freedom
 
-## Impacto de asumir efectos aleatorios
+Mixed models do not trace to the classical concept of degrees of freedom. In hierarchical models, rigidly counting parameters for degrees of freedom is conceptually problematic.
+
+The independent pieces of information shift depending on group sizes and variance: a group-level coefficient modeled as a random effect does not consume exactly $1$ degree of freedom (as an unpooled fixed effect would), nor does it consume $0$ (as a completely pooled grand mean would). Instead, the effective degrees of freedom consumed by a set of random effects lies somewhere between $1$ and $J$ (where $J$ is the total number of groups).
+
+The effective degrees of freedom depend on the magnitude of between-group versus within-group variance: if group variation is high, degrees of freedom approach the number of groups; if low, they approach the total sample size.
+
+
+## Tarea para mañana:
+ 
+Leer Dixon (2016). 
 

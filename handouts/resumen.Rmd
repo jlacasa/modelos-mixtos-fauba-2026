@@ -1,0 +1,40 @@
+---
+title: "Apuntes"
+author: "Modelos Mixtos"
+date: "Octubre 2026"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Notación  
+
+**Complete los espacios blancos indicados debajo.** 
+
+En diseño de experimentos, los modelos mixtos suelen ser descriptos como 
+
+$$\mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{Z}\boldsymbol{u} + \boldsymbol{\varepsilon},$$
+
+donde
+
+- $\mathbf{y}$ es el vector conteniendo los datos,
+- $\mathbf{X}$ es una matriz de ______ $\times$ ______ conteniendo ___________, 
+- $\boldsymbol{\beta}$ es un vector de ______ elementos conteniendo ___________, 
+- $\mathbf{Z}$ es una matriz de ______ $\times$ ______ conteniendo ___________, 
+- $\boldsymbol{u}$ es un vector de una variable aleatoria con ______ elementos, que proviene de una distribución normal con media ______ y matriz de varianza-covarianza $\mathbf{G}=$ ___________, 
+- $\boldsymbol{\varepsilon}$ es un vector de una variable aleatoria con ______ elementos, que proviene de una distribución normal con media ______ y matriz de varianza-covarianza $\mathbf{R}=$ ___________, 
+
+
+
+## Descripción de los  
+
+**Complete los espacios blancos indicados debajo.** 
+
+
+## Comparación entre efectos fijos y efectos aleatorios 
+
+
+
+

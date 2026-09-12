@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Día 1 tarde: modelos mixtos | Modelos Lineales Mixtos Aplicados</title>
+  <meta name="description" content="3 Día 1 tarde: modelos mixtos | Modelos Lineales Mixtos Aplicados" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Día 1 tarde: modelos mixtos | Modelos Lineales Mixtos Aplicados" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Día 1 tarde: modelos mixtos | Modelos Lineales Mixtos Aplicados" />
+  
+  
+  
+
+<meta name="author" content="Josefina Lacasa" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="día-1-mañana-introducción-y-repaso..html"/>
+<link rel="next" href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STAT NNN</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenidos!</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sobre-el-curso"><i class="fa fa-check"></i><b>1.1</b> Sobre el curso:</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#log%C3%ADstica"><i class="fa fa-check"></i><b>1.1.1</b> Logística</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.2</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#notaci%C3%B3n-utilizada-en-este-curso"><i class="fa fa-check"></i><b>1.3</b> Notación utilizada en este curso</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html"><i class="fa fa-check"></i><b>2</b> Día 1 (mañana): Introducción y repaso.</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#housekeeping"><i class="fa fa-check"></i><b>2.1</b> Housekeeping</a></li>
+<li class="chapter" data-level="2.2" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#linear-models-review"><i class="fa fa-check"></i><b>2.2</b> Linear Models Review</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#general-linear-model"><i class="fa fa-check"></i><b>2.2.1</b> General linear model</a></li>
+<li class="chapter" data-level="2.2.2" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#qualitative-predictors"><i class="fa fa-check"></i><b>2.2.2</b> Qualitative predictors</a></li>
+<li class="chapter" data-level="2.2.3" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#assumptions"><i class="fa fa-check"></i><b>2.2.3</b> Assumptions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#lets-review-that-simple-model-using-distribution-notation-and-matrix-notation"><i class="fa fa-check"></i><b>2.2.4</b> Let’s review that simple model using distribution notation and matrix notation</a></li>
+<li class="chapter" data-level="2.2.5" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#matrix-notation"><i class="fa fa-check"></i><b>2.2.5</b> Matrix notation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#fixed-effects-and-random-effects"><i class="fa fa-check"></i><b>2.3</b> Fixed effects and random effects</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#applied-example"><i class="fa fa-check"></i><b>2.3.1</b> Applied example</a></li>
+<li class="chapter" data-level="2.3.2" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#building-a-statistical-model"><i class="fa fa-check"></i><b>2.3.2</b> Building a statistical model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#discussions"><i class="fa fa-check"></i><b>2.4</b> Discussions</a></li>
+<li class="chapter" data-level="2.5" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html"><i class="fa fa-check"></i><b>3</b> Día 1 tarde: modelos mixtos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#estimation-of-variance-components"><i class="fa fa-check"></i><b>3.1</b> Estimation of variance components</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#maximum-likelihood-estimation-mle"><i class="fa fa-check"></i><b>3.1.1</b> Maximum Likelihood Estimation (MLE)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#restricted-maximum-likelihood-reml"><i class="fa fa-check"></i><b>3.1.2</b> Restricted Maximum Likelihood (REML)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#method-of-moments-mom"><i class="fa fa-check"></i><b>3.1.3</b> Method of moments (MoM)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#shrinkage-due-to-assuming-random-effects"><i class="fa fa-check"></i><b>3.2</b> Shrinkage due to assuming random effects</a></li>
+<li class="chapter" data-level="3.3" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#degrees-of-freedom"><i class="fa fa-check"></i><b>3.3</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="3.4" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#tarea-para-ma%C3%B1ana"><i class="fa fa-check"></i><b>3.4</b> Tarea para mañana:</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><i class="fa fa-check"></i><b>4</b> Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos.</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#discusi%C3%B3n-qu%C3%A9-dice-dixon"><i class="fa fa-check"></i><b>4.1</b> Discusión: qué dice Dixon?</a></li>
+<li class="chapter" data-level="4.2" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#designed-experiments"><i class="fa fa-check"></i><b>4.2</b> Designed experiments</a></li>
+<li class="chapter" data-level="4.3" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#describing-a-designed-experiment"><i class="fa fa-check"></i><b>4.3</b> Describing a designed experiment</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#treatment-structure"><i class="fa fa-check"></i><b>4.3.1</b> Treatment structure</a></li>
+<li class="chapter" data-level="4.3.2" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#design-structure"><i class="fa fa-check"></i><b>4.3.2</b> Design structure</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#how-does-this-affect-anova-tables-balanced-data"><i class="fa fa-check"></i><b>4.4</b> How does this affect ANOVA tables? Balanced data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><i class="fa fa-check"></i><b>5</b> Día 2 (tarde): Conexión entre diseños experimentales y modelos estadísticos.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#medidas-repetidas"><i class="fa fa-check"></i><b>5.1</b> Medidas repetidas</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#model-selection-for-different-covariance-structures"><i class="fa fa-check"></i><b>5.1.1</b> Model selection for different covariance structures</a></li>
+<li class="chapter" data-level="5.1.2" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#utilizing-un-as-the-reference-covariance"><i class="fa fa-check"></i><b>5.1.2</b> Utilizing UN as the reference covariance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="día-3-mañana-pensar-un-modelo-jerárquico..html"><a href="día-3-mañana-pensar-un-modelo-jerárquico..html"><i class="fa fa-check"></i><b>6</b> Día 3 (mañana): Pensar un modelo jerárquico.</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="día-3-mañana-pensar-un-modelo-jerárquico..html"><a href="día-3-mañana-pensar-un-modelo-jerárquico..html#review"><i class="fa fa-check"></i><b>6.1</b> Review</a></li>
+<li class="chapter" data-level="6.2" data-path="día-3-mañana-pensar-un-modelo-jerárquico..html"><a href="día-3-mañana-pensar-un-modelo-jerárquico..html#statistical-models"><i class="fa fa-check"></i><b>6.2</b> Statistical models</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="día-3-mañana-pensar-un-modelo-jerárquico..html"><a href="día-3-mañana-pensar-un-modelo-jerárquico..html#hierarchical-models"><i class="fa fa-check"></i><b>6.2.1</b> Hierarchical models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="día-3-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-3-tarde-diagnóstico-y-selección-de-modelos..html"><i class="fa fa-check"></i><b>7</b> Día 3 (tarde): Diagnóstico y selección de modelos.</a></li>
+<li class="chapter" data-level="8" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>8</b> Examen final</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="examen-final.html"><a href="examen-final.html#practical-reads"><i class="fa fa-check"></i><b>8.0.1</b> Practical reads</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Lineales Mixtos Aplicados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="día-1-tarde-modelos-mixtos" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Día 1 tarde: modelos mixtos<a href="día-1-tarde-modelos-mixtos.html#d%C3%ADa-1-tarde-modelos-mixtos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="estimation-of-variance-components" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Estimation of variance components<a href="día-1-tarde-modelos-mixtos.html#estimation-of-variance-components" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For any unknown parameter, there are multiple ways to estimate it. We call those the methods of estimation.</p>
+<div id="maximum-likelihood-estimation-mle" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Maximum Likelihood Estimation (MLE)<a href="día-1-tarde-modelos-mixtos.html#maximum-likelihood-estimation-mle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Maximum Likelihood Estimation</strong> of variance components provides downward biased estimates for small data (most experimental data).
+<span class="math inline">\(\ell_{ML}(\boldsymbol{\sigma; \boldsymbol{\beta}, \mathbf{y}}) = - (\frac{n}{2}) \log(2\pi)-(\frac{1}{2}) \log ( \vert \mathbf{V}(\boldsymbol\sigma) \vert ) - (\frac{1}{2}) (\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T[\mathbf{V}(\boldsymbol\sigma)]^{-1}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})\)</span></p>
+</div>
+<div id="restricted-maximum-likelihood-reml" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Restricted Maximum Likelihood (REML)<a href="día-1-tarde-modelos-mixtos.html#restricted-maximum-likelihood-reml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Restricted Maximum Likelihood</strong> (REML) avoids MLE’s downward bias under small data and is thus is the default in most mixed effects models.</p>
+<ul>
+<li>In REML, the likelihood is maximized <strong>after</strong> accounting for the model’s fixed effects.<br />
+</li>
+<li>In REML, <span class="math inline">\(\ell_{REML}(\boldsymbol{\sigma};\mathbf{y}) = - (\frac{n-p}{2}) \log (2\pi) - (\frac{1}{2}) \log ( \vert \mathbf{V}(\boldsymbol\sigma) \vert ) - (\frac{1}{2})log \left(  \vert \mathbf{X}^T[\mathbf{V}(\boldsymbol\sigma)]^{-1}\mathbf{X} \vert \right) - (\frac{1}{2})\mathbf{r}[\mathbf{V}(\boldsymbol\sigma)]^{-1}\mathbf{r}\)</span>,
+where <span class="math inline">\(p = rank(\mathbf{X})\)</span>, <span class="math inline">\(\mathbf{r} = \mathbf{y}-\mathbf{X}\hat{\boldsymbol{\beta}}_{ML}\)</span>.
+<ul>
+<li>Start with initial values for <span class="math inline">\(\boldsymbol{\sigma}\)</span>, <span class="math inline">\(\tilde{\boldsymbol{\sigma}}\)</span>.<br />
+</li>
+<li>Compute <span class="math inline">\(\mathbf{G}(\tilde{\boldsymbol{\sigma}})\)</span> and <span class="math inline">\(\mathbf{R}(\tilde{\boldsymbol{\sigma}})\)</span>.<br />
+</li>
+<li>Obtain <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\mathbf{b}\)</span>.<br />
+</li>
+<li>Update <span class="math inline">\(\tilde{\boldsymbol{\sigma}}\)</span>.<br />
+</li>
+<li>Repeat until convergence.<br />
+</li>
+</ul></li>
+<li>Variance components may be <span class="math inline">\(&lt;0\)</span>; in that case they are set to zero.</li>
+</ul>
+</div>
+<div id="method-of-moments-mom" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Method of moments (MoM)<a href="día-1-tarde-modelos-mixtos.html#method-of-moments-mom" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Method of moments</strong> (MoM) is derived from ANOVA tables that include the expected mean squares.</p>
+<ul>
+<li><p>Use actual sums of squares and expected mean squares (EMS) from ANOVA to clear for the different variance components.</p></li>
+<li><p>e.g., <span class="math inline">\(\tilde{\sigma}^2_{w} = \frac{SSw - SS_e}{c}\)</span> (See table above). However, if <span class="math inline">\(\tilde{\sigma}^2_{w} &lt; 0\)</span>, <span class="math inline">\(\hat{\sigma}^2_{w} = 0\)</span>.</p></li>
+<li><p>Issues with variance estimates equal to zero</p>
+<ul>
+<li>Type I error inflation</li>
+<li><a href="https://acsess.onlinelibrary.wiley.com/doi/10.1002/agj2.21570">Frey et al. (2024)</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="shrinkage-due-to-assuming-random-effects" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Shrinkage due to assuming random effects<a href="día-1-tarde-modelos-mixtos.html#shrinkage-due-to-assuming-random-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="degrees-of-freedom" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Degrees of freedom<a href="día-1-tarde-modelos-mixtos.html#degrees-of-freedom" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mixed models do not trace to the classical concept of degrees of freedom. In hierarchical models, rigidly counting parameters for degrees of freedom is conceptually problematic.</p>
+<p>The independent pieces of information shift depending on group sizes and variance: a group-level coefficient modeled as a random effect does not consume exactly <span class="math inline">\(1\)</span> degree of freedom (as an unpooled fixed effect would), nor does it consume <span class="math inline">\(0\)</span> (as a completely pooled grand mean would). Instead, the effective degrees of freedom consumed by a set of random effects lies somewhere between <span class="math inline">\(1\)</span> and <span class="math inline">\(J\)</span> (where <span class="math inline">\(J\)</span> is the total number of groups).</p>
+<p>The effective degrees of freedom depend on the magnitude of between-group versus within-group variance: if group variation is high, degrees of freedom approach the number of groups; if low, they approach the total sample size.</p>
+</div>
+<div id="tarea-para-mañana" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Tarea para mañana:<a href="día-1-tarde-modelos-mixtos.html#tarea-para-ma%C3%B1ana" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Leer Dixon (2016).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="día-1-mañana-introducción-y-repaso..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/03-dia1_tarde.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/03-dia1_tarde.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

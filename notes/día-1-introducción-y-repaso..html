@@ -53,6 +53,71 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -89,8 +154,30 @@
 <li class="chapter" data-level="2.1" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#housekeeping"><i class="fa fa-check"></i><b>2.1</b> Housekeeping</a></li>
 <li class="chapter" data-level="2.2" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#linear-models-review"><i class="fa fa-check"></i><b>2.2</b> Linear Models Review</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#the-quadratic-regression-is-a-linear-model-too-you-know"><i class="fa fa-check"></i><b>2.2.1</b> The quadratic regression is a linear model, too, you know!</a></li>
+<li class="chapter" data-level="2.2.1" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#writing-a-statistical-model"><i class="fa fa-check"></i><b>2.2.1</b> Writing a statistical model</a></li>
+<li class="chapter" data-level="2.2.2" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#what-are-linear-models"><i class="fa fa-check"></i><b>2.2.2</b> What are linear models?</a></li>
+<li class="chapter" data-level="2.2.3" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#vectorized-notation"><i class="fa fa-check"></i><b>2.2.3</b> Vectorized notation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#vectorized-notation---cont."><i class="fa fa-check"></i><b>2.2.4</b> Vectorized notation - cont.</a></li>
+<li class="chapter" data-level="2.2.5" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#continuous-and-categorical-predictors"><i class="fa fa-check"></i><b>2.2.5</b> Continuous and categorical predictors</a></li>
+<li class="chapter" data-level="2.2.6" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#three-step-approach-to-writing-a-statistical-model"><i class="fa fa-check"></i><b>2.2.6</b> Three-step approach to writing a statistical model</a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#review"><i class="fa fa-check"></i><b>2.3</b> Review</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#probability-distributions"><i class="fa fa-check"></i><b>2.3.1</b> Probability distributions</a></li>
+<li class="chapter" data-level="2.3.2" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#mean-variance"><i class="fa fa-check"></i><b>2.3.2</b> Mean, Variance</a></li>
+<li class="chapter" data-level="2.3.3" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#covariance"><i class="fa fa-check"></i><b>2.3.3</b> Covariance</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#the-most-common-statistical-model"><i class="fa fa-check"></i><b>2.4</b> The most common statistical model</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#properties-of-the-general-linear-model"><i class="fa fa-check"></i><b>2.4.1</b> Properties of the general linear model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#uncertainty"><i class="fa fa-check"></i><b>2.5</b> Uncertainty</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#types-of-uncertainty"><i class="fa fa-check"></i><b>2.5.1</b> Types of uncertainty</a></li>
+<li class="chapter" data-level="2.5.2" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#types-of-uncertainty-in-the-general-linear-model"><i class="fa fa-check"></i><b>2.5.2</b> Types of uncertainty in the general linear model</a></li>
+<li class="chapter" data-level="2.5.3" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#uncertainty---applied-example"><i class="fa fa-check"></i><b>2.5.3</b> Uncertainty - applied example</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="día-1-introducción-y-repaso..html"><a href="día-1-introducción-y-repaso..html#coming-up-tomorrow"><i class="fa fa-check"></i><b>2.6</b> Coming up tomorrow:</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>3</b> Examen final</a>
 <ul>
@@ -129,10 +216,210 @@
 </div>
 <div id="linear-models-review" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Linear Models Review<a href="día-1-introducción-y-repaso..html#linear-models-review" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="the-quadratic-regression-is-a-linear-model-too-you-know" class="section level3 hasAnchor" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> The quadratic regression is a linear model, too, you know!<a href="día-1-introducción-y-repaso..html#the-quadratic-regression-is-a-linear-model-too-you-know" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-
+<ul>
+<li><p>Why do we need statistical models?</p></li>
+<li><p>Statistics as a summary of the data</p></li>
+<li><p>Excerpt from the short story <a href="https://web.english.upenn.edu/~cavitch/pdf-library/Borges_FunesTheMemorious.pdf">“Funes the memorious” (J.L. Borges)</a>: <em>I suspect, however, that he was not very capable of thought. To think is to forget differences, generalize, make abstractions. In the teeming world of Funes, there were only details, almost immediate in their presence.</em></p></li>
+<li><p>What is a statistical model?</p></li>
+<li><p>Deterministic component + Stochastic component</p></li>
+</ul>
+<div id="writing-a-statistical-model" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Writing a statistical model<a href="día-1-introducción-y-repaso..html#writing-a-statistical-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Deterministic component + Stochastic component</p>
+<p>Example:</p>
+<p><span class="math inline">\(y_i \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + \beta_1 x_i\)</span></p>
 </div>
+<div id="what-are-linear-models" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> What are linear models?<a href="día-1-introducción-y-repaso..html#what-are-linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Assume that <span class="math inline">\(y_i \sim N(\mu_i, \sigma^2)\)</span>.</li>
+</ul>
+<p>…and there are 4 possible descriptions of the mean:</p>
+<ul>
+<li><span class="math inline">\(\mu_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i}\)</span></li>
+<li><span class="math inline">\(\mu_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2\)</span></li>
+<li><span class="math inline">\(\mu_i = \beta_0 \cdot \exp(x_i \cdot \beta_1)\)</span></li>
+<li><span class="math inline">\(\mu_i = \beta_0 + x_i^{\beta_1}\)</span></li>
+</ul>
+<p>What is a linear model and what is not?</p>
+</div>
+<div id="vectorized-notation" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Vectorized notation<a href="día-1-introducción-y-repaso..html#vectorized-notation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Model equation form:</strong></p>
+<ul>
+<li><span class="math inline">\(y_i = \beta_0 + \beta_1 x_i + \varepsilon_i\)</span></li>
+<li><span class="math inline">\(\varepsilon_i \sim N(0, \sigma^2),\)</span></li>
+</ul>
+<p><strong>Probability distribution form:</strong></p>
+<p>Scalar</p>
+<ul>
+<li><span class="math inline">\(y_i \sim N(\mu_i, \sigma^2),\)</span></li>
+<li><span class="math inline">\(\mu_i = \beta_0 + \beta_1 x_i\)</span></li>
+</ul>
+<p>Vector</p>
+<ul>
+<li><span class="math inline">\(\mathbf{y} \sim N(\boldsymbol{\mu}, \Sigma),\)</span></li>
+<li><span class="math inline">\(\boldsymbol{\mu} = \boldsymbol{1} \beta_0 + \mathbf{x} \beta_1 = \mathbf{X}\boldsymbol{\beta}\)</span></li>
+</ul>
+</div>
+<div id="vectorized-notation---cont." class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Vectorized notation - cont.<a href="día-1-introducción-y-repaso..html#vectorized-notation---cont." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\begin{bmatrix}y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \sim  N \left( \begin{bmatrix}\mu_1 \\ \mu_2 \\ \vdots \\ \mu_n \end{bmatrix}, \begin{bmatrix} Cov(y_1, y_1) &amp; Cov(y_1, y_2) &amp; \dots &amp; Cov(y_1, y_n) \\ Cov(y_2, y_1) &amp; Cov(y_2, y_2) &amp; \dots &amp; Cov(y_2, y_n)\\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ Cov(y_n, y_1) &amp; Cov(y_n, y_2) &amp; \dots &amp; Cov(y_n, y_n) \end{bmatrix} \right)\]</span></p>
+</div>
+<div id="continuous-and-categorical-predictors" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Continuous and categorical predictors<a href="día-1-introducción-y-repaso..html#continuous-and-categorical-predictors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\mu_i = \beta_0 + x_{1i} \beta_1 + x_{2i} \beta_2+ ... + x_{ji} \beta_j\]</span></p>
+<p>Discuss the following type of data:</p>
+<ul>
+<li>biomass</li>
+<li>cultivar</li>
+<li>county</li>
+<li>year</li>
+</ul>
+</div>
+<div id="three-step-approach-to-writing-a-statistical-model" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Three-step approach to writing a statistical model<a href="día-1-introducción-y-repaso..html#three-step-approach-to-writing-a-statistical-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><strong>1.</strong> What probability distribution function describes the data?</p>
+<ul>
+<li>Think about: type of data, support of the data.</li>
+</ul></li>
+<li><p><strong>2.</strong> Define a link function for the linear predictor.</p></li>
+<li><p><strong>3.</strong> Define the linear predictor.</p>
+<ul>
+<li>Treatments</li>
+<li>Design</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="review" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Review<a href="día-1-introducción-y-repaso..html#review" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="probability-distributions" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Probability distributions<a href="día-1-introducción-y-repaso..html#probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="día-1-introducción-y-repaso..html#cb2-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;figures/distributions.png&quot;</span>)</span></code></pre></div>
+<p><img src="figures/distributions.png" alt="" width="340" style="display: block; margin: auto;" /></p>
+</div>
+<div id="mean-variance" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Mean, Variance<a href="día-1-introducción-y-repaso..html#mean-variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Mean</strong>: the balancing point of a probability distribution<br />
+</li>
+<li><strong>Variance</strong>: dispersion of <span class="math inline">\(y\)</span></li>
+</ul>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-4-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>What do these distributions mean in practice?</p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-5-1.gif" /><!-- --></p>
+</div>
+<div id="covariance" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Covariance<a href="día-1-introducción-y-repaso..html#covariance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Covariance between two random variables means how the two random variables behave relative to each other. Essentially, it quantifies the relationship between their joint variability. The variance of a random variable is the covariance of a random variable with itself. Consider two variables <span class="math inline">\(y1\)</span> and <span class="math inline">\(y2\)</span> each with a variance of 1 and a covariance of 0.6.</p>
+<p><span class="math display">\[\begin{bmatrix}y_1 \\ y_2 \end{bmatrix} \sim MVN \left( \begin{bmatrix} 10 \\ 8 \end{bmatrix} , \begin{bmatrix}1 &amp; 0.6 \\ 0.6 &amp; 1 \end{bmatrix} \right),\]</span></p>
+<p>where the means of <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are 10 and 8, respectively, and their covariance structure is represented in the variance-covariance matrix. Remember:</p>
+<p><span class="math display">\[\begin{bmatrix}y_1 \\ y_2 \end{bmatrix} \sim MVN \left( \begin{bmatrix} E(y_1) \\ E(y_2) \end{bmatrix} , \begin{bmatrix} Var(y_1) &amp; Cov(y_1, y_2) \\ Cov(y_2,y_2) &amp; Var(y_2) \end{bmatrix} \right).\]</span></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-6-1.gif" /><!-- --></p>
+</div>
+</div>
+<div id="the-most-common-statistical-model" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> The most common statistical model<a href="día-1-introducción-y-repaso..html#the-most-common-statistical-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[\mathbf{y} \sim N(\boldsymbol\mu, \boldsymbol\Sigma),\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{y} \equiv [y_1, y_2, \dots, y_n]&#39;\)</span> contains the response data,</li>
+<li><span class="math inline">\(\boldsymbol{\mu} \equiv [\mu_1, \mu_2, \dots, \mu_n]&#39;\)</span> contains the expected values of said data,</li>
+<li><span class="math inline">\(\boldsymbol\Sigma\)</span> is the variance-covariance matrix.</li>
+</ul>
+<p>The most typical model typically has:</p>
+<ul>
+<li><span class="math inline">\(\boldsymbol\mu = \mathbf{X}\boldsymbol{\beta}\)</span> and</li>
+<li><span class="math inline">\(\boldsymbol\Sigma = \sigma^2\mathbf{I}\)</span>.</li>
+</ul>
+<p>In summary, the assumptions are:</p>
+<ul>
+<li>Normality</li>
+<li>Independence</li>
+<li>Constant variance</li>
+</ul>
+<div id="properties-of-the-general-linear-model" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Properties of the general linear model<a href="día-1-introducción-y-repaso..html#properties-of-the-general-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><span class="math inline">\(E(\hat{\boldsymbol{\beta}}) = \boldsymbol{\beta}\)</span></li>
+<li><span class="math inline">\(\text{Var}(\hat{\boldsymbol{\beta}}) = \frac{\sigma^2}{\mathbf{X}^T\mathbf{X}} = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\)</span></li>
+</ul>
+<p><strong>Class discussion</strong>:</p>
+<ul>
+<li>What if the observations weren’t independent?</li>
+<li>What if the variance wasn’t constant?</li>
+</ul>
+</div>
+</div>
+<div id="uncertainty" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Uncertainty<a href="día-1-introducción-y-repaso..html#uncertainty" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Uncertainty will be one of the central topics in this course. Uncertainty is important because, as we summarize the information (e.g., to aviod Funes’ useless excess of information), we can better describe all the information with a combination of the mean and the variance.</p>
+<div id="types-of-uncertainty" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Types of uncertainty<a href="día-1-introducción-y-repaso..html#types-of-uncertainty" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Epistemological uncertainty</p></li>
+<li><p>Intrinsic uncertainty</p></li>
+</ul>
+</div>
+<div id="types-of-uncertainty-in-the-general-linear-model" class="section level3 hasAnchor" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Types of uncertainty in the general linear model<a href="día-1-introducción-y-repaso..html#types-of-uncertainty-in-the-general-linear-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Recall <span class="math inline">\(\mathbf{y} \sim N(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span>, where <span class="math inline">\(\boldsymbol{\mu} = \mathbf{X}\boldsymbol{\beta}\)</span>, and suppose <span class="math inline">\(\boldsymbol{\Sigma} = \sigma^2 \mathbf{I}\)</span>.</p></li>
+<li><p>We use the estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>.</p></li>
+<li><p><span class="math inline">\(Var(\mathbf{y}) = \sigma^2 = \frac{SSE}{df_e}\)</span>,</p></li>
+<li><p><span class="math inline">\(Var(\hat{\boldsymbol{\beta}}) = \frac{\sigma^2}{\mathbf{X}^T\mathbf{X}}\)</span>, and <span class="math inline">\(Var(\hat\beta_1) = \frac{\sigma^2}{(n-1)s^2_{x_1}}\)</span>.</p></li>
+<li><p>Discuss the connection between <span class="math inline">\(n\)</span>, <span class="math inline">\({df_e}\)</span>, <span class="math inline">\(\sigma^2\)</span> and <span class="math inline">\(Var(\hat{\boldsymbol{\beta}})\)</span>.</p></li>
+</ul>
+</div>
+<div id="uncertainty---applied-example" class="section level3 hasAnchor" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Uncertainty - applied example<a href="día-1-introducción-y-repaso..html#uncertainty---applied-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Assume that the model <span class="math inline">\(y_i \sim N(\mu_i, \sigma^2), \mu_i = \beta_0 + \beta_1 x_i+ \beta_2 x_i^2\)</span> describes the data generating process.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="día-1-introducción-y-repaso..html#cb3-1" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/k-state-id3a/mixed-models-fall25/refs/heads/newpart3/data/nitrogen_yield.csv&quot;</span></span>
+<span id="cb3-2"><a href="día-1-introducción-y-repaso..html#cb3-2" tabindex="-1"></a>df_n_ss  <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(url)</span>
+<span id="cb3-3"><a href="día-1-introducción-y-repaso..html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="día-1-introducción-y-repaso..html#cb3-4" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Yield_SY <span class="sc">~</span> Total_N <span class="sc">+</span> <span class="fu">I</span>(Total_N<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> df_n_ss)</span>
+<span id="cb3-5"><a href="día-1-introducción-y-repaso..html#cb3-5" tabindex="-1"></a>DHARMa<span class="sc">::</span><span class="fu">simulateResiduals</span>(m1, <span class="at">plot =</span> T)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-7-1.png" alt="" width="672" /></p>
+<pre><code>## Object of Class DHARMa with simulated residuals based on 250 simulations with refit = FALSE . See ?DHARMa::simulateResiduals for help. 
+##  
+## Scaled residual values: 0.1 0.3 0.004 0.588 0.792 0.556 0.168 0.344 0.256 0.452 0.388 0.388 0.832 0.94 0.692 0.936 0.132 0.312 0.424 0.664 ...</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="día-1-introducción-y-repaso..html#cb5-1" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Yield_SY <span class="sc">~</span> Total_N <span class="sc">+</span> <span class="fu">I</span>(Total_N<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> df_n_ss)</span>
+<span id="cb5-2"><a href="día-1-introducción-y-repaso..html#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="día-1-introducción-y-repaso..html#cb5-3" tabindex="-1"></a>df_plot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Total_N =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">280</span>)</span>
+<span id="cb5-4"><a href="día-1-introducción-y-repaso..html#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="día-1-introducción-y-repaso..html#cb5-5" tabindex="-1"></a>df_plot<span class="sc">$</span>yhat <span class="ot">&lt;-</span> <span class="fu">predict</span>(m1, <span class="at">newdata =</span> df_plot)</span>
+<span id="cb5-6"><a href="día-1-introducción-y-repaso..html#cb5-6" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="día-1-introducción-y-repaso..html#cb5-7" tabindex="-1"></a><span class="co"># estimation uncertainty</span></span>
+<span id="cb5-8"><a href="día-1-introducción-y-repaso..html#cb5-8" tabindex="-1"></a>confid_est <span class="ot">&lt;-</span> <span class="fu">predict</span>(m1, <span class="at">newdata =</span> df_plot, <span class="at">se.fit =</span> <span class="cn">TRUE</span>, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>)</span>
+<span id="cb5-9"><a href="día-1-introducción-y-repaso..html#cb5-9" tabindex="-1"></a>df_plot<span class="sc">$</span>est_low <span class="ot">&lt;-</span> (confid_est<span class="sc">$</span>fit)[,<span class="dv">2</span>]</span>
+<span id="cb5-10"><a href="día-1-introducción-y-repaso..html#cb5-10" tabindex="-1"></a>df_plot<span class="sc">$</span>est_up <span class="ot">&lt;-</span> (confid_est<span class="sc">$</span>fit)[,<span class="dv">3</span>]</span>
+<span id="cb5-11"><a href="día-1-introducción-y-repaso..html#cb5-11" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="día-1-introducción-y-repaso..html#cb5-12" tabindex="-1"></a><span class="co"># estimation uncertainty</span></span>
+<span id="cb5-13"><a href="día-1-introducción-y-repaso..html#cb5-13" tabindex="-1"></a>confid_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(m1, <span class="at">newdata =</span> df_plot, <span class="at">se.fit =</span> <span class="cn">TRUE</span>, <span class="at">interval =</span> <span class="st">&quot;predict&quot;</span>)</span>
+<span id="cb5-14"><a href="día-1-introducción-y-repaso..html#cb5-14" tabindex="-1"></a>df_plot<span class="sc">$</span>pred_low <span class="ot">&lt;-</span> (confid_pred<span class="sc">$</span>fit)[,<span class="dv">2</span>]</span>
+<span id="cb5-15"><a href="día-1-introducción-y-repaso..html#cb5-15" tabindex="-1"></a>df_plot<span class="sc">$</span>pred_up <span class="ot">&lt;-</span> (confid_pred<span class="sc">$</span>fit)[,<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="día-1-introducción-y-repaso..html#cb6-1" tabindex="-1"></a>df_plot <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="día-1-introducción-y-repaso..html#cb6-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Total_N, yhat))<span class="sc">+</span></span>
+<span id="cb6-3"><a href="día-1-introducción-y-repaso..html#cb6-3" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> pred_low, <span class="at">ymax =</span> pred_up), </span>
+<span id="cb6-4"><a href="día-1-introducción-y-repaso..html#cb6-4" tabindex="-1"></a>              <span class="at">alpha =</span> .<span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;#B388EB&quot;</span>)<span class="sc">+</span></span>
+<span id="cb6-5"><a href="día-1-introducción-y-repaso..html#cb6-5" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> est_low, <span class="at">ymax =</span> est_up), </span>
+<span id="cb6-6"><a href="día-1-introducción-y-repaso..html#cb6-6" tabindex="-1"></a>              <span class="at">alpha =</span> .<span class="dv">6</span>, <span class="at">fill =</span> <span class="st">&quot;#B200EB&quot;</span>)<span class="sc">+</span></span>
+<span id="cb6-7"><a href="día-1-introducción-y-repaso..html#cb6-7" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb6-8"><a href="día-1-introducción-y-repaso..html#cb6-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> latex2exp<span class="sc">::</span><span class="fu">TeX</span>(<span class="st">&quot;$</span><span class="sc">\\</span><span class="st">hat{y}$&quot;</span>), </span>
+<span id="cb6-9"><a href="día-1-introducción-y-repaso..html#cb6-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">expression</span>(Total<span class="sc">~</span>N<span class="sc">~</span>(lb<span class="sc">~</span>ac<span class="sc">^</span>{<span class="sc">-</span><span class="dv">1</span>})))<span class="sc">+</span></span>
+<span id="cb6-10"><a href="día-1-introducción-y-repaso..html#cb6-10" tabindex="-1"></a>  <span class="fu">theme_pubclean</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-9-1.png" alt="" width="576" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="coming-up-tomorrow" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Coming up tomorrow:<a href="día-1-introducción-y-repaso..html#coming-up-tomorrow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Reach Ch1 in Stroup et al. (2024)</li>
+<li>We start with mixed models</li>
+</ul>
+
 </div>
 </div>
             </section>

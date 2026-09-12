@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos. | Modelos Lineales Mixtos Aplicados</title>
+  <meta name="description" content="4 Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos. | Modelos Lineales Mixtos Aplicados" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos. | Modelos Lineales Mixtos Aplicados" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos. | Modelos Lineales Mixtos Aplicados" />
+  
+  
+  
+
+<meta name="author" content="Josefina Lacasa" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="día-1-tarde-modelos-mixtos.html"/>
+<link rel="next" href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STAT NNN</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bienvenidos!</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#sobre-el-curso"><i class="fa fa-check"></i><b>1.1</b> Sobre el curso:</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#log%C3%ADstica"><i class="fa fa-check"></i><b>1.1.1</b> Logística</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objetivos-de-aprendizaje"><i class="fa fa-check"></i><b>1.2</b> Objetivos de aprendizaje</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#notaci%C3%B3n-utilizada-en-este-curso"><i class="fa fa-check"></i><b>1.3</b> Notación utilizada en este curso</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html"><i class="fa fa-check"></i><b>2</b> Día 1 (mañana): Introducción y repaso.</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#housekeeping"><i class="fa fa-check"></i><b>2.1</b> Housekeeping</a></li>
+<li class="chapter" data-level="2.2" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#linear-models-review"><i class="fa fa-check"></i><b>2.2</b> Linear Models Review</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#general-linear-model"><i class="fa fa-check"></i><b>2.2.1</b> General linear model</a></li>
+<li class="chapter" data-level="2.2.2" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#qualitative-predictors"><i class="fa fa-check"></i><b>2.2.2</b> Qualitative predictors</a></li>
+<li class="chapter" data-level="2.2.3" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#assumptions"><i class="fa fa-check"></i><b>2.2.3</b> Assumptions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#lets-review-that-simple-model-using-distribution-notation-and-matrix-notation"><i class="fa fa-check"></i><b>2.2.4</b> Let’s review that simple model using distribution notation and matrix notation</a></li>
+<li class="chapter" data-level="2.2.5" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#matrix-notation"><i class="fa fa-check"></i><b>2.2.5</b> Matrix notation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#fixed-effects-and-random-effects"><i class="fa fa-check"></i><b>2.3</b> Fixed effects and random effects</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#applied-example"><i class="fa fa-check"></i><b>2.3.1</b> Applied example</a></li>
+<li class="chapter" data-level="2.3.2" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#building-a-statistical-model"><i class="fa fa-check"></i><b>2.3.2</b> Building a statistical model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#discussions"><i class="fa fa-check"></i><b>2.4</b> Discussions</a></li>
+<li class="chapter" data-level="2.5" data-path="día-1-mañana-introducción-y-repaso..html"><a href="día-1-mañana-introducción-y-repaso..html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html"><i class="fa fa-check"></i><b>3</b> Día 1 tarde: modelos mixtos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#estimation-of-variance-components"><i class="fa fa-check"></i><b>3.1</b> Estimation of variance components</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#maximum-likelihood-estimation-mle"><i class="fa fa-check"></i><b>3.1.1</b> Maximum Likelihood Estimation (MLE)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#restricted-maximum-likelihood-reml"><i class="fa fa-check"></i><b>3.1.2</b> Restricted Maximum Likelihood (REML)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#method-of-moments-mom"><i class="fa fa-check"></i><b>3.1.3</b> Method of moments (MoM)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#shrinkage-due-to-assuming-random-effects"><i class="fa fa-check"></i><b>3.2</b> Shrinkage due to assuming random effects</a></li>
+<li class="chapter" data-level="3.3" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#degrees-of-freedom"><i class="fa fa-check"></i><b>3.3</b> Degrees of freedom</a></li>
+<li class="chapter" data-level="3.4" data-path="día-1-tarde-modelos-mixtos.html"><a href="día-1-tarde-modelos-mixtos.html#tarea-para-ma%C3%B1ana"><i class="fa fa-check"></i><b>3.4</b> Tarea para mañana:</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><i class="fa fa-check"></i><b>4</b> Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos.</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#discusi%C3%B3n-qu%C3%A9-dice-dixon"><i class="fa fa-check"></i><b>4.1</b> Discusión: qué dice Dixon?</a></li>
+<li class="chapter" data-level="4.2" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#designed-experiments"><i class="fa fa-check"></i><b>4.2</b> Designed experiments</a></li>
+<li class="chapter" data-level="4.3" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#describing-a-designed-experiment"><i class="fa fa-check"></i><b>4.3</b> Describing a designed experiment</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#treatment-structure"><i class="fa fa-check"></i><b>4.3.1</b> Treatment structure</a></li>
+<li class="chapter" data-level="4.3.2" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#design-structure"><i class="fa fa-check"></i><b>4.3.2</b> Design structure</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#how-does-this-affect-anova-tables-balanced-data"><i class="fa fa-check"></i><b>4.4</b> How does this affect ANOVA tables? Balanced data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><i class="fa fa-check"></i><b>5</b> Día 2 (tarde): Conexión entre diseños experimentales y modelos estadísticos.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#medidas-repetidas"><i class="fa fa-check"></i><b>5.1</b> Medidas repetidas</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#model-selection-for-different-covariance-structures"><i class="fa fa-check"></i><b>5.1.1</b> Model selection for different covariance structures</a></li>
+<li class="chapter" data-level="5.1.2" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#utilizing-un-as-the-reference-covariance"><i class="fa fa-check"></i><b>5.1.2</b> Utilizing UN as the reference covariance</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="día-3-mañana-pensar-un-modelo-jerárquico..html"><a href="día-3-mañana-pensar-un-modelo-jerárquico..html"><i class="fa fa-check"></i><b>6</b> Día 3 (mañana): Pensar un modelo jerárquico.</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="día-3-mañana-pensar-un-modelo-jerárquico..html"><a href="día-3-mañana-pensar-un-modelo-jerárquico..html#review"><i class="fa fa-check"></i><b>6.1</b> Review</a></li>
+<li class="chapter" data-level="6.2" data-path="día-3-mañana-pensar-un-modelo-jerárquico..html"><a href="día-3-mañana-pensar-un-modelo-jerárquico..html#statistical-models"><i class="fa fa-check"></i><b>6.2</b> Statistical models</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="día-3-mañana-pensar-un-modelo-jerárquico..html"><a href="día-3-mañana-pensar-un-modelo-jerárquico..html#hierarchical-models"><i class="fa fa-check"></i><b>6.2.1</b> Hierarchical models</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="día-3-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-3-tarde-diagnóstico-y-selección-de-modelos..html"><i class="fa fa-check"></i><b>7</b> Día 3 (tarde): Diagnóstico y selección de modelos.</a></li>
+<li class="chapter" data-level="8" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>8</b> Examen final</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="examen-final.html"><a href="examen-final.html#practical-reads"><i class="fa fa-check"></i><b>8.0.1</b> Practical reads</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelos Lineales Mixtos Aplicados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos." class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos.<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#d%C3%ADa-2-ma%C3%B1ana-conexi%C3%B3n-entre-dise%C3%B1os-experimentales-y-modelos-estad%C3%ADsticos." class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>6 de octubre de 2026</p>
+<div id="discusión-qué-dice-dixon" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Discusión: qué dice Dixon?<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#discusi%C3%B3n-qu%C3%A9-dice-dixon" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Discusión del paper Dixon (2016).</li>
+</ul>
+</div>
+<div id="designed-experiments" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Designed experiments<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#designed-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Golden Rules of designed experiments:</strong><br />
+- Randomization<br />
+- Replication<br />
+- Local control</p>
+</div>
+<div id="describing-a-designed-experiment" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Describing a designed experiment<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#describing-a-designed-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="treatment-structure" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Treatment structure<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#treatment-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The treatment structure describes the combination</p>
+</div>
+<div id="design-structure" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Design structure<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#design-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div style="background-color: #C2EFB3; padding: 15px; border-radius: 5px; margin-top: 15px;">
+<p><strong>Experimental unit versus observational unit</strong><br />
+- Experimental unit (EU): smallest entity to which a treatment is independently assigned.<br />
+- Observational unit (OU): entity on which observations are made.
+- If OU <span class="math display">\[&gt;\]</span> EU, not all observations are independent.
+- The variance estimated from pseudoreplications (subsamples) is usually smaller than the variance estimated from true replications (experimental units).</p>
+</div>
+<div id="completely-randomized-design-crd" class="section level4 hasAnchor" number="4.3.2.1">
+<h4><span class="header-section-number">4.3.2.1</span> Completely Randomized Design (CRD)<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#completely-randomized-design-crd" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We assume that all experimental units experienced similar conditions.
+In a field experiment setting, that means that all plots were located in an
+approximately homogeneous area.
+Observations are thus assumed independent to each other.</p>
+<p><img src="figures/designs_crd.PNG" alt="" width="640" style="display: block; margin: auto;" /></p>
+<p><strong>Statistical model</strong> the independent assumption seems reasonable, which is why
+we can keep the model where</p>
+<p><span class="math display">\[y_{i} = \mu + \tau_i + \varepsilon_{i},\\
+\varepsilon_{i} \sim N(0, \sigma^2).\]</span></p>
+<p>Let’s expand the variance-covariance matrix:</p>
+<p><span class="math display">\[\Sigma = \begin{bmatrix} \sigma^2 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+0 &amp; \sigma^2 &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; \sigma^2 &amp; 0 &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; \sigma^2 &amp; \dots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\  
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; \sigma^2 \end{bmatrix}.\]</span></p>
+<p>Note that the elements in the off-diagonals are zeroes, because we are still keeping the
+assumption of independence (for now…).</p>
+</div>
+<div id="randomized-complete-block-design-rcbd" class="section level4 hasAnchor" number="4.3.2.2">
+<h4><span class="header-section-number">4.3.2.2</span> Randomized complete block design (RCBD)<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#randomized-complete-block-design-rcbd" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We assume that the experimental units did not experience similar conditions,
+but that an expert could determine groups of experimental units that did experience similar conditions.
+We call these groups of experimental units that experienced similar conditions “Blocks”.
+In a field experiment setting, that means that groups of plots were located in
+approximately homogeneous areas called blocks.
+In a study dealing with animals,this could be a repetition (i.e., a group
+of animals studied for the same timeframe).
+In a laboratory setting,this could be a day or a week where the scientists
+run the experiment.</p>
+<p><img src="figures/designs_rcbd.PNG" alt="" width="640" style="display: block; margin: auto;" /></p>
+<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_683905').style.display='block'">RCBD example for animal science.</button>     </div>     <div id="modal_683905" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_683905').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what an RCBD for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_rcbd.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
+<p>All observations from the same block shared the same conditions and thus,
+shared a random effect for the intercept.
+Said common random effect for the intercept means that observations
+sharing a block are correlated. We can write out the statistical model</p>
+<p><span class="math display">\[y_{ij} = \mu + \tau_i + u_j + \varepsilon_{ij},\\
+u_{j} \sim N(0, \sigma^2_u), \\
+\varepsilon_{ij} \sim N(0, \sigma^2),\]</span></p>
+<p>where <span class="math inline">\(y_{ijk}\)</span> is the observation for the <span class="math inline">\(i\)</span>th treatment in the <span class="math inline">\(j\)</span>th block,
+<span class="math inline">\(\mu\)</span> is the overall mean,
+<span class="math inline">\(\tau_i\)</span> is the effect of the <span class="math inline">\(i\)</span>th treatment,
+<span class="math inline">\(u_k\)</span> is the random effect of the <span class="math inline">\(k\)</span>th block,
+and <span class="math inline">\(\varepsilon_{ij}\)</span> is the residual.</p>
+<p>Assuming observations 1 to 10 belong to:</p>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+Fixed vs Random Effects Table
+</title>
+<style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<table>
+<tr>
+<th>
+Block
+</th>
+<th>
+Treatment
+</th>
+<th>
+Response
+</th>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+H
+</td>
+<td>
+16.8
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+C
+</td>
+<td>
+14.02
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+A
+</td>
+<td>
+11.37
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+G
+</td>
+<td>
+12.30
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+D
+</td>
+<td>
+12.1
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+E
+</td>
+<td>
+12.04
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+F
+</td>
+<td>
+14.5
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+B
+</td>
+<td>
+9.8
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+E
+</td>
+<td>
+10.5
+</td>
+</tr>
+<tr>
+<td>
+2
+</td>
+<td>
+F
+</td>
+<td>
+14.1
+</td>
+</tr>
+</table>
+</body>
+<p><span class="math display">\[\Sigma = \begin{bmatrix}
+\sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \dots &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \dots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\  
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; \sigma^2 + \sigma^2_u \end{bmatrix}.\]</span></p>
+</div>
+<div id="split-plot-design" class="section level4 hasAnchor" number="4.3.2.3">
+<h4><span class="header-section-number">4.3.2.3</span> Split-plot design<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#split-plot-design" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Split-plot designs are hierarchical types of designs with at least two
+treatment factors, where the experimental unit for one
+treatment contains multiple experimental units of another treatment factor.
+The reason for this type of designs often go back to practical limitations
+for the application of some treatment factor (e.g., agricultural machinery that
+imposes the experimental unit size), making
+split-plot designs more convenient.</p>
+<p>Treatments are randomized in a stepwise fashion:<br />
+1. The levels of one treatment factor are randomly assigned to its
+experimental units (whole plots). In an RCBD, the treatments for the whole plots
+are randomly assigned within each block.
+2. <strong>Within the whole plots</strong>, the levels of the other treatment factor are
+randomly assigned to its experimental units (split plots), which are
+subsections of the whole plots. Note: we could think of the whole plots acting
+as “mini blocks” for the second treatment factor.</p>
+<p><img src="figures/designs_splitplot.PNG" alt="" width="640" style="display: block; margin: auto;" /></p>
+<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_225587').style.display='block'">Split-plot example for animal science.</button>     </div>     <div id="modal_225587" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_225587').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what a split-plot for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_splitplot.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
+<p>Again, all observations from the same block share the same random effect and are correlated.<br />
+Likewise, all observations from the same whole plot (<span class="math display">\[\sim\]</span>“mini block”) are correlated.</p>
+<p><span class="math display">\[y_{ijk} = \mu + \tau_i + \alpha_j + (\tau \alpha)_{ij} + u_k + v_{i \vert k} + \varepsilon_{ij},\\
+u_{k} \sim N(0, \sigma^2_u), \\
+v_{i \vert k} \sim N(0, \sigma^2_v), \\
+\varepsilon_{ijk} \sim N(0, \sigma^2),\]</span></p>
+<p>where <span class="math inline">\(y_{ijk}\)</span> is the observation for the <span class="math inline">\(i\)</span>th level of treatment factor 1, <span class="math inline">\(j\)</span>th level of treatment factor 2, in the <span class="math inline">\(k\)</span>th block,
+<span class="math inline">\(\mu\)</span> is the overall mean,
+<span class="math inline">\(\tau_i\)</span> is the main effect of the <span class="math inline">\(i\)</span>th level of treatment factor 1,
+<span class="math inline">\(\alpha_j\)</span> is the main effect of the <span class="math inline">\(j\)</span>th level of treatment factor 2,
+<span class="math inline">\((\tau \alpha)_{ij}\)</span> is their interaction,
+<span class="math inline">\(u_k\)</span> is the random effect of the <span class="math inline">\(k\)</span>th block,
+<span class="math inline">\(v_{i \vert k}\)</span> is the random effect of the <span class="math inline">\(i\)</span>th “miniblock” (whole plot) in the <span class="math inline">\(k\)</span>th block,
+and <span class="math inline">\(\varepsilon_{ij}\)</span> is the residual.</p>
+Assuming observations 1 to 4 belong to:<br />
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+Fixed vs Random Effects Table
+</title>
+<style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<table>
+<tr>
+<th>
+Block
+</th>
+<th>
+Treatment Factor 1
+</th>
+<th>
+Treatment Factor 2
+</th>
+<th>
+Response
+</th>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+H
+</td>
+<td>
+a
+</td>
+<td>
+17.2
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+H
+</td>
+<td>
+c
+</td>
+<td>
+16.2
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+H
+</td>
+<td>
+b
+</td>
+<td>
+16.9
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+H
+</td>
+<td>
+d
+</td>
+<td>
+16.7
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+C
+</td>
+<td>
+d
+</td>
+<td>
+14.7
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+C
+</td>
+<td>
+c
+</td>
+<td>
+14.1
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+C
+</td>
+<td>
+b
+</td>
+<td>
+13.7
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+C
+</td>
+<td>
+a
+</td>
+<td>
+13.5
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+A
+</td>
+<td>
+c
+</td>
+<td>
+11.5
+</td>
+</tr>
+<tr>
+<td>
+1
+</td>
+<td>
+A
+</td>
+<td>
+d
+</td>
+<td>
+11.1
+</td>
+</tr>
+</table>
+</body>
+$$=
+<span class="math display">\[\begin{bmatrix}
+\sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u + \sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_v + \sigma^2_u +\sigma^2_v+\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v&amp; \sigma^2 + \sigma^2_u +\sigma^2_v +\sigma^2_v &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v&amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
+
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u  +\sigma^2_v &amp; \dots &amp; 0 \\
+\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \dots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\  
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; \sigma^2 + \sigma^2_u +\sigma^2_v \end{bmatrix}\]</span>
+<p>.$$</p>
+</div>
+</div>
+</div>
+<div id="how-does-this-affect-anova-tables-balanced-data" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> How does this affect ANOVA tables? Balanced data<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#how-does-this-affect-anova-tables-balanced-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One of the major benefits from mixed models is that they directly reflect the design and randomization structure. Take, for example,</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="día-1-tarde-modelos-mixtos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/04-dia2_manana.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/04-dia2_manana.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

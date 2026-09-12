@@ -1,0 +1,6 @@
+# Día 3 (tarde): Diagnóstico y selección de modelos.
+
+## Model diagnostics
+
+The philosophy behind model diagnostics aims to determine whether the 
+

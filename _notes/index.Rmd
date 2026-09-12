@@ -13,8 +13,14 @@ site: bookdown::bookdown_site
 - [Sobre mí](https://jlacasa.github.io/) 
 - Sobre ustedes: 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
 library(tidyverse)
+library(latex2exp)
+library(ggpubr)
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 # read.csv("../../students_STAT_720_C.csv") %>% 
 #   ggplot(aes(x = degreeProgram))+
 #   geom_bar(fill = "#B388EB")+

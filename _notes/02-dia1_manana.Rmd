@@ -1,4 +1,4 @@
-# Día 1 mañana: Introducción y repaso.     
+# Día 1 (mañana): Introducción y repaso.     
 
 5 de octubre de 2026 
 
@@ -12,7 +12,7 @@
 ## Linear Models Review
 
 - Why do we need statistical models? 
-- Statistics as a summary of the data 
+- Statistics as a summary of the information available 
 - ["Funes el memorioso" (J.L. Borges)](https://ciudadseva.com/texto/funes-el-memorioso/): *Sospecho, sin embargo, que no era muy capaz de pensar. Pensar es olvidar diferencias, es generalizar, abstraer. En el abarrotado mundo de Funes no había sino detalles, casi inmediatos*. 
 
 
@@ -25,7 +25,7 @@
 
 For example:
 
-$y_i \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + \beta_1 x_i$
+$$y_i \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + \beta_1 x_i$$
 
 ### General linear model
 
@@ -47,7 +47,7 @@ $x_i$ is the predictor for the $i$th observation,
 and $\varepsilon_{i}$ is the difference between the observed value $y$ 
 and the expected value $E(y_i) = \beta_0+x_i\beta_1+ x_{i}^2 \beta_2$ - that's why we often call it "residual". 
 Typically, $\boldsymbol{\beta} \equiv \begin{bmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \end{bmatrix}$ 
-is estimated via maximum likelihood estimation. Also, when we assume a Normal distribution, 
+is estimated via maximum likelihood estimation. Also, when we assume a normal distribution, 
 maximum likelihood estimation yields the same point estimates as least squares estimation. 
 
 
@@ -58,7 +58,7 @@ Instead of a quantitative predictor, we could have a qualitative (or categorical
 Let the qualitative predictor have two possible levels, A and B. 
 We could use the same model as before,  
 
-$y_{i} \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + x_i \beta_1,$
+$$y_{i} \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + x_i \beta_1,$$
 
 and say that $y_{i}$ is the observed value for the $i$th observation, 
 $\beta_0$ is the expected value for A, 
@@ -67,7 +67,7 @@ That way, $\beta_1$ is the difference between A and B.
 
 If the categorical predictor has more than two levels, 
 
-$y_{i} \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + x_{1i} \beta_1 + x_{2i} \beta_2+ ... + x_{ji} \beta_j,$
+$$y_{i} \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + x_{1i} \beta_1 + x_{2i} \beta_2+ ... + x_{ji} \beta_j,$$
 
 $y_{i}$ is still the observed value for the $i$th observation, 
 $\beta_0$ is the expected value for A (sometimes in designed experiments this level is a control), 
@@ -103,13 +103,13 @@ Let's review the assumptions we make in this model (which is the default model i
 There are other ways of writing out the statistical model above besides the model equation form. 
 Instead of focusing on the distribution of the residuals, we can focus on the distribution of the data $y$:  
 
-$y_{i} \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + x_{i} \beta_1 + x_{i}^2 \beta_2.$
+$$y_{i} \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + x_{i} \beta_1 + x_{i}^2 \beta_2.$$
 
 This type of notation is called "probability distribution form". 
 The probability distribution form makes it easier to switch to other distributions beyond the Normal ([Part e](3-lesson) of this workshop). 
 
 
-::: {style="background-color: #f3f9d2; padding: 15px; border-radius: 5px; margin-top: 15px;"}
+::: {style="background-color: #C2EFB3; padding: 15px; border-radius: 5px; margin-top: 15px;"}
 **Quick review: random variables**
 
 **Random variables**
@@ -202,7 +202,7 @@ For example:
 Recall that the single most common default model assumes independent residuals. This means that $cov(y_i, y_{i'}) = 0$ for all $i \neq i'$.
 
 <center>
-![](figures/varcov_sigma2_I.jpg)
+![](figures/varcov_sigma2_I.jpg){width=50%}
 </center>
 
 Mixed models relaxes the assumption of independent observations and affects the variance covariance matrix of the marginal distribution of $y$. 
@@ -215,7 +215,7 @@ For example:
 
 
 <center>
-![](figures/varcov_ZGZ_sigmaI.jpg)
+![](figures/varcov_ZGZ_sigmaI.jpg){width=50%}
 </center>
 
 
@@ -302,9 +302,7 @@ ggsave("figures/varcov_ZGZ_sigmaI.jpg", width = 3.5, height = 3.5)
 ```
 
 
-\break
-
-
+### Matrix notation
 
 Now that we've covered the variance-covariance matrices, we can further express the general linear model using vectors and matrices:  
 
@@ -334,20 +332,30 @@ Cov(y_2, y_1) & Var(y_2) & \dots & Cov(y_2, y_n)\\
 \vdots & \vdots & \ddots & \vdots \\ 
 Cov(y_n, y_1) & Cov(y_n, y_2) & \dots & Var(y_n) \end{bmatrix} \right).$$
 
-
+So far, so good. In what follows, we will learn why and how the addition of random effects to a model affects the variance-covariance matrix. 
+In particular, we will learn how it may make the covariance non-zero. 
 
 ## Fixed effects and random effects 
 
+The main characteristic of mixed is the combination of fixed effects and random effects. 
 
-What is behind a random effect:  
+**What is behind a random effect:**  
 
-- We assume a distribution of the effects, for example $u_j \sim N(0, \sigma^2_u)$ 
+We call random effects **random** because we assume a probability distribution of the effects, and $u_j \sim \text{iid}(0, \sigma^2_u)$. 
+This assumption represents the notion that these effects come from a larger group.  
+The single most common assumption is that the distribution is actually $u_j \overset{\mathrm{iid}}{\sim} N(0, \sigma^2_u)$. 
+
+
+A few questions to reflect on random effects: 
+
 - What process is being studied?  
 - How were the levels selected? (randomly, carefully selected)  
 - How many levels does the factor have, vs. how many did we observe?   
 - BLUEs versus BLUPs. 
 
 Read more in in Gelman (2005, page 20). "Analysis of variance—why it is more important than ever". [[link](https://projecteuclid.org/journals/annals-of-statistics/volume-33/issue-1/Analysis-of-variancewhy-it-is-more-important-than-ever/10.1214/009053604000001048.full)], and [Gelman and Hill (2006), page 245](https://sites.stat.columbia.edu/gelman/arm/) 
+
+Gelman and Hill (2006) suggest replacing the traditional language of "fixed" and "random" for group-level effects and individual-level effects. 
 
 ::: {style="background-color: #A7CECB; padding: 15px; border-radius: 5px; margin-top: 15px;"}
 
@@ -368,7 +376,7 @@ How should they model the data generated by the experiment?
 -   Randomized Complete Block Design with 4 repetitions (design structure).  
 
 
-```{r fig.height=10, fig.align='center'}
+```{r fig.height=10, fig.align='center', echo=FALSE}
 knitr::include_graphics("figures/emmeans_blocks.jpg")
 ```
 
@@ -400,7 +408,7 @@ where $u$ and $\varepsilon$ are independent.
         }
     </style>
 
-```{r echo=FALSE}
+```{r echo=TRUE, warning=FALSE, message=FALSE}
 library(lme4)
 library(tidyverse)
 library(emmeans)
@@ -412,8 +420,12 @@ df$K2O_lbac <- as.factor(df$K2O_lbac)
 m_fixed <- lm(yield ~ K2O_lbac + rep, data = df)
 m_random <- lmer(yield ~ K2O_lbac + (1|rep), data = df)
 
-(mg_means_fixed <- emmeans(m_fixed, ~K2O_lbac, contr = list(c(1, 0, 0, 0, -1))))
 
+summary(m_fixed)
+
+summary(m_random)
+
+(mg_means_fixed <- emmeans(m_fixed, ~K2O_lbac, contr = list(c(1, 0, 0, 0, -1))))
 ```
 
 
