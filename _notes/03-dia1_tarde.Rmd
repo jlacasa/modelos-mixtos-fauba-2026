@@ -1,8 +1,33 @@
-# Día 1 tarde: modelos mixtos
+# Día 1 (tarde): Introducción a los modelos mixtos (cont.)
 
-## Estimation of variance components
+## Review: elements of statistical inference 
 
-For any unknown parameter, there are multiple ways to estimate it. We call those the methods of estimation.
+Most of us use statistics as a tool to summarize our data and obtain statistical inference. Let's review a few key parameters that may affect our results:
+
+- Parameter estimates $\hat\beta$ 
+  - Typically how we model our treatment effects 
+- Variance estimates $\sigma^2$ 
+  - Affect standard errors 
+- Confidence intervals 
+  - $CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}$ 
+- Hypothesis tests  
+  - $CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}$ 
+  
+### On p-values 
+
+
+- The p value is the probability of observing the [t/F] statistic under the null hypothesis. 
+- Often, we assume $\alpha = 0.05$, and reject $H_0$ if $p<\alpha$. 
+- [ASA's statement on p-values](https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf) 
+- [Scientists rise up against statistical significance](https://www.nature.com/articles/d41586-019-00857-9) 
+  - [Discussion](https://statmodeling.stat.columbia.edu/2019/03/20/retire-statistical-significance-the-discussion/) 
+  - Counterargument: [In defense of p-values](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/13-0590.1) 
+- Gelman "Let us have the serenity to embrace the variation that we cannot reduce, the courage to reduce the variation we cannot embrace, and the wisdom to distinguish one from the other." [[see talk](https://www.youtube.com/watch?v=KS3yPw91iC0&t=3252s)] 
+
+
+## Estimation of variance components in mixed models
+
+For any unknown parameter, there are multiple ways to estimate it. We call those the methods of estimation. 
 
 ### Maximum Likelihood Estimation (MLE)
 
@@ -35,10 +60,6 @@ where $p = rank(\mathbf{X})$, $\mathbf{r} = \mathbf{y}-\mathbf{X}\hat{\boldsymbo
   - [Frey et al. (2024)](https://acsess.onlinelibrary.wiley.com/doi/10.1002/agj2.21570) 
 
 
-## Shrinkage due to assuming random effects
-
-
-
 ## Degrees of freedom
 
 Mixed models do not trace to the classical concept of degrees of freedom. In hierarchical models, rigidly counting parameters for degrees of freedom is conceptually problematic.
@@ -47,6 +68,37 @@ The independent pieces of information shift depending on group sizes and varianc
 
 The effective degrees of freedom depend on the magnitude of between-group versus within-group variance: if group variation is high, degrees of freedom approach the number of groups; if low, they approach the total sample size.
 
+- Contrasts for balanced \& complete designs have straightforward calculation of degrees of freedom. 
+- For unbalanced designs, incomplete blocks, missing data, and cases with more complex variance-covariance structure, the ANOVA shell does not give us exact degrees of freedom. 
+- Downward bias of the variance of an estimable function, leading to: 
+  - too narrow confidence intervals 
+  - inflated type I error rates 
+- Bias adjustment methods estimate the approximate degrees of freedom, which might be a non-integer number.  
+
+**Satterthwaite approximation**  
+
+- [Paper](https://www.jstor.org/stable/3002019?seq=1)  
+
+Let $\frac{X^2_{num}/\nu_1}{X_2^\star/\nu^\star_2}$ be the ratio of interest, where $X_{num}^2 \sim \chi^2_{\nu_1}$ and $X_2^\star$ is a linear combination of chi-square random variables all independent of $X_{num}^2$, then $X_2^\star \sim$ approximately $\chi^2_{\nu^\star_2}$, where
+
+$$\nu_2^\star \equiv \frac{(\sum_m c_m X_m^2)^2}{\sum_m\frac{(c_m X_m^2)}{df_m}}.$$
+
+**Kenward-Roger approximation** 
+
+- [Paper](https://www.jstor.org/stable/2533558?seq=1) 
+- Based on REML 
+- Focused on $(\mathbf{X}^T\mathbf{V}^{-1} \mathbf{X})^{-1}$ (the variance of $\hat{\boldsymbol\beta}$)
+- Again, expept for variance-component-only LMMs with balanced data and their compound symmetry marginal model equivalents, the estimated covariance of $\beta \mathbf{K}$ will tend to be underestimated. 
+- KR somewhat more conservative and reliable than Satterthwaite ([source](https://link.springer.com/article/10.1198/108571102726)). 
+- Integrated in most statistical software. 
+
+**R implementation** 
+
+- `emmeans` uses Kenward-Roger by default. [[see vignette](https://cran.r-project.org/web/packages/emmeans/vignettes/sophisticated.html)] 
+- Everything is more tricky in GLMMs (`df` is `Inf` in most applications). 
+
+
+## Ejercicio
 
 ## Tarea para mañana:
  

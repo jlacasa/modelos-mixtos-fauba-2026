@@ -4,7 +4,7 @@
 
 ## Housekeeping 
 
-- We will have relatively low proportion of R code in this short course. Instead, we will focus on the understanding of the components of mixed-effects models. Questions/concerns via e-mail are encouraged.
+- We will have relatively low proportion of R code in this short course. Instead, we will focus on understanding of the components of mixed-effects models. Questions/concerns via e-mail are encouraged. 
 - Emphasis on modeling and figuring out what mixed-effects models actually do.
 - The statistical notation we will use throughout this workshop is presented [here](jlacasa.github.io/modelos-mixtos-fauba-2026/notes/index.html).
 - [DON’T PANIC](https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic) when you see all the math notation and matrices. We will go slowly together. It is also not expected that you walk out of this workshop as a math notation wizard!
@@ -13,15 +13,23 @@
 
 - Why do we need statistical models? 
 - Statistics as a summary of the information available 
-- ["Funes el memorioso" (J.L. Borges)](https://ciudadseva.com/texto/funes-el-memorioso/): *Sospecho, sin embargo, que no era muy capaz de pensar. Pensar es olvidar diferencias, es generalizar, abstraer. En el abarrotado mundo de Funes no había sino detalles, casi inmediatos*. 
-
+- ["Funes el memorioso" (J.L. Borges)](https://ciudadseva.com/texto/funes-el-memorioso/): 
+  >Sospecho, sin embargo, que no era muy capaz de pensar. Pensar es olvidar diferencias, es generalizar, abstraer. En el abarrotado mundo de Funes no había sino detalles, casi inmediatos. 
+- ["Sobre el rigor en la ciencia" (también J.L. Borges)](https://ciudadseva.com/texto/del-rigor-en-la-ciencia/):
+  >En aquel Imperio, el Arte de la Cartografía logró tal Perfección que el mapa de una sola Provincia ocupaba toda una Ciudad, y el mapa del Imperio, toda una Provincia. Con el tiempo, estos Mapas Desmesurados no satisficieron y los Colegios de Cartógrafos levantaron un Mapa del Imperio, que tenía el tamaño del Imperio y coincidía puntualmente con él.
+  >
+  >Menos Adictas al Estudio de la Cartografía, las Generaciones Siguientes entendieron que ese dilatado Mapa era Inútil y no sin Impiedad lo entregaron a las Inclemencias del Sol y los Inviernos. En los desiertos del Oeste perduran despedazadas Ruinas del Mapa, habitadas por Animales y por Mendigos; en todo el País no hay otra reliquia de las Disciplinas Geográficas.
+  >
+  >Suárez Miranda, Viajes de Varones Prudentes, Libro Cuarto, Cap. XLV, Lérida, 1658.
+  >
+  >FIN
 
 - What is a statistical model? 
 
->Scientific models are, above all erlse, abstractions. They are statements about the operation of nature that purposefully omit many details and thus achieve insight that would otherwise be discursively obscured. Tehy provide unambiguous statements of what we believe is important. A key principle in modeling and statistics -- in science for that matter -- is the need to reduce the dimensions of a problem. (Hooten and Hobbs, 2015)
+>Scientific models are, above all erlse, abstractions. They are statements about the operation of nature that purposefully omit many details and thus achieve insight that would otherwise be discursively obscured. They provide unambiguous statements of what we believe is important. A key principle in modeling and statistics -- in science for that matter -- is the need to reduce the dimensions of a problem. ([Hooten and Hobbs, 2025](https://www.amazon.com/dp/B0DVWZ4YWV?lv=shuf&channelId=500&plpRedirect=mhFallback))
 
 
-- Deterministic component + Stochastic component 
+- A statistical model combines **deterministic components** with **stochastic components**. 
 
 For example:
 
@@ -89,9 +97,10 @@ $$x_{ji} = \begin{cases}
 
 That way, all $\beta$s are the differences between the treatment and the control. 
 
-### Assumptions
+### Assumptions of the general linear model
 
 Let's review the assumptions we make in this model (which is the default model in most software).   
+
 - Linearity  
 - Constant variance  
 - Independence  
@@ -106,7 +115,7 @@ Instead of focusing on the distribution of the residuals, we can focus on the di
 $$y_{i} \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + x_{i} \beta_1 + x_{i}^2 \beta_2.$$
 
 This type of notation is called "probability distribution form". 
-The probability distribution form makes it easier to switch to other distributions beyond the Normal ([Part e](3-lesson) of this workshop). 
+The probability distribution form makes it easier to switch to other distributions beyond the Normal (generalized linear (mixed) models). 
 
 
 ::: {style="background-color: #C2EFB3; padding: 15px; border-radius: 5px; margin-top: 15px;"}
@@ -116,6 +125,10 @@ The probability distribution form makes it easier to switch to other distributio
 
 Random variables are usually described with their properties like the expected value and variance. The expected value and variance are the first and second central moments of a distribution, respectively. Regardless of the distribution of a random variable $Y$, we could calculate its expected value $E(Y)$ and variance $Var(Y)$. The expected value measures the average outcome of $Y$. The variance measures the dispersion of $Y$, i.e. how far the possible outcomes are spread out from their average.
 
+The formula for the expected value of any random variable $Y$ is 
+$$E(Y) = \sum_{i=1}^n{x_i\cdot P(x_i)}.$$
+The formula for the variance of any random variable $Y$ is 
+$$Var(Y) = E(Y^2) - E(Y)^2.$$
 
 <center>
 ![](figures/normal_univariate.jpg)
@@ -130,7 +143,8 @@ Discuss in the plot above:
 
 **On the covariance of two random variables $y_1$ and $y_2$**
 
-Covariance between two random variables means how the two random variables behave relative to each other. Essentially, it quantifies the relationship between their joint variability. The variance of a random variable is the covariance of a random variable with itself. Consider two variables $y_1$ and $y_2$, each with a variance of 1 and a covariance of 0.6. The data shown below arise from the multivariate normal distribution,
+Covariance between two random variables means how the two random variables behave relative to each other. 
+Essentially, it quantifies the relationship between their joint variability. The variance of a random variable is the covariance of a random variable with itself. Consider two variables $y_1$ and $y_2$, each with a variance of 1 and a covariance of 0.6. The data shown below arise from the multivariate normal distribution,
 $$\begin{bmatrix}y_1 \\ y_2 \end{bmatrix} \sim MVN \left( \begin{bmatrix} 10 \\ 8 \end{bmatrix} , \begin{bmatrix}1 & 0.6 \\ 0.6 & 1 \end{bmatrix} \right),$$
 where the means of $y_1$ and $y_2$ are 10 and 8, respectively, and their covariance structure is represented in the variance-covariance matrix. Remember,
 
@@ -205,7 +219,9 @@ Recall that the single most common default model assumes independent residuals. 
 ![](figures/varcov_sigma2_I.jpg){width=50%}
 </center>
 
-Mixed models relaxes the assumption of independent observations and affects the variance covariance matrix of the marginal distribution of $y$. 
+
+
+Mixed models relax the assumption of independent observations and affect the variance covariance matrix of the marginal distribution of $y$. 
 For example: 
 
 - The tile at the intersection between the 1st and the 10th tile is $cov(y_1, y_{10})$. In this case, $cov(y_1, y_{10}) =0$. 
@@ -235,7 +251,8 @@ diag(sigma^2, nrow = 17) |>
   ggplot(aes(x,-y))+
   geom_tile(aes(fill = value), color = "black")+
   scale_fill_viridis_c(begin = 0.4, end = 1)+
-  labs(fill = "variance/covariance")+
+  labs(fill = "variance/covariance", 
+       title= "Schematic representation of\nthe variance/covariance matrix\nassuming independence")+
   coord_cartesian(xlim = c(.5,17.5), ylim = -c(.5,17.5), expand = F)+
   scale_x_continuous(breaks = 1:17, 
                      labels = paste0("y", 1:17))+
@@ -251,7 +268,7 @@ diag(sigma^2, nrow = 17) |>
     axis.text.x = element_text(angle = 45, hjust = .92),
     plot.background = element_blank())
 
-ggsave("figures/varcov_sigma2_I.jpg", width = 3.5, height = 3.5)  
+# ggsave("figures/varcov_sigma2_I.jpg", width = 3.5, height = 3.5)
 ```
 
 ```{r eval=FALSE, include=FALSE}
@@ -282,7 +299,8 @@ Z %*% G %*% t(Z) %>%
   geom_tile(aes(fill = value+s2), color = "black")+
   theme_minimal()+
   scale_fill_viridis_c(begin = 0.4, end = 1)+
-  labs(fill = "variance/covariance")+
+  labs(fill = "variance/covariance", 
+       title= "Schematic representation of\nthe variance/covariance matrix\naccounting for the\ndependence structure")+
   coord_cartesian(xlim = c(.5,17.5), ylim = -c(.5,17.5), expand = F)+
   scale_x_continuous(breaks = 1:17, 
                      labels = paste0("y", 1:17))+
@@ -333,7 +351,7 @@ Cov(y_2, y_1) & Var(y_2) & \dots & Cov(y_2, y_n)\\
 Cov(y_n, y_1) & Cov(y_n, y_2) & \dots & Var(y_n) \end{bmatrix} \right).$$
 
 So far, so good. In what follows, we will learn why and how the addition of random effects to a model affects the variance-covariance matrix. 
-In particular, we will learn how it may make the covariance non-zero. 
+In particular, we will learn how it may make the covariance of the marginal distribution non-zero. 
 
 ## Fixed effects and random effects 
 
@@ -341,8 +359,8 @@ The main characteristic of mixed is the combination of fixed effects and random 
 
 **What is behind a random effect:**  
 
-We call random effects **random** because we assume a probability distribution of the effects, and $u_j \sim \text{iid}(0, \sigma^2_u)$. 
-This assumption represents the notion that these effects come from a larger group.  
+We call random effects **random** because we assume a (stochastic, or random) probability distribution of the effects $u_j$, namely $u_j \sim \text{iid}(0, \sigma^2_u)$. 
+This assumption represents the notion that these effects come from a larger population of effects, that can be represented with a probability distribution. 
 The single most common assumption is that the distribution is actually $u_j \overset{\mathrm{iid}}{\sim} N(0, \sigma^2_u)$. 
 
 
@@ -361,19 +379,34 @@ Gelman and Hill (2006) suggest replacing the traditional language of "fixed" and
 
 **In-class activity:** what determines if an effect should be random of fixed? 
 
-**Case:** scientists have decided they wanted to have 3 different environments (SE Kansas, NW Kansas, Central Kansas) for their experiments. 
+**Case:** scientists have decided they wanted to have 3 different environments (SE Prov. Buenos Aires, NW Prov. Buenos Aires, W Prov. Buenos Aires) for their experiments. 
 They design a randomized complete block design at each location.  
 However, they are not interested in studying the environments themselves. 
 How should they model the data generated by the experiment?
 
 :::
 
+## Marginal and conditional distributions 
 
-### Applied example  
+Mixed-effects models impose several modeling and inference decisions on the user. One of those decisions includes distinguishing conditional and marginal inference. 
 
--   Field experiment studying the effect of potassium on corn yield.   
--   One treatment factor: Potassium fertilizer (one-way treatment structure).  
--   Randomized Complete Block Design with 4 repetitions (design structure).  
+**Marginal inference** 
+
+- Consider the distribution for the population of random effects. 
+- Typically used when interested about a the greater population.  
+- $y \sim N(\mathbf{X}\boldsymbol{\beta}, \sigma^2_u\mathbf{Z}\mathbf{Z}' +\mathbf{R})$.
+
+**Conditional inference** 
+
+- Consider the distribution, given the value of a random effect. 
+- Typically used when interested about a single group of data.  
+- $y \vert \boldsymbol{u} \sim N(\mathbf{X}\boldsymbol{\beta} + \mathbf{Z}\boldsymbol{u}, \mathbf{R})$. 
+
+## Applied example  
+
+- Field experiment studying the effect of potassium on corn yield.   
+- One treatment factor: Potassium fertilizer (one-way treatment structure).  
+- Randomized Complete Block Design with 4 repetitions (design structure).  
 
 
 ```{r fig.height=10, fig.align='center', echo=FALSE}
@@ -382,7 +415,7 @@ knitr::include_graphics("figures/emmeans_blocks.jpg")
 
 
 
-### Building a statistical model  
+## Building a statistical model  
 
 1. What is the *experiment blueprint*? (aka design structure or structure in the data)  
 2. What are the treatments?  
@@ -490,7 +523,7 @@ Now we know what we mean when we say "factor A was considered fixed and factor B
         <th>Random effects</th>
     </tr>
     <tr>
-        <th>Where</th>
+        <th>Where in the marginal distribution</th>
         <td>Expected value</td>
         <td>Variance-covariance matrix</td>
     </tr>

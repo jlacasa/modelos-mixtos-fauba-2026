@@ -4,10 +4,10 @@
 
 ## Discusión: qué dice Dixon? 
 
-- Discusión del paper Dixon (2016). 
+- Discusión del paper Dixon (2016) -- 30 minutos. 
 
 
-## Designed experiments
+## Review: designed experiments
 
 **Golden Rules of designed experiments:**  
 - Randomization  
@@ -15,15 +15,26 @@
 - Local control  
 
 
-## Describing a designed experiment 
+### Describing a designed experiment 
 
-### Treatment structure
+**Treatment structure**
 
-The treatment structure describes the combination
+"The treatment structure of a designed experiment consists of the set of
+treatments, factors, treatment combinations, or populations that the experimenter has
+selected to study and/or compare." (Chapter 4 in [Milliken and Johnson, 2004](https://www.taylorfrancis.com/books/mono/10.1201/EBK1584883340/analysis-messy-data-volume-1-dallas-johnson-george-milliken))
 
+Some examples are:
+
+- One-way treatment structures 
+- Factorial treatment structures 
+- Factorial treatment structures plus control 
+- Fractional factorial treatment structures 
+- Other designs in the [response surface methodology](https://en.wikipedia.org/wiki/Response_surface_methodology) literature (continuous predictors).
 
 ### Design structure
 
+"The design structure of a designed experiment consists of the grouping of
+the experimental units into homogeneous groups or blocks." (Chapter 4 in [Milliken and Johnson, 2004](https://www.taylorfrancis.com/books/mono/10.1201/EBK1584883340/analysis-messy-data-volume-1-dallas-johnson-george-milliken))
 
 ::: {style="background-color: #C2EFB3; padding: 15px; border-radius: 5px; margin-top: 15px;"}
 
@@ -35,6 +46,14 @@ The treatment structure describes the combination
 
 :::
 
+### What would Fisher do (WWFD) ANOVA
+
+Analysis of variance (ANOVA) has multiple appealing characteristics: 
+
+- Summary of the data 
+- Describe 
+
+The ANOVA structure for a nested structure can be hard to build. 
 
 #### Completely Randomized Design (CRD)  
 
@@ -241,7 +260,7 @@ knitr::include_graphics("figures/designs_splitplot.PNG")
 
 
 Again, all observations from the same block share the same random effect and are correlated.  
-Likewise, all observations from the same whole plot ($$\sim$$"mini block") are correlated. 
+Likewise, all observations from the same whole plot (i.e., "mini block") are correlated. 
 
 $$y_{ijk} = \mu + \tau_i + \alpha_j + (\tau \alpha)_{ij} + u_k + v_{i \vert k} + \varepsilon_{ij},\\
 u_{k} \sim N(0, \sigma^2_u), \\
@@ -371,6 +390,12 @@ $$\Sigma = \begin{bmatrix}
 \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u +\sigma^2_v & \sigma^2 + \sigma^2_u +\sigma^2_v & \dots & 0 \\
 \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots\\  
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \dots & \sigma^2 + \sigma^2_u +\sigma^2_v \end{bmatrix}.$$
+
+
+
+#### Designs with subsamples    
+
+
 
 ## How does this affect ANOVA tables? Balanced data 
 

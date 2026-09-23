@@ -2,5 +2,17 @@
 
 ## Model diagnostics
 
-The philosophy behind model diagnostics aims to determine whether the 
+The philosophy behind model diagnostics aims to determine whether the assumptions behind the data generating process make sense. 
+
+
+### Absolutely nr.1: check assumptions
+
+
+
+### Generating fake data 
+
+Perhaps my favorite model diagnostic tool. Generating fake data and comparing that with your data has roots 
+
+
+### Information criteria 
 

@@ -176,5 +176,7 @@ How do we know what the best covariance structure is?
 ### G-side versus R-side correlation
 
 
+## Ejercicios 
 
+[Get R code]()
 

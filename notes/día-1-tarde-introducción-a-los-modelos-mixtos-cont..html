@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos. | Modelos Lineales Mixtos Aplicados</title>
-  <meta name="description" content="4 Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos. | Modelos Lineales Mixtos Aplicados" />
+  <title>3 Día 1 (tarde): Introducción a los modelos mixtos (cont.) | Modelos Lineales Mixtos Aplicados</title>
+  <meta name="description" content="3 Día 1 (tarde): Introducción a los modelos mixtos (cont.) | Modelos Lineales Mixtos Aplicados" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos. | Modelos Lineales Mixtos Aplicados" />
+  <meta property="og:title" content="3 Día 1 (tarde): Introducción a los modelos mixtos (cont.) | Modelos Lineales Mixtos Aplicados" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos. | Modelos Lineales Mixtos Aplicados" />
+  <meta name="twitter:title" content="3 Día 1 (tarde): Introducción a los modelos mixtos (cont.) | Modelos Lineales Mixtos Aplicados" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html"/>
-<link rel="next" href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"/>
+<link rel="prev" href="día-1-mañana-introducción-y-repaso..html"/>
+<link rel="next" href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -252,513 +252,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos." class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> Día 2 (mañana): Conexión entre diseños experimentales y modelos estadísticos.<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#d%C3%ADa-2-ma%C3%B1ana-conexi%C3%B3n-entre-dise%C3%B1os-experimentales-y-modelos-estad%C3%ADsticos." class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>6 de octubre de 2026</p>
-<div id="discusión-qué-dice-dixon" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Discusión: qué dice Dixon?<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#discusi%C3%B3n-qu%C3%A9-dice-dixon" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="día-1-tarde-introducción-a-los-modelos-mixtos-cont." class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Día 1 (tarde): Introducción a los modelos mixtos (cont.)<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#d%C3%ADa-1-tarde-introducci%C3%B3n-a-los-modelos-mixtos-cont." class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="review-elements-of-statistical-inference" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Review: elements of statistical inference<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#review-elements-of-statistical-inference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most of us use statistics as a tool to summarize our data and obtain statistical inference. Let’s review a few key parameters that may affect our results:</p>
 <ul>
-<li>Discusión del paper Dixon (2016) – 30 minutos.</li>
+<li>Parameter estimates <span class="math inline">\(\hat\beta\)</span>
+<ul>
+<li>Typically how we model our treatment effects</li>
+</ul></li>
+<li>Variance estimates <span class="math inline">\(\sigma^2\)</span>
+<ul>
+<li>Affect standard errors</li>
+</ul></li>
+<li>Confidence intervals
+<ul>
+<li><span class="math inline">\(CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}\)</span></li>
+</ul></li>
+<li>Hypothesis tests
+<ul>
+<li><span class="math inline">\(CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}\)</span></li>
+</ul></li>
+</ul>
+<div id="on-p-values" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> On p-values<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#on-p-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>The p value is the probability of observing the [t/F] statistic under the null hypothesis.</li>
+<li>Often, we assume <span class="math inline">\(\alpha = 0.05\)</span>, and reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p&lt;\alpha\)</span>.</li>
+<li><a href="https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf">ASA’s statement on p-values</a></li>
+<li><a href="https://www.nature.com/articles/d41586-019-00857-9">Scientists rise up against statistical significance</a>
+<ul>
+<li><a href="https://statmodeling.stat.columbia.edu/2019/03/20/retire-statistical-significance-the-discussion/">Discussion</a></li>
+<li>Counterargument: <a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/13-0590.1">In defense of p-values</a></li>
+</ul></li>
+<li>Gelman “Let us have the serenity to embrace the variation that we cannot reduce, the courage to reduce the variation we cannot embrace, and the wisdom to distinguish one from the other.” [<a href="https://www.youtube.com/watch?v=KS3yPw91iC0&amp;t=3252s">see talk</a>]</li>
 </ul>
 </div>
-<div id="review-designed-experiments" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Review: designed experiments<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#review-designed-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Golden Rules of designed experiments:</strong><br />
-- Randomization<br />
-- Replication<br />
-- Local control</p>
-<div id="describing-a-designed-experiment" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Describing a designed experiment<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#describing-a-designed-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Treatment structure</strong></p>
-<p>“The treatment structure of a designed experiment consists of the set of
-treatments, factors, treatment combinations, or populations that the experimenter has
-selected to study and/or compare.” (Chapter 4 in <a href="https://www.taylorfrancis.com/books/mono/10.1201/EBK1584883340/analysis-messy-data-volume-1-dallas-johnson-george-milliken">Milliken and Johnson, 2004</a>)</p>
-<p>Some examples are:</p>
+</div>
+<div id="estimation-of-variance-components-in-mixed-models" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Estimation of variance components in mixed models<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#estimation-of-variance-components-in-mixed-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For any unknown parameter, there are multiple ways to estimate it. We call those the methods of estimation.</p>
+<div id="maximum-likelihood-estimation-mle" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Maximum Likelihood Estimation (MLE)<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#maximum-likelihood-estimation-mle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Maximum Likelihood Estimation</strong> of variance components provides downward biased estimates for small data (most experimental data).
+<span class="math inline">\(\ell_{ML}(\boldsymbol{\sigma; \boldsymbol{\beta}, \mathbf{y}}) = - (\frac{n}{2}) \log(2\pi)-(\frac{1}{2}) \log ( \vert \mathbf{V}(\boldsymbol\sigma) \vert ) - (\frac{1}{2}) (\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T[\mathbf{V}(\boldsymbol\sigma)]^{-1}(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})\)</span></p>
+</div>
+<div id="restricted-maximum-likelihood-reml" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Restricted Maximum Likelihood (REML)<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#restricted-maximum-likelihood-reml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Restricted Maximum Likelihood</strong> (REML) avoids MLE’s downward bias under small data and is thus is the default in most mixed effects models.</p>
 <ul>
-<li>One-way treatment structures</li>
-<li>Factorial treatment structures</li>
-<li>Factorial treatment structures plus control</li>
-<li>Fractional factorial treatment structures</li>
-<li>Other designs in the <a href="https://en.wikipedia.org/wiki/Response_surface_methodology">response surface methodology</a> literature (continuous predictors).</li>
+<li>In REML, the likelihood is maximized <strong>after</strong> accounting for the model’s fixed effects.<br />
+</li>
+<li>In REML, <span class="math inline">\(\ell_{REML}(\boldsymbol{\sigma};\mathbf{y}) = - (\frac{n-p}{2}) \log (2\pi) - (\frac{1}{2}) \log ( \vert \mathbf{V}(\boldsymbol\sigma) \vert ) - (\frac{1}{2})log \left(  \vert \mathbf{X}^T[\mathbf{V}(\boldsymbol\sigma)]^{-1}\mathbf{X} \vert \right) - (\frac{1}{2})\mathbf{r}[\mathbf{V}(\boldsymbol\sigma)]^{-1}\mathbf{r}\)</span>,
+where <span class="math inline">\(p = rank(\mathbf{X})\)</span>, <span class="math inline">\(\mathbf{r} = \mathbf{y}-\mathbf{X}\hat{\boldsymbol{\beta}}_{ML}\)</span>.
+<ul>
+<li>Start with initial values for <span class="math inline">\(\boldsymbol{\sigma}\)</span>, <span class="math inline">\(\tilde{\boldsymbol{\sigma}}\)</span>.<br />
+</li>
+<li>Compute <span class="math inline">\(\mathbf{G}(\tilde{\boldsymbol{\sigma}})\)</span> and <span class="math inline">\(\mathbf{R}(\tilde{\boldsymbol{\sigma}})\)</span>.<br />
+</li>
+<li>Obtain <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\mathbf{b}\)</span>.<br />
+</li>
+<li>Update <span class="math inline">\(\tilde{\boldsymbol{\sigma}}\)</span>.<br />
+</li>
+<li>Repeat until convergence.<br />
+</li>
+</ul></li>
+<li>Variance components may be <span class="math inline">\(&lt;0\)</span>; in that case they are set to zero.</li>
 </ul>
 </div>
-<div id="design-structure" class="section level3 hasAnchor" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Design structure<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#design-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>“The design structure of a designed experiment consists of the grouping of
-the experimental units into homogeneous groups or blocks.” (Chapter 4 in <a href="https://www.taylorfrancis.com/books/mono/10.1201/EBK1584883340/analysis-messy-data-volume-1-dallas-johnson-george-milliken">Milliken and Johnson, 2004</a>)</p>
-<div style="background-color: #C2EFB3; padding: 15px; border-radius: 5px; margin-top: 15px;">
-<p><strong>Experimental unit versus observational unit</strong><br />
-- Experimental unit (EU): smallest entity to which a treatment is independently assigned.<br />
-- Observational unit (OU): entity on which observations are made.
-- If OU <span class="math display">\[&gt;\]</span> EU, not all observations are independent.
-- The variance estimated from pseudoreplications (subsamples) is usually smaller than the variance estimated from true replications (experimental units).</p>
-</div>
-</div>
-<div id="what-would-fisher-do-wwfd-anova" class="section level3 hasAnchor" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> What would Fisher do (WWFD) ANOVA<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#what-would-fisher-do-wwfd-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Analysis of variance (ANOVA) has multiple appealing characteristics:</p>
+<div id="method-of-moments-mom" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Method of moments (MoM)<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#method-of-moments-mom" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Method of moments</strong> (MoM) is derived from ANOVA tables that include the expected mean squares.</p>
 <ul>
-<li>Summary of the data</li>
-<li>Describe</li>
+<li><p>Use actual sums of squares and expected mean squares (EMS) from ANOVA to clear for the different variance components.</p></li>
+<li><p>e.g., <span class="math inline">\(\tilde{\sigma}^2_{w} = \frac{SSw - SS_e}{c}\)</span> (See table above). However, if <span class="math inline">\(\tilde{\sigma}^2_{w} &lt; 0\)</span>, <span class="math inline">\(\hat{\sigma}^2_{w} = 0\)</span>.</p></li>
+<li><p>Issues with variance estimates equal to zero</p>
+<ul>
+<li>Type I error inflation</li>
+<li><a href="https://acsess.onlinelibrary.wiley.com/doi/10.1002/agj2.21570">Frey et al. (2024)</a></li>
+</ul></li>
 </ul>
-<p>The ANOVA structure for a nested structure can be hard to build.</p>
-<div id="completely-randomized-design-crd" class="section level4 hasAnchor" number="4.2.3.1">
-<h4><span class="header-section-number">4.2.3.1</span> Completely Randomized Design (CRD)<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#completely-randomized-design-crd" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>We assume that all experimental units experienced similar conditions.
-In a field experiment setting, that means that all plots were located in an
-approximately homogeneous area.
-Observations are thus assumed independent to each other.</p>
-<p><img src="figures/designs_crd.PNG" alt="" width="640" style="display: block; margin: auto;" /></p>
-<p><strong>Statistical model</strong> the independent assumption seems reasonable, which is why
-we can keep the model where</p>
-<p><span class="math display">\[y_{i} = \mu + \tau_i + \varepsilon_{i},\\
-\varepsilon_{i} \sim N(0, \sigma^2).\]</span></p>
-<p>Let’s expand the variance-covariance matrix:</p>
-<p><span class="math display">\[\Sigma = \begin{bmatrix} \sigma^2 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-0 &amp; \sigma^2 &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-0 &amp; 0 &amp; \sigma^2 &amp; 0 &amp; \dots &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; \sigma^2 &amp; \dots &amp; 0 \\
-\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\  
-0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; \sigma^2 \end{bmatrix}.\]</span></p>
-<p>Note that the elements in the off-diagonals are zeroes, because we are still keeping the
-assumption of independence (for now…).</p>
-</div>
-<div id="randomized-complete-block-design-rcbd" class="section level4 hasAnchor" number="4.2.3.2">
-<h4><span class="header-section-number">4.2.3.2</span> Randomized complete block design (RCBD)<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#randomized-complete-block-design-rcbd" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>We assume that the experimental units did not experience similar conditions,
-but that an expert could determine groups of experimental units that did experience similar conditions.
-We call these groups of experimental units that experienced similar conditions “Blocks”.
-In a field experiment setting, that means that groups of plots were located in
-approximately homogeneous areas called blocks.
-In a study dealing with animals,this could be a repetition (i.e., a group
-of animals studied for the same timeframe).
-In a laboratory setting,this could be a day or a week where the scientists
-run the experiment.</p>
-<p><img src="figures/designs_rcbd.PNG" alt="" width="640" style="display: block; margin: auto;" /></p>
-<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_848158').style.display='block'">RCBD example for animal science.</button>     </div>     <div id="modal_848158" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_848158').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what an RCBD for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_rcbd.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
-<p>All observations from the same block shared the same conditions and thus,
-shared a random effect for the intercept.
-Said common random effect for the intercept means that observations
-sharing a block are correlated. We can write out the statistical model</p>
-<p><span class="math display">\[y_{ij} = \mu + \tau_i + u_j + \varepsilon_{ij},\\
-u_{j} \sim N(0, \sigma^2_u), \\
-\varepsilon_{ij} \sim N(0, \sigma^2),\]</span></p>
-<p>where <span class="math inline">\(y_{ijk}\)</span> is the observation for the <span class="math inline">\(i\)</span>th treatment in the <span class="math inline">\(j\)</span>th block,
-<span class="math inline">\(\mu\)</span> is the overall mean,
-<span class="math inline">\(\tau_i\)</span> is the effect of the <span class="math inline">\(i\)</span>th treatment,
-<span class="math inline">\(u_k\)</span> is the random effect of the <span class="math inline">\(k\)</span>th block,
-and <span class="math inline">\(\varepsilon_{ij}\)</span> is the residual.</p>
-<p>Assuming observations 1 to 10 belong to:</p>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-Fixed vs Random Effects Table
-</title>
-<style>
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 4px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-    </style>
-</head>
-<body>
-<table>
-<tr>
-<th>
-Block
-</th>
-<th>
-Treatment
-</th>
-<th>
-Response
-</th>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-H
-</td>
-<td>
-16.8
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-C
-</td>
-<td>
-14.02
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-A
-</td>
-<td>
-11.37
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-G
-</td>
-<td>
-12.30
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-D
-</td>
-<td>
-12.1
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-E
-</td>
-<td>
-12.04
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-F
-</td>
-<td>
-14.5
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-B
-</td>
-<td>
-9.8
-</td>
-</tr>
-<tr>
-<td>
-2
-</td>
-<td>
-E
-</td>
-<td>
-10.5
-</td>
-</tr>
-<tr>
-<td>
-2
-</td>
-<td>
-F
-</td>
-<td>
-14.1
-</td>
-</tr>
-</table>
-</body>
-<p><span class="math display">\[\Sigma = \begin{bmatrix}
-\sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \sigma^2 + \sigma^2_u &amp; \sigma^2_u &amp; \dots &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u &amp; \dots &amp; 0 \\
-\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\  
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; \sigma^2 + \sigma^2_u \end{bmatrix}.\]</span></p>
-</div>
-<div id="split-plot-design" class="section level4 hasAnchor" number="4.2.3.3">
-<h4><span class="header-section-number">4.2.3.3</span> Split-plot design<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#split-plot-design" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Split-plot designs are hierarchical types of designs with at least two
-treatment factors, where the experimental unit for one
-treatment contains multiple experimental units of another treatment factor.
-The reason for this type of designs often go back to practical limitations
-for the application of some treatment factor (e.g., agricultural machinery that
-imposes the experimental unit size), making
-split-plot designs more convenient.</p>
-<p>Treatments are randomized in a stepwise fashion:<br />
-1. The levels of one treatment factor are randomly assigned to its
-experimental units (whole plots). In an RCBD, the treatments for the whole plots
-are randomly assigned within each block.
-2. <strong>Within the whole plots</strong>, the levels of the other treatment factor are
-randomly assigned to its experimental units (split plots), which are
-subsections of the whole plots. Note: we could think of the whole plots acting
-as “mini blocks” for the second treatment factor.</p>
-<p><img src="figures/designs_splitplot.PNG" alt="" width="640" style="display: block; margin: auto;" /></p>
-<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_644454').style.display='block'">Split-plot example for animal science.</button>     </div>     <div id="modal_644454" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_644454').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what a split-plot for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_splitplot.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
-<p>Again, all observations from the same block share the same random effect and are correlated.<br />
-Likewise, all observations from the same whole plot (i.e., “mini block”) are correlated.</p>
-<p><span class="math display">\[y_{ijk} = \mu + \tau_i + \alpha_j + (\tau \alpha)_{ij} + u_k + v_{i \vert k} + \varepsilon_{ij},\\
-u_{k} \sim N(0, \sigma^2_u), \\
-v_{i \vert k} \sim N(0, \sigma^2_v), \\
-\varepsilon_{ijk} \sim N(0, \sigma^2),\]</span></p>
-<p>where <span class="math inline">\(y_{ijk}\)</span> is the observation for the <span class="math inline">\(i\)</span>th level of treatment factor 1, <span class="math inline">\(j\)</span>th level of treatment factor 2, in the <span class="math inline">\(k\)</span>th block,
-<span class="math inline">\(\mu\)</span> is the overall mean,
-<span class="math inline">\(\tau_i\)</span> is the main effect of the <span class="math inline">\(i\)</span>th level of treatment factor 1,
-<span class="math inline">\(\alpha_j\)</span> is the main effect of the <span class="math inline">\(j\)</span>th level of treatment factor 2,
-<span class="math inline">\((\tau \alpha)_{ij}\)</span> is their interaction,
-<span class="math inline">\(u_k\)</span> is the random effect of the <span class="math inline">\(k\)</span>th block,
-<span class="math inline">\(v_{i \vert k}\)</span> is the random effect of the <span class="math inline">\(i\)</span>th “miniblock” (whole plot) in the <span class="math inline">\(k\)</span>th block,
-and <span class="math inline">\(\varepsilon_{ij}\)</span> is the residual.</p>
-Assuming observations 1 to 4 belong to:<br />
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-Fixed vs Random Effects Table
-</title>
-<style>
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 4px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-    </style>
-</head>
-<body>
-<table>
-<tr>
-<th>
-Block
-</th>
-<th>
-Treatment Factor 1
-</th>
-<th>
-Treatment Factor 2
-</th>
-<th>
-Response
-</th>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-H
-</td>
-<td>
-a
-</td>
-<td>
-17.2
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-H
-</td>
-<td>
-c
-</td>
-<td>
-16.2
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-H
-</td>
-<td>
-b
-</td>
-<td>
-16.9
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-H
-</td>
-<td>
-d
-</td>
-<td>
-16.7
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-C
-</td>
-<td>
-d
-</td>
-<td>
-14.7
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-C
-</td>
-<td>
-c
-</td>
-<td>
-14.1
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-C
-</td>
-<td>
-b
-</td>
-<td>
-13.7
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-C
-</td>
-<td>
-a
-</td>
-<td>
-13.5
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-A
-</td>
-<td>
-c
-</td>
-<td>
-11.5
-</td>
-</tr>
-<tr>
-<td>
-1
-</td>
-<td>
-A
-</td>
-<td>
-d
-</td>
-<td>
-11.1
-</td>
-</tr>
-</table>
-</body>
-$$=
-<span class="math display">\[\begin{bmatrix}
-\sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u + \sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_v + \sigma^2_u +\sigma^2_v+\sigma^2_v &amp; \sigma^2_u &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v&amp; \sigma^2 + \sigma^2_u +\sigma^2_v +\sigma^2_v &amp; \sigma^2_u &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2_u +\sigma^2_v&amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\
-
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \sigma^2_u  +\sigma^2_v &amp; \dots &amp; 0 \\
-\sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u &amp; \sigma^2_u +\sigma^2_v &amp; \sigma^2 + \sigma^2_u +\sigma^2_v &amp; \dots &amp; 0 \\
-\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\  
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \dots &amp; \sigma^2 + \sigma^2_u +\sigma^2_v \end{bmatrix}\]</span>
-<p>.$$</p>
-</div>
-<div id="designs-with-subsamples" class="section level4 hasAnchor" number="4.2.3.4">
-<h4><span class="header-section-number">4.2.3.4</span> Designs with subsamples<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#designs-with-subsamples" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 </div>
 </div>
+<div id="degrees-of-freedom" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Degrees of freedom<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#degrees-of-freedom" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mixed models do not trace to the classical concept of degrees of freedom. In hierarchical models, rigidly counting parameters for degrees of freedom is conceptually problematic.</p>
+<p>The independent pieces of information shift depending on group sizes and variance: a group-level coefficient modeled as a random effect does not consume exactly <span class="math inline">\(1\)</span> degree of freedom (as an unpooled fixed effect would), nor does it consume <span class="math inline">\(0\)</span> (as a completely pooled grand mean would). Instead, the effective degrees of freedom consumed by a set of random effects lies somewhere between <span class="math inline">\(1\)</span> and <span class="math inline">\(J\)</span> (where <span class="math inline">\(J\)</span> is the total number of groups).</p>
+<p>The effective degrees of freedom depend on the magnitude of between-group versus within-group variance: if group variation is high, degrees of freedom approach the number of groups; if low, they approach the total sample size.</p>
+<ul>
+<li>Contrasts for balanced &amp; complete designs have straightforward calculation of degrees of freedom.</li>
+<li>For unbalanced designs, incomplete blocks, missing data, and cases with more complex variance-covariance structure, the ANOVA shell does not give us exact degrees of freedom.</li>
+<li>Downward bias of the variance of an estimable function, leading to:
+<ul>
+<li>too narrow confidence intervals</li>
+<li>inflated type I error rates</li>
+</ul></li>
+<li>Bias adjustment methods estimate the approximate degrees of freedom, which might be a non-integer number.</li>
+</ul>
+<p><strong>Satterthwaite approximation</strong></p>
+<ul>
+<li><a href="https://www.jstor.org/stable/3002019?seq=1">Paper</a></li>
+</ul>
+<p>Let <span class="math inline">\(\frac{X^2_{num}/\nu_1}{X_2^\star/\nu^\star_2}\)</span> be the ratio of interest, where <span class="math inline">\(X_{num}^2 \sim \chi^2_{\nu_1}\)</span> and <span class="math inline">\(X_2^\star\)</span> is a linear combination of chi-square random variables all independent of <span class="math inline">\(X_{num}^2\)</span>, then <span class="math inline">\(X_2^\star \sim\)</span> approximately <span class="math inline">\(\chi^2_{\nu^\star_2}\)</span>, where</p>
+<p><span class="math display">\[\nu_2^\star \equiv \frac{(\sum_m c_m X_m^2)^2}{\sum_m\frac{(c_m X_m^2)}{df_m}}.\]</span></p>
+<p><strong>Kenward-Roger approximation</strong></p>
+<ul>
+<li><a href="https://www.jstor.org/stable/2533558?seq=1">Paper</a></li>
+<li>Based on REML</li>
+<li>Focused on <span class="math inline">\((\mathbf{X}^T\mathbf{V}^{-1} \mathbf{X})^{-1}\)</span> (the variance of <span class="math inline">\(\hat{\boldsymbol\beta}\)</span>)</li>
+<li>Again, expept for variance-component-only LMMs with balanced data and their compound symmetry marginal model equivalents, the estimated covariance of <span class="math inline">\(\beta \mathbf{K}\)</span> will tend to be underestimated.</li>
+<li>KR somewhat more conservative and reliable than Satterthwaite (<a href="https://link.springer.com/article/10.1198/108571102726">source</a>).</li>
+<li>Integrated in most statistical software.</li>
+</ul>
+<p><strong>R implementation</strong></p>
+<ul>
+<li><code>emmeans</code> uses Kenward-Roger by default. [<a href="https://cran.r-project.org/web/packages/emmeans/vignettes/sophisticated.html">see vignette</a>]</li>
+<li>Everything is more tricky in GLMMs (<code>df</code> is <code>Inf</code> in most applications).</li>
+</ul>
 </div>
-<div id="how-does-this-affect-anova-tables-balanced-data" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> How does this affect ANOVA tables? Balanced data<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#how-does-this-affect-anova-tables-balanced-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One of the major benefits from mixed models is that they directly reflect the design and randomization structure. Take, for example,</p>
+<div id="ejercicio" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Ejercicio<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#ejercicio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="tarea-para-mañana" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Tarea para mañana:<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html#tarea-para-ma%C3%B1ana" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Leer Dixon (2016).</p>
 
 </div>
 </div>
@@ -767,8 +385,8 @@ $$=
           </div>
         </div>
       </div>
-<a href="día-1-tarde-introducción-a-los-modelos-mixtos-cont..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="día-1-mañana-introducción-y-repaso..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -799,7 +417,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/04-dia2_manana.Rmd",
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/03-dia1_tarde.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -807,7 +425,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/04-dia2_manana.Rmd",
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/03-dia1_tarde.Rmd",
     "text": null
   },
   "download": null,
