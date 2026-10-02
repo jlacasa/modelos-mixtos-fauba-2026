@@ -46,3 +46,9 @@ $$L_j \approx \frac{\frac{n_j}{\sigma^2}\bar{y}_j + \frac{1}{\sigma_{L}^2}\mu}{\
 
 [Yates 1940]() said it best:
 
+### Ejercicio 
+
+example w IBD: what happens to $\hat{\boldsymbol{\beta}}$ if we assume blocks fixed versus random? 
+
+
+

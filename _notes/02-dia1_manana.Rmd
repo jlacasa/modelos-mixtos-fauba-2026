@@ -4,25 +4,28 @@
 
 ## Housekeeping 
 
-- We will have relatively low proportion of R code in this short course. Instead, we will focus on understanding of the components of mixed-effects models. Questions/concerns via e-mail are encouraged. 
+- We will have relatively low proportion of R code in this short course. Instead, we will focus on understanding the components of mixed-effects models.  
 - Emphasis on modeling and figuring out what mixed-effects models actually do.
-- The statistical notation we will use throughout this workshop is presented [here](jlacasa.github.io/modelos-mixtos-fauba-2026/notes/index.html).
-- [DON’T PANIC](https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic) when you see all the math notation and matrices. We will go slowly together. It is also not expected that you walk out of this workshop as a math notation wizard!
+- The statistical notation we will use throughout this workshop is presented [here](https://jlacasa.github.io/modelos-mixtos-fauba-2026/notes/).
+- [DON’T PANIC](https://en.wikipedia.org/wiki/Phrases_from_The_Hitchhiker%27s_Guide_to_the_Galaxy#Don't_Panic) when you see all the math notation and matrices. We will go slowly together. 
 
 ## Linear Models Review
 
 - Why do we need statistical models? 
 - Statistics as a summary of the information available 
-- ["Funes el memorioso" (J.L. Borges)](https://ciudadseva.com/texto/funes-el-memorioso/): 
-  >Sospecho, sin embargo, que no era muy capaz de pensar. Pensar es olvidar diferencias, es generalizar, abstraer. En el abarrotado mundo de Funes no había sino detalles, casi inmediatos. 
-- ["Sobre el rigor en la ciencia" (también J.L. Borges)](https://ciudadseva.com/texto/del-rigor-en-la-ciencia/):
-  >En aquel Imperio, el Arte de la Cartografía logró tal Perfección que el mapa de una sola Provincia ocupaba toda una Ciudad, y el mapa del Imperio, toda una Provincia. Con el tiempo, estos Mapas Desmesurados no satisficieron y los Colegios de Cartógrafos levantaron un Mapa del Imperio, que tenía el tamaño del Imperio y coincidía puntualmente con él.
-  >
-  >Menos Adictas al Estudio de la Cartografía, las Generaciones Siguientes entendieron que ese dilatado Mapa era Inútil y no sin Impiedad lo entregaron a las Inclemencias del Sol y los Inviernos. En los desiertos del Oeste perduran despedazadas Ruinas del Mapa, habitadas por Animales y por Mendigos; en todo el País no hay otra reliquia de las Disciplinas Geográficas.
-  >
-  >Suárez Miranda, Viajes de Varones Prudentes, Libro Cuarto, Cap. XLV, Lérida, 1658.
-  >
-  >FIN
+- From ["Funes el memorioso" (J.L. Borges)](https://ciudadseva.com/texto/funes-el-memorioso/): 
+
+>Sospecho, sin embargo, que no era muy capaz de pensar. Pensar es olvidar diferencias, es generalizar, abstraer. En el abarrotado mundo de Funes no había sino detalles, casi inmediatos. 
+
+- From ["Sobre el rigor en la ciencia" (también J.L. Borges)](https://ciudadseva.com/texto/del-rigor-en-la-ciencia/):
+
+>En aquel Imperio, el Arte de la Cartografía logró tal Perfección que el mapa de una sola Provincia ocupaba toda una Ciudad, y el mapa del Imperio, toda una Provincia. Con el tiempo, estos Mapas Desmesurados no satisficieron y los Colegios de Cartógrafos levantaron un Mapa del Imperio, que tenía el tamaño del Imperio y coincidía puntualmente con él.
+>
+>Menos Adictas al Estudio de la Cartografía, las Generaciones Siguientes entendieron que ese dilatado Mapa era Inútil y no sin Impiedad lo entregaron a las Inclemencias del Sol y los Inviernos. En los desiertos del Oeste perduran despedazadas Ruinas del Mapa, habitadas por Animales y por Mendigos; en todo el País no hay otra reliquia de las Disciplinas Geográficas.
+>
+>Suárez Miranda, Viajes de Varones Prudentes, Libro Cuarto, Cap. XLV, Lérida, 1658.
+>
+>FIN
 
 - What is a statistical model? 
 
@@ -31,15 +34,16 @@
 
 - A statistical model combines **deterministic components** with **stochastic components**. 
 
-For example:
+For example, take the model
 
-$$y_i \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + \beta_1 x_i$$
+$$y_i \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + \beta_1 x_i.$$
+
 
 ### General linear model
 
 One of the most popular linear models is the intercept-and-slope model (sometimes also called linear regression), 
 often used to describe the (linear) relationship between two quantitative variables. 
-Quadratic regression is also a linear model, and it's often used to describe relationship between two quantitative variables 
+Quadratic regression is also a linear model, and it's often used to describe the relationship between two quantitative variables 
 when it's not exactly linear, but has some type of curvature. 
 
 Most of us learned a way of writing out the statistical model called "model equation form". 
@@ -371,13 +375,13 @@ A few questions to reflect on random effects:
 - How many levels does the factor have, vs. how many did we observe?   
 - BLUEs versus BLUPs. 
 
-Read more in in Gelman (2005, page 20). "Analysis of variance—why it is more important than ever". [[link](https://projecteuclid.org/journals/annals-of-statistics/volume-33/issue-1/Analysis-of-variancewhy-it-is-more-important-than-ever/10.1214/009053604000001048.full)], and [Gelman and Hill (2006), page 245](https://sites.stat.columbia.edu/gelman/arm/) 
+Read more in in [Gelman (2005, page 20)](https://projecteuclid.org/journals/annals-of-statistics/volume-33/issue-1/Analysis-of-variancewhy-it-is-more-important-than-ever/10.1214/009053604000001048.full). "Analysis of variance—why it is more important than ever"., and [Gelman and Hill (2006), page 245](https://sites.stat.columbia.edu/gelman/arm/) 
 
 Gelman and Hill (2006) suggest replacing the traditional language of "fixed" and "random" for group-level effects and individual-level effects. 
 
 ::: {style="background-color: #A7CECB; padding: 15px; border-radius: 5px; margin-top: 15px;"}
 
-**In-class activity:** what determines if an effect should be random of fixed? 
+**In-class activity:** how do we determine if an effect should be modeled as random of fixed? 
 
 **Case:** scientists have decided they wanted to have 3 different environments (SE Prov. Buenos Aires, NW Prov. Buenos Aires, W Prov. Buenos Aires) for their experiments. 
 They design a randomized complete block design at each location.  
@@ -393,7 +397,7 @@ Mixed-effects models impose several modeling and inference decisions on the user
 **Marginal inference** 
 
 - Consider the distribution for the population of random effects. 
-- Typically used when interested about a the greater population.  
+- Typically used when interested about the greater population (i.e., all $u$s).  
 - $y \sim N(\mathbf{X}\boldsymbol{\beta}, \sigma^2_u\mathbf{Z}\mathbf{Z}' +\mathbf{R})$.
 
 **Conditional inference** 

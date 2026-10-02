@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 Día 4 (mañana): recuperación de información intergrupos | Modelos Lineales Mixtos Aplicados</title>
-  <meta name="description" content="8 Día 4 (mañana): recuperación de información intergrupos | Modelos Lineales Mixtos Aplicados" />
+  <title>9 Día 4 (tarde): Análisis de ensayos multi-sitios | Modelos Lineales Mixtos Aplicados</title>
+  <meta name="description" content="9 Día 4 (tarde): Análisis de ensayos multi-sitios | Modelos Lineales Mixtos Aplicados" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 Día 4 (mañana): recuperación de información intergrupos | Modelos Lineales Mixtos Aplicados" />
+  <meta property="og:title" content="9 Día 4 (tarde): Análisis de ensayos multi-sitios | Modelos Lineales Mixtos Aplicados" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Día 4 (mañana): recuperación de información intergrupos | Modelos Lineales Mixtos Aplicados" />
+  <meta name="twitter:title" content="9 Día 4 (tarde): Análisis de ensayos multi-sitios | Modelos Lineales Mixtos Aplicados" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="día-3-tarde-diagnóstico-y-selección-de-modelos..html"/>
-<link rel="next" href="día-4-tarde-análisis-de-ensayos-multi-sitios.html"/>
+<link rel="prev" href="día-4-mañana-recuperación-de-información-intergrupos.html"/>
+<link rel="next" href="día-5-mañana-ejemplo-integrador.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -278,60 +278,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="día-4-mañana-recuperación-de-información-intergrupos" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">8</span> Día 4 (mañana): recuperación de información intergrupos<a href="día-4-mañana-recuperación-de-información-intergrupos.html#d%C3%ADa-4-ma%C3%B1ana-recuperaci%C3%B3n-de-informaci%C3%B3n-intergrupos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="pooling-of-information" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> Pooling of information<a href="día-4-mañana-recuperación-de-información-intergrupos.html#pooling-of-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In mixed models, pooling refers to how much information is shared across different groups (or clusters) in the data when estimating parameters.</p>
-<p>The three pooling approaches represent different assumptions about the variance between these groups (<span class="math inline">\(\sigma^2_{b}\)</span>).</p>
-<p>To illustrate this concept, consider a scenario where we have yield observations <span class="math inline">\(y_{ij}\)</span> for the <span class="math inline">\(i\)</span>th observation of location <span class="math inline">\(j\)</span>. Then, <span class="math inline">\(i = 1, \dots, n_j\)</span> and <span class="math inline">\(j = 1, \dots, J\)</span>.
-We want to estimate a mean for each location <span class="math inline">\(L_j\)</span>.</p>
-<div id="complete-pooling" class="section level3 hasAnchor" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> Complete pooling<a href="día-4-mañana-recuperación-de-información-intergrupos.html#complete-pooling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>All groups (i.e., locations) are similar and there is no meaningful variation between them.</li>
-<li>The group (i.e., location) identifier <span class="math inline">\(j\)</span> contains no useful information.</li>
-<li><span class="math inline">\(y_{ij} \sim N(\mu, \sigma^2)\)</span></li>
-<li>The between-group (i.e., location) variance is assumed to be exactly zero (<span class="math inline">\(\sigma^2_{L} = 0\)</span>) and thus, if <span class="math inline">\(L_j \sim N(0, 0)\)</span>, all <span class="math inline">\(L_j =0\)</span>. Thus, all locations have the same mean <span class="math inline">\(\mu\)</span>.</li>
-</ul>
-</div>
-<div id="no-pooling-all-fixed-model" class="section level3 hasAnchor" number="8.1.2">
-<h3><span class="header-section-number">8.1.2</span> No pooling (all-fixed model)<a href="día-4-mañana-recuperación-de-información-intergrupos.html#no-pooling-all-fixed-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Each group is completely independent and unique (i.e., knowing something about Location 1 tells you absolutely nothing about Location 2).</li>
-<li>Equivalent to fitting a classical linear model with only fixed effects.</li>
-<li><span class="math inline">\(y_{ij} \sim N(\mu + L_j, \sigma^2)\)</span></li>
-<li>The between-group (i.e., location) variance is assumed to be infinite (<span class="math inline">\(\sigma^2_{L} \to \infty\)</span>) and thus, <span class="math inline">\(L_j\)</span> is the BLUE for that group.</li>
-<li>Think about this for an IBD!</li>
-</ul>
-</div>
-<div id="partial-pooling-mixed-effects-model" class="section level3 hasAnchor" number="8.1.3">
-<h3><span class="header-section-number">8.1.3</span> Partial pooling (mixed-effects model)<a href="día-4-mañana-recuperación-de-información-intergrupos.html#partial-pooling-mixed-effects-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p>Groups are different, but they are all drawn from a common overarching population distribution.</p></li>
-<li><p>Information is shared across groups to improve the estimates for each individual group.</p></li>
-<li><p><span class="math inline">\(y_{ij} \vert L_j \sim N(\mu + L_j, \sigma^2)\)</span>, where <span class="math inline">\(L_j \sim N(0, \sigma^2_L)\)</span>, or…</p></li>
-<li><p><span class="math inline">\(y_{ij} \sim N(\mu + L_j, \sigma^2_L+\sigma^2)\)</span>.</p></li>
-<li><p>The between-group (i.e., location) variance is estimated from the data (see methods of estimation).</p></li>
-<li><p><strong>Shrinkage: The estimate for group <span class="math inline">\(j\)</span> is a weighted average of the unpooled group mean (<span class="math inline">\(\bar{y}_j\)</span>) and the completely pooled grand mean (<span class="math inline">\(\mu\)</span>).</strong>
-<span class="math display">\[L_j \approx \frac{\frac{n_j}{\sigma^2}\bar{y}_j + \frac{1}{\sigma_{L}^2}\mu}{\frac{n_j}{\sigma^2} + \frac{1}{\sigma_{L}^2}}\]</span></p></li>
-<li><p>Think about this for an IBD!</p></li>
-<li><p>More on shrinkage:</p>
-<ul>
-<li>If Loc has a lot of data (<span class="math inline">\(n_j \to \infty\)</span>): first term dominates, and the partial pooling estimate approaches the no pooling estimate (<span class="math inline">\(\bar{y}_j\)</span>). The model trusts the abundant local data.</li>
-<li>If a group has very little data (<span class="math inline">\(n_j \to 0\)</span>), the second term dominates, and the estimate shrinks toward the complete pooling estimate (<span class="math inline">\(\mu\)</span>). The model borrows strength from the rest of the population to stabilize a noisy, low-information group.</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="why-does-all-of-this-actually-work-recovery-of-inter-group-information" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Why does all of this actually work? Recovery of inter-group information<a href="día-4-mañana-recuperación-de-información-intergrupos.html#why-does-all-of-this-actually-work-recovery-of-inter-group-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><a href="">Yates 1940</a> said it best:</p>
-<div id="ejercicio-1" class="section level3 hasAnchor" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> Ejercicio<a href="día-4-mañana-recuperación-de-información-intergrupos.html#ejercicio-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>example w IBD: what happens to <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> if we assume blocks fixed versus random?</p>
+<div id="día-4-tarde-análisis-de-ensayos-multi-sitios" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> Día 4 (tarde): Análisis de ensayos multi-sitios<a href="día-4-tarde-análisis-de-ensayos-multi-sitios.html#d%C3%ADa-4-tarde-an%C3%A1lisis-de-ensayos-multi-sitios" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="repaso" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Repaso<a href="día-4-tarde-análisis-de-ensayos-multi-sitios.html#repaso" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
-</div>
 </div>
 </div>
             </section>
@@ -339,8 +290,8 @@ We want to estimate a mean for each location <span class="math inline">\(L_j\)</
           </div>
         </div>
       </div>
-<a href="día-3-tarde-diagnóstico-y-selección-de-modelos..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="día-4-tarde-análisis-de-ensayos-multi-sitios.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="día-4-mañana-recuperación-de-información-intergrupos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="día-5-mañana-ejemplo-integrador.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -371,7 +322,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/08-dia4_manana.Rmd",
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/09-dia4_tarde.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -379,7 +330,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/08-dia4_manana.Rmd",
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/09-dia4_tarde.Rmd",
     "text": null
   },
   "download": null,

@@ -1,5 +1,10 @@
 # Día 3 (mañana): Pensar un modelo jerárquico.
 
+## Discusión: qué dice Dixon? 
+
+- Discusión del paper [Yates (1940)]() -- 30 minutos. 
+
+
 ## Review 
 
 Consider the linear mixed model 
@@ -23,15 +28,15 @@ knitr::include_graphics("figures/varcov_sigma2_I.jpg")
 
 Statistical models are combinations of deterministic and stochastic processes. 
 We often refer to the deterministic process as the equation that constitutes the linear predictor. 
+This outline is partly inspired by Chapter 10 in [Hooten and Hobbs (2025)]().
 
 ## Writing hierarchical models 
 
 **1. Start with the data.** 
 
-What is the distribution of the data? Right now we will focus on Gaussian data, but be mindfull that there are a myriad of probability distributions that can be used to analyze the data.  
+What is the distribution of the data? Right now we will focus on Gaussian data, but be mindful that there are a myriad of probability distributions that can be used to analyze the data.  
 
 **2. Think about the structure in the data** 
-
 
 Draw the data blueprint. 
 
@@ -46,7 +51,9 @@ knitr::include_graphics("figures/hierarchical2.jpg")
 ```
 
 
+### Ejercicio 
 
+example w IBD: what happens to $\hat{\boldsymbol{\beta}}$ if we assume blocks fixed versus random? 
 
 
 

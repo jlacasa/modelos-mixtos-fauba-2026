@@ -4,7 +4,7 @@
 
 ## Discusión: qué dice Dixon? 
 
-- Discusión del paper Dixon (2016) -- 30 minutos. 
+- Discusión del paper [Dixon (2016)](../handouts/2016_Dixon_ShouldBlocks.pdf) -- 30 minutos. 
 
 
 ## Review: designed experiments
@@ -39,21 +39,27 @@ the experimental units into homogeneous groups or blocks." (Chapter 4 in [Millik
 ::: {style="background-color: #C2EFB3; padding: 15px; border-radius: 5px; margin-top: 15px;"}
 
 **Experimental unit versus observational unit**  
+
 - Experimental unit (EU): smallest entity to which a treatment is independently assigned.  
 - Observational unit (OU): entity on which observations are made. 
-- If OU $$>$$ EU, not all observations are independent. 
+- If OU $>$ EU, not all observations are independent. 
 - The variance estimated from pseudoreplications (subsamples) is usually smaller than the variance estimated from true replications (experimental units). 
 
 :::
 
-### What would Fisher do (WWFD) ANOVA
+### Skeleton ANOVA process 
 
-Analysis of variance (ANOVA) has multiple appealing characteristics: 
+- The analysis of variance (ANOVA) has multiple appealing characteristics [(Gelman, 2005)](https://www.jstor.org/stable/pdf/3448650.pdf): 
+  - Summarize of the data 
+  - Highlight the most important treatment factors 
+  - Standard in scientific pipelines 
 
-- Summary of the data 
-- Describe 
+- However... The ANOVA structure for a nested structure can be hard to build. 
 
-The ANOVA structure for a nested structure can be hard to build. 
+- Walt Stroup presented a framework to facilitate the ANOVA building process 
+  - Separate topographical (i.e., design) and treatment structures 
+  - Read "2.3.1 What Would Fisher Do?" in Stroup et al. (2024)
+  
 
 #### Completely Randomized Design (CRD)  
 
@@ -85,6 +91,10 @@ $$\Sigma = \begin{bmatrix} \sigma^2 & 0 & 0 & 0 & \dots & 0 \\
 
 Note that the elements in the off-diagonals are zeroes, because we are still keeping the 
 assumption of independence (for now...). 
+
+```{r fig.height=5, fig.align='center', echo=FALSE, caption = 'Schematic diagram of the variance-covariance matrix for a completely randomized design (CRD)'}
+knitr::include_graphics("figures/R_crd.png")
+```
 
 #### Randomized complete block design (RCBD)  
 
@@ -229,6 +239,16 @@ $$\Sigma = \begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \dots & \sigma^2 + \sigma^2_u \end{bmatrix}.$$
 
 
+Recall that, under the marginal distribution, 
+
+$$\mathbf{y} \sim N(\mathbf{X}\boldsymbol{\beta}, \mathbf{Z}\mathbf{G}\mathbf{Z}'+\mathbf{R}),$$
+
+and, in this case, the observations coming from the same block will share a non-zero covariance. 
+
+
+```{r fig.height=5, fig.align='center', echo=FALSE, caption = 'Schematic diagram of the variance-covariance matrix for a randomized complete block design (RCBD)'}
+knitr::include_graphics("figures/ZGZ_R_rcbd.png")
+```
 
 #### Split-plot design    
 
@@ -262,7 +282,7 @@ knitr::include_graphics("figures/designs_splitplot.PNG")
 Again, all observations from the same block share the same random effect and are correlated.  
 Likewise, all observations from the same whole plot (i.e., "mini block") are correlated. 
 
-$$y_{ijk} = \mu + \tau_i + \alpha_j + (\tau \alpha)_{ij} + u_k + v_{i \vert k} + \varepsilon_{ij},\\
+$$y_{ijk} = \mu + \tau_i + \alpha_j + (\tau \alpha)_{ij} + u_k + v_{i \vert k} + \varepsilon_{ijk},\\
 u_{k} \sim N(0, \sigma^2_u), \\
 v_{i \vert k} \sim N(0, \sigma^2_v), \\
 \varepsilon_{ijk} \sim N(0, \sigma^2),$$
@@ -393,15 +413,45 @@ $$\Sigma = \begin{bmatrix}
 
 
 
+Recall that, under the marginal distribution, 
+
+$$\mathbf{y} \sim N(\mathbf{X}\boldsymbol{\beta}, \mathbf{Z}\mathbf{G}\mathbf{Z}'+\mathbf{R}),$$
+
+and, in this case, the observations coming from the same block will share a non-zero covariance. Withing the blocks, observations coming from the same whole-plot (i.e., mini-block) will also share a non-zero covariance, slightly larger than the observations coming from the same block but different whole plot.   
+
+
+```{r fig.height=5, fig.align='center', echo=FALSE, caption = 'Schematic diagram of the variance-covariance matrix for a split-plot in a randomized complete block design (RCBD)'}
+knitr::include_graphics("figures/ZGZ_R_split_plot.png")
+```
+
+
 #### Designs with subsamples    
 
+As mentioned above, sometimes we observe multiple units for the same EU. 
+Then, all observations coming from the same EU are not independent and actually come from the same group.
 
+Essentially, we are adding just another level to our data structure. 
+Take the split plot explained above: with subsamples, we would have the structure 
 
-## How does this affect ANOVA tables? Balanced data 
+$$\text{Block}>\text{Whole plot}>\text{Split plot}>\text{Subsample = observation}.$$
 
-One of the major benefits from mixed models is that they directly reflect the design and randomization structure. Take, for example, 
+- How would the model change for a model with subsamples? (including the variance-covariance matrix)
 
+$$y_{ijkl} = \mu + \tau_i + \alpha_j + (\tau \alpha)_{ij} + u_k + v_{i \vert k} +w_{j \vert ik} + \varepsilon_{ijkl},\\
+u_{k} \sim N(0, \sigma^2_u), \\
+v_{i \vert k} \sim N(0, \sigma^2_v), \\
+w_{j \vert ik} \sim N(0, \sigma^2_w), \\
+\varepsilon_{ijkl} \sim N(0, \sigma^2),$$
 
+where $y_{ijkl}$ is the $l$ subsample for the $i$th level of treatment factor 1, $j$th level of treatment factor 2, in the $k$th block, 
+$\mu$ is the overall mean, 
+$\tau_i$ is the main effect of the $i$th level of treatment factor 1, 
+$\alpha_j$ is the main effect of the $j$th level of treatment factor 2, 
+$(\tau \alpha)_{ij}$ is their interaction, 
+$u_k$ is the random effect of the $k$th block, 
+$v_{i \vert k}$ is the random effect of the $i$th "miniblock" (whole plot) in the $k$th block,
+$w_{j \vert ik}$ is the random effect of the splitplot with the $j$th level of $\alpha$ in the wholeplot with the $k$th block and $i$th level of $tau$,
+and $\varepsilon_{ij}$ is the residual. 
 
 
 

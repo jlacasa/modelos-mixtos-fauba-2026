@@ -2,17 +2,39 @@
 
 ## Review: elements of statistical inference 
 
-Most of us use statistics as a tool to summarize our data and obtain statistical inference. Let's review a few key parameters that may affect our results:
+Most of us use statistics as a tool to summarize our data and obtain statistical inference.
+That is, we often wish to **estimate** the effect of a factor on our response. 
+Other times, we wish to **predict** the response under a given condition. 
 
-- Parameter estimates $\hat\beta$ 
-  - Typically how we model our treatment effects 
-- Variance estimates $\sigma^2$ 
-  - Affect standard errors 
-- Confidence intervals 
+Some desirable characteristics in our estimators are 
+
+- Unbiased estimates
+  - We typically model our treatment effects via parameter estimates (e.g., $\hat\beta$) 
+  - Unbiased means that $E(\hat\beta) = \beta$.  
+- Precise estimates 
+  - Confidence intervals indicate the amount of information we have around our point estimates $CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}$
+
+
+### Hypothesis tests  
+
+Hypothesis tests aim to test whether the data could have been generated under a 'Null hypothesis' $H_0$, or if they are too extreme for that to be a reasonable assumption. 
+When testing population means with an unknown variance, we use a t-test.
+
+Typically, a t-test framework consists of:
+
+- A test statistic: $t = \frac{\hat{\theta} - \theta_0}{se(\hat{\theta})}$, including:
+  - **An estimate** $\hat{\theta}$ that can be any combination of parameters, for example: 
+    - $(\mu_1 - \mu_2) - 0$ to test mean differences 
+    - $\mu_1 - 0$ to test whether a mean (or effect) is zero 
+  - **The standard error estimates of $\hat{\theta}$, derived from the data:** the true population variance $\sigma^2$ is unknown and the $se$ relies on the sample variance $\hat{\sigma}^2$ (typically some variation of $\sqrt{\frac{\hat{\sigma}^2}{n}}$) 
+  - Adaptations are based on the experimental design and research question 
+  - The exact formulas for $se$ and degrees of freedom ($df$) adapt depending on whether the test is a one-sample, independent two-sample, or paired design. 
+- A reference $t$ distribution $t_{df}$ to evaluate the test statistic 
+
+- **Note: Hypothesis tests are directly connected to confidence intervals:**  
   - $CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}$ 
-- Hypothesis tests  
-  - $CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}$ 
-  
+
+
 ### On p-values 
 
 
@@ -25,9 +47,28 @@ Most of us use statistics as a tool to summarize our data and obtain statistical
 - Gelman "Let us have the serenity to embrace the variation that we cannot reduce, the courage to reduce the variation we cannot embrace, and the wisdom to distinguish one from the other." [[see talk](https://www.youtube.com/watch?v=KS3yPw91iC0&t=3252s)] 
 
 
+::: {style="background-color: #C2EFB3; padding: 15px; border-radius: 5px; margin-top: 15px;"}
+
+### Summary 
+
+- Statistical inference relies on point estimates and variance estimates 
+- Variance estimates may arguably affect conclusions even more than point estimates 
+- Degrees of freedom may affect $t$, and thus the conclusions of a study  
+
+```{r fig.height=5, fig.align='center', echo=FALSE, caption = 'Connections between elements of statistical models and statistical inference.'}
+knitr::include_graphics("figures/connections.png")
+```
+
+:::  
+
+
 ## Estimation of variance components in mixed models
 
-For any unknown parameter, there are multiple ways to estimate it. We call those the methods of estimation. 
+For any unknown parameter, there are multiple ways to estimate it. 
+We call those the methods of estimation. 
+We know that the variance estimates may affect our conclusions, which is why bias is a really undesired property for variance estimators. 
+Three of the most common methods for estimating variance components in mixed models are maximum likelihood estimation, restricted maximum likelihood estimation, and method of moments estimation. 
+
 
 ### Maximum Likelihood Estimation (MLE)
 
@@ -98,9 +139,48 @@ $$\nu_2^\star \equiv \frac{(\sum_m c_m X_m^2)^2}{\sum_m\frac{(c_m X_m^2)}{df_m}}
 - Everything is more tricky in GLMMs (`df` is `Inf` in most applications). 
 
 
-## Ejercicio
+## Exercises
+
+### Exercise 1: Modeling Decisions
+
+An agronomist evaluates the performance of 4 specific nitrogen rates on winter wheat yield. 
+To ensure the results are widely applicable, the trial is replicated across 12 arbitrarily selected farms across the state. 
+
+**1.a.** Based on our discussion of how levels are selected and the scope of inference, explain which factor(s) should be modeled as fixed and which as random. 
+Detail how the choice of a random effect here impacts the variance-covariance matrix of the marginal distribution.
+
+**1.b.** Write the statistical model described in **1.a.**
+
+### Exercise 2: Variance-Covariance Matrix Construction
+
+Consider a simple randomized complete block design (RCBD) with 3 treatments and 2 blocks (total $n = 6$ observations).
+
+**2.a.** If blocks are modeled as fixed effects, what do we expect for the standard error of the mean, and what do we expect for the standard error of mean differences? 
+
+**2.b.** If blocks are modeled as random effects ($u_j \sim N(0, \sigma^2_u)$), what do we expect for the standard error of the mean, and what do we expect for the standard error of mean differences? 
+
+**2.c.** If blocks are modeled as random effects, write out the theoretical covariance between observation 1 (Block 1, Trt A) and observation 2 (Block 1, Trt B). How does this differ from observation 1 (Block 1, Trt A) and observation 4 (Block 2, Trt A)?
+
+
+### Exercise 3: REML vs MLE in Practice
+
+Using the m_random model object below:
+
+```{r}
+library(lme4)
+
+df <- read.csv("../data/cochrancox_kfert.csv")
+df$rep <- as.factor(df$rep)
+df$K2O_lbac <- as.factor(df$K2O_lbac)
+m_random <- lmer(yield ~ K2O_lbac + (1|rep), REML = TRUE, data = df)
+```
+
+
+**3.a.** Re-fit the model using maximum likelihood estimation (MLE) for the variance components.
+
+**3.b.** Compare the variance component for the random block effect (rep) between the REML and MLE models. Explain why the variance estimate differs between the two methods and why REML is the preferred default in agricultural experiments. 
 
 ## Tarea para mañana:
  
-Leer Dixon (2016). 
+Leer [Dixon (2016)](../handouts/2016_Dixon_ShouldBlocks.pdf). 
 
