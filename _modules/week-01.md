@@ -12,7 +12,7 @@ title: Semana del 5 de octubre
   
 07/10
 : Pensar un modelo jerárquico. Selección y diagnóstico de modelos
-  : Leer [Hooten & Hobbs (2025), cap. 10](https://www.amazon.com/Bayesian-Models-Statistical-Primer-Ecologists/dp/069125012X/ref=sr_1_1?dib=eyJ2IjoiMSJ9.Jwn6iceCmPC53kfcwBXrBgdN7oAp_txB97B_0N1tUYyhIzHQP2G8UKS9m73XSQaP.qj568U7uPb7DFvSo62LRk6meUCkNvQgtMINZvKRjCG0&dib_tag=se&qid=1788647666&refinements=p_27%3AMevin+B.+Hooten&s=books&sr=1-1)
+  : Leer [Gelman (2012)](https://doi.org/10.1198/004017005000000661)
 
 08/10
 : Recuperación de información intergrupos y casos de datos desbalanceados.

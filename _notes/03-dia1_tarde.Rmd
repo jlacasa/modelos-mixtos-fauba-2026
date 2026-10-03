@@ -1,18 +1,26 @@
 # Día 1 (tarde): Introducción a los modelos mixtos (cont.)
 
-## Review: elements of statistical inference 
+## Review of some elements for statistical inference 
 
 Most of us use statistics as a tool to summarize our data and obtain statistical inference.
 That is, we often wish to **estimate** the effect of a factor on our response. 
+Sometimes, we even wish to **attribute** some effect to some factor (e.g., significance testing). 
 Other times, we wish to **predict** the response under a given condition. 
+More on prediction, estimation, and attribution in [Efron (2020)](https://www.tandfonline.com/doi/abs/10.1080/01621459.2020.1762613). 
+Designed experiments often have estimation and attribution goals. 
 
-Some desirable characteristics in our estimators are 
+Some desirable characteristics of our estimators are 
 
-- Unbiased estimates
+- Unbiased estimates 
   - We typically model our treatment effects via parameter estimates (e.g., $\hat\beta$) 
   - Unbiased means that $E(\hat\beta) = \beta$.  
 - Precise estimates 
   - Confidence intervals indicate the amount of information we have around our point estimates $CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}$
+
+
+### Live demonstration: $s.e.(\hat\mu)$ and $s.e.(\hat{\mu_1} - \hat{\mu_2})$
+
+[Get R code](../scripts/dia1_se_demo.qmd)
 
 
 ### Hypothesis tests  
@@ -22,23 +30,28 @@ When testing population means with an unknown variance, we use a t-test.
 
 Typically, a t-test framework consists of:
 
-- A test statistic: $t = \frac{\hat{\theta} - \theta_0}{se(\hat{\theta})}$, including:
+- A test statistic: $t^{\star} = \frac{\hat{\theta} - \theta_0}{se(\hat{\theta})}$, including:
   - **An estimate** $\hat{\theta}$ that can be any combination of parameters, for example: 
     - $(\mu_1 - \mu_2) - 0$ to test mean differences 
     - $\mu_1 - 0$ to test whether a mean (or effect) is zero 
   - **The standard error estimates of $\hat{\theta}$, derived from the data:** the true population variance $\sigma^2$ is unknown and the $se$ relies on the sample variance $\hat{\sigma}^2$ (typically some variation of $\sqrt{\frac{\hat{\sigma}^2}{n}}$) 
   - Adaptations are based on the experimental design and research question 
   - The exact formulas for $se$ and degrees of freedom ($df$) adapt depending on whether the test is a one-sample, independent two-sample, or paired design. 
-- A reference $t$ distribution $t_{df}$ to evaluate the test statistic 
+- A reference $t$ distribution $t_{df}$ to evaluate the test statistic.  
+- A level of significance $\alpha$. 
 
-- **Note: Hypothesis tests are directly connected to confidence intervals:**  
-  - $CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}$ 
 
+**Inference in t-tests:**
+
+We consider that there is enough evidence to reject the null hypothesis when $P(t_{df}>|t^{\star}|)<\alpha$. 
+
+**Note: Hypothesis tests are directly connected to confidence intervals:**
+
+- $CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}$ 
 
 ### On p-values 
 
-
-- The p value is the probability of observing the [t/F] statistic under the null hypothesis. 
+- The p value is the probability of observing a value as extreme or more extreme than the [t/F] statistic under the null hypothesis. 
 - Often, we assume $\alpha = 0.05$, and reject $H_0$ if $p<\alpha$. 
 - [ASA's statement on p-values](https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf) 
 - [Scientists rise up against statistical significance](https://www.nature.com/articles/d41586-019-00857-9) 

@@ -1,0 +1,127 @@
+---
+title: "Dia 1 -- Standard Error Demonstration"
+format: html
+---
+
+## Libraries 
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(emmeans)
+library(lme4)
+```
+
+## Data 
+(from day 1)
+
+- Field experiment studying the effect of potassium on corn yield.
+- One treatment factor: Potassium fertilizer (one-way treatment structure).
+- Randomized Complete Block Design with 4 repetitions (design structure).
+
+```{r}
+url <- "https://raw.githubusercontent.com/jlacasa/modelos-mixtos-fauba-2026/refs/heads/main/data/cochrancox_kfert.csv"
+df <- read.csv(url)
+# df <- read.csv("../data/cochrancox_kfert.csv")
+
+df$rep <- as.factor(df$rep)
+df$K2O_lbac <- as.factor(df$K2O_lbac)
+```
+
+## Model fitting 
+
+Because this is an RCBD, the model is 
+
+$$y_{ij} = \mu + T_i +b_j +\varepsilon_{ij}, \ \ \ \varepsilon_{ij} \sim N(0, \sigma^2_\varepsilon),$$
+
+and there are 2 possible assumptions to make about $b_j$: 
+
+- Fixed 
+- Random 
+
+
+### Assume $b_j$ is fixed: 
+
+```{r}
+m_fixed <- lm(yield ~ K2O_lbac + rep, data = df)
+```
+
+The standard error of the mean is $se(\hat{\mu_i}) = \sqrt{\frac{\sigma^2_\varepsilon}{\#blocks}}$. 
+
+Then:
+```{r}
+sigma2 <- sigma(m_fixed)^2
+n_blocks <- n_distinct(df$rep)
+
+(se_mui <- sqrt(sigma2/n_blocks))
+```
+
+Which is the same as the SE of the marginal means: 
+
+```{r}
+(means <- emmeans(m_fixed, ~K2O_lbac))
+```
+
+Likewise, the confidence interval comes from doing 
+
+$$\hat{\mu_i} \pm se(\hat{\mu_i})\cdot t_{dfe}.$$
+
+For $dfe = 8$ and $\alpha = .05$ we get
+
+```{r}
+df_fixed <- df.residual(m_fixed)
+t_crit <- qt(p = 0.975, df = df_fixed)
+
+mu_1 <- as.data.frame(means)$emmean[1]
+
+#lower CI
+mu_1 - (se_mui * t_crit)
+#upper CI
+mu_1 + (se_mui * t_crit)
+```
+
+
+
+### Assume $b_j$ is random: 
+
+```{r}
+m_random <- lmer(yield ~ K2O_lbac + (1|rep), data = df)
+```
+
+The standard error of the mean is $se(\hat{\mu_i}) = \sqrt{\frac{\sigma^2_\varepsilon + \sigma^2_{block}}{\#blocks}}$. 
+
+Then:
+```{r}
+sigma2 <- sigma(m_random)^2
+sigma2_block <- VarCorr(m_random)$rep[1]
+
+n_blocks <- n_distinct(df$rep)
+
+(se_mui <- sqrt((sigma2 + sigma2_block)/n_blocks))
+```
+
+Which is the same as the SE of the marginal means: 
+
+```{r}
+(means <- emmeans(m_random, ~K2O_lbac))
+```
+
+Likewise, the confidence interval comes from doing 
+
+$$\hat{\mu_i} \pm se(\hat{\mu_i})\cdot t_{dfe}.$$
+
+For $dfe = 5.57$ and $\alpha = .05$ we get
+
+```{r}
+df_random <- as.data.frame(means)$df[1]
+t_crit <- qt(p = 0.975, df = df_random) 
+
+mu_1 <- as.data.frame(means)$emmean[1]
+
+#lower CI
+mu_1 - (se_mui * t_crit) 
+#upper CI
+mu_1 + (se_mui * t_crit) 
+```
+
+
+

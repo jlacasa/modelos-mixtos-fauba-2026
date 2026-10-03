@@ -1,5 +1,177 @@
-# Día 4 (tarde): Análisis de ensayos multi-sitios 
+# Día 4 (tarde): Diagnóstico y selección de modelos.
 
-## Repaso 
+## Model diagnostics
+
+The philosophy behind model diagnostics aims to determine whether the assumptions behind the data generating process make sense. 
+Knowing that [all models are wrong](https://en.wikipedia.org/wiki/All_models_are_wrong), one could argue that we are bound to make type II erros by concluding that a given model represents the data generating process properly. 
+However, as we know, Statistics helps us summarize our data and make sense of it. 
+
+In what follows, we will demonstrate the model checking steps with an applied example: 
+
+We revisit the Nitrogen example, where we describe yield as a quadratic function of N fertilizer. 
+
+
+## Generate fake data based on the fitted model 
+
+- Goal: to detect systematic differences between the model and observed data. 
+- See Chapter 8 in Gelman and Hill. 
+- Perhaps my favorite model checking tool. 
+- Any discrepancies between fitted model and data will show up here. 
+- Sometimes, all our models with have flaws, but it's good to be aware what they are. 
+
+```{r message=FALSE, warning=FALSE}
+library(lme4)
+library(tidyverse)
+library(latex2exp)
+library(ggpubr)
+library(mosaic)
+
+dat <- read.csv("../data/N_fert.csv")
+
+m1 <- lm(Yield_SY ~ Total_N, data= dat)
+dat$residuals <- resid(m1)
+dat$yhat <- predict(m1)
+
+theme_set(theme_pubr())
+```
+
+```{r}
+y_sim <- simulate(m1, nsim =30, seed = 42) |>
+  mutate(Total_N = dat$Total_N, 
+         Yield_SY = dat$Yield_SY) |> 
+  pivot_longer(cols = -c(Total_N, Yield_SY))
+
+y_sim |> 
+  ggplot(aes(value))+
+  geom_histogram()+
+  geom_histogram(aes(Yield_SY), fill = "gold", alpha = .3)+
+  facet_wrap(~name)
+
+y_sim |> 
+  ggplot(aes(Total_N, value))+
+  geom_point()+
+  geom_point(aes(Total_N, Yield_SY), shape = 21, fill = "gold", alpha = .3)+
+  facet_wrap(~name)
+```
+
+Discuss the plot above: how are the simulated data compared to the observed data?
+
+
+## Some useful metrics to compare models 
+
+### Root mean squared error
+
+- Root mean squared error $RMSE = \sqrt{\frac{1}{n} \cdot \sum_{i=1}^n(y_i-\hat{y}_i)^2}$ 
+- In-sample versus out-of-sample RMSE 
+
+### The coefficient of determination R^2^
+
+-   Usually interpreted as the proportion of the variation in $y$ that is explained with the variation in $x$. 
+-   Used as a metric for predictive ability and model fit. 
+-   Can increase when adding more predictors. 
+
+R^2^ can be computed as
+
+$$R^2 = \frac{SSM}{SST} = \frac{SS_{MODEL}}{SS_{INT-SLOPE}} = 1 - \frac{SSE}{SST},$$
+
+where $R^2$ is the coefficient of variation, $SSM$ is the sum of squares of the model, $SST$ is the total sum of squares (i.e., the residual sum of squares of an intercept-and-slope model). 
+In essence, $R^2$ is the ratio between the $SSE$ of whatever model and the $SSE$ of an intercept-and-slope model.
+
+### On the use of R^2^ for statistical inference 
+
+**Why do so many people use the coefficient of variation R^2^?** 
+
+- Metrics like RMSE are hard to compare across models (different units) 
+- R^2^, however, is dimensionless and much easier to interpret 
+- "The proportion of variability that is explained by the model" 
+
+HOWEVER...
+
+**Uncertainty in R^2^**
+
+We don't get any uncertainty on R^2^ for free. However, we can find out how good (or bad) an R^2^ is. 
+
+```{r message=FALSE, warning=FALSE}
+summary(m1)$r.squared
+```
+
+### Bootstrapped R^2^ 
+
+On one hand, we can obtain a bootstrapped confidence interval of R^2^ by resampling the data and fitting the same model multiple times: 
+
+```{r}
+boot_r2 <- replicate(1000, {
+  dat_boot <- dat[sample(nrow(dat), replace = TRUE), ]
+  
+  m_boot <- lm(Yield_SY ~ Total_N + I(Total_N^2), data = dat_boot)
+  
+  summary(m_boot)$r.squared
+})
+
+hist(boot_r2, breaks = 30)
+```
+
+### Out-of-sample R^2^ 
+
+Given the obvios structure of the data, a more appropriate way to obtain uncertainty on R^2^ would be an out-of-sample (oos) cross-validation:
+
+```{r}
+R2_oos <- numeric()
+
+for (i in unique(dat$sy)) {
+  # leave-one-sy-out 
+  d_is <- dat |> filter(sy != i) 
+  d_oos <- dat |> filter(sy == i)
+  
+  m <- lm(Yield_SY ~ Total_N + I(Total_N^2), data = d_is)
+  
+  SST_oos <- sum((resid(lm(Yield_SY ~ 1, data =d_oos)))^2)
+  SSE_oos <- sum((d_oos$Yield_SY - predict(m, newdata = d_oos))^2) 
+  
+  R2_oos[i] <- 1 - SSE_oos/SST_oos
+  
+}
+
+R2_oos
+mean(R2_oos)
+sd(R2_oos)
+```
+
+- Compare all the R^2^ 
+
+
+### Adjusted R^2^
+
+The adjusted R^2^ also penalizes the addition of extra parameters 
+
+$$R^2_{adj} = R^2 - (1 - R^2) \frac{p-1}{n-p},$$ 
+
+where $R^2$ is the one defined above, $p$ is the number of parameters and $n$ is the total number of observations. 
+
+### Some issues with R^2^
+
+- Bootstrapped R^2^ 
+- Anscombe's quartet 
+- [Out-of-Sample R^2^: Estimation and Inference](https://www.tandfonline.com/doi/abs/10.1080/00031305.2023.2216252) 
+
+
+### Akaike Information Criterion (AIC)
+
+- Used as a metric for predictive ability and model fit. 
+- Lower value is better. 
+- Values are always compared to other models (i.e., there are no general rules about reasonable AIC values). 
+
+The AIC of a given model $M$ and observed data $\mathbf{y}$ is calculated as  
+$$AIC_M = 2p - 2\log(\hat{L}),$$  
+$p$ is the number of parameters estimated in the model and $\hat{L}$ is the maximized value of the likelihood function for the model (i.e., $\hat{L}=p(\mathbf{y}|\hat{\boldsymbol\beta}, M)$).
+
+### Bayesian Information Criterion (BIC)
+
+The BIC of a given model (and observed data) is a variant of AIC and is calculated as  
+
+$$BIC = p\log(n) - 2\log(\hat{L}),$$  
+
+where $p$ is the number of parameters estimated in the model, $n$ is the number of observations, and $\hat{L}$ is the maximized value of the likelihood function for the model (i.e., $\hat{L}=p(\mathbf{y}|\hat{\boldsymbol\beta}, M)$).
+
 
 

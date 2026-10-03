@@ -38,6 +38,8 @@ For example, take the model
 
 $$y_i \sim N(\mu_i, \sigma^2), \\ \mu_i = \beta_0 + \beta_1 x_i.$$
 
+This model combines a deterministic definition for the relationship between $y_i$ and $\mu_i$ (i.e., $\mu_i = \beta_0 + \beta_1 x_i$) and a stochastic component (i.e., $y_i \sim N(\mu_i, \sigma^2)$).
+
 
 ### General linear model
 
@@ -211,7 +213,8 @@ popup_btn <- function(button_text, modal_text, modal_image = NULL) {
 
 **On the variance-covariance matrix:**
 
-The variance-covariance matrix contains information about the covariance between all data points in the model. Consider the variance covariance matrix is a $n \times n$ square of tiles, where $n$ is the total number of observations. Each tile contains the information about the correlation between the combination of tiles. 
+The variance-covariance matrix contains information about the covariance between all data points in the model. Consider the variance covariance matrix is a $n \times n$ square of tiles, where $n$ is the total number of observations. 
+Each tile contains the information about the correlation between the data point $i$ (i.e., tile row number) and data point $i'$ (i.e., tile column number). 
 For example: 
 
 - The tile at the intersection between the 1st and the 10th tile is $cov(y_1, y_{10})$. In this case, $cov(y_1, y_{10}) =0$. 
@@ -220,7 +223,7 @@ For example:
 Recall that the single most common default model assumes independent residuals. This means that $cov(y_i, y_{i'}) = 0$ for all $i \neq i'$.
 
 <center>
-![](figures/varcov_sigma2_I.jpg){width=50%}
+![](figures/varcov_sigma2_I.png){width=50%}
 </center>
 
 
@@ -235,7 +238,7 @@ For example:
 
 
 <center>
-![](figures/varcov_ZGZ_sigmaI.jpg){width=50%}
+![](figures/varcov_ZGZ_sigmaI.png){width=50%}
 </center>
 
 

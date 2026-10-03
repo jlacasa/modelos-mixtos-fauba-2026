@@ -1,0 +1,158 @@
+---
+title: "Day 3 -- Standard Error Demonstration fpr IBD & recovery of interblock information"
+format: html
+---
+
+## Libraries 
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(emmeans)
+library(lme4)
+```
+
+## Data 
+
+- Field experiment studying the corn genotypes' yield.
+- One treatment factor: Genotype (one-way treatment structure).
+- Balanced incomplete block design in corn with 4 repetitions (design structure).
+
+
+```{r}
+dat <- agridat::cochran.bib
+```
+
+## Model fitting 
+
+Because this is a blocked design, the model is 
+
+$$y_{ij} = \mu + T_i +b_j +\varepsilon_{ij}, \ \ \ \varepsilon_{ij} \sim N(0, \sigma^2_\varepsilon),$$
+
+and there are 2 possible assumptions to make about $b_j$: 
+
+- Fixed 
+- Random 
+
+
+### Assume $b_j$ is fixed (not recommended for IBDs): 
+
+```{r}
+m_fixed <- lm(yield ~ gen + loc, data = dat)
+```
+
+Because this is an incomplete design, the standard error of the mean cannot be calculated with a simple fraction like before. 
+We extract it manually using the model's variance-covariance matrix (`vcov`) and the linear contrast matrix ($\mathbf{L}$) representing the marginal means:
+
+```{r}
+emm_fixed <- emmeans(m_fixed, ~gen)
+L <- emm_fixed@linfct
+
+V <- vcov(m_fixed)
+
+(se_mui_all <- sqrt(diag(L %*% V %*% t(L))))
+
+se_mui <- se_mui_all[1]
+```
+
+Which is the same as the SE of the marginal means: 
+
+```{r}
+(means_fixed <- emmeans(m_fixed, ~gen))
+```
+
+Likewise, the confidence interval comes from doing 
+
+$$\hat{\mu_i} \pm se(\hat{\mu_i})\cdot t_{date}.$$
+
+For $date = 8$ and $\alpha = .05$ we get
+
+```{r}
+df_fixed <- df.residual(m_fixed)
+t_crit <- qt(p = 0.975, df = df_fixed)
+
+mu_1 <- as.data.frame(means_fixed)$emmean[1]
+
+#lower CI
+mu_1 - (se_mui * t_crit)
+#upper CI
+mu_1 + (se_mui * t_crit)
+```
+
+
+
+### Assume $b_j$ is random: 
+
+```{r}
+m_random <- lmer(yield ~ gen + (1|loc), data = dat)
+```
+
+Again, because this is an incomplete design, the standard error of the mean cannot be calculated with a simple fraction like before. 
+We extract it manually using the model's variance-covariance matrix (`vcov`) and the linear contrast matrix ($\mathbf{L}$) representing the marginal means:
+
+```{r}
+means_random <- emmeans(m_random, ~gen)
+L_rand <- means_random@linfct
+
+V_rand <- as.matrix(vcov(m_random))
+
+(se_mui_all_rand <- sqrt(diag(L_rand %*% V_rand %*% t(L_rand))))
+
+se_mui_rand <- se_mui_all_rand[1]
+
+V_random <- as.matrix(vcov(m_random))
+
+```
+
+Which is the same as the SE of the marginal means: 
+
+```{r}
+means_random
+```
+
+Likewise, the confidence interval comes from doing 
+
+$$\hat{\mu_i} \pm se(\hat{\mu_i})\cdot t_{date}.$$
+
+For $\alpha = .05$ we get
+
+```{r}
+df_random <- as.data.frame(means_random)$df[1]
+t_crit <- qt(p = 0.975, df = df_random)
+
+mu_1 <- as.data.frame(means_random)$emmean[1]
+
+#lower CI
+mu_1 - (se_mui * t_crit)
+#upper CI
+mu_1 + (se_mui * t_crit)
+
+```
+
+
+## Mean comparisons
+
+Now, let's take the models above and compare the precision for mean comparisons:
+
+```{r}
+means_fixed <- emmeans(m_fixed, ~gen,
+                       contr = list(c(1,-1,rep(0, 11)),
+                                    c(rep(0, 11),1,-1)))
+means_fixed$contrasts
+
+
+means_random <- emmeans(m_random, ~gen,
+                        contr = list(c(1,-1,rep(0, 11)),
+                                     c(rep(0, 11),1,-1)))
+means_random$contrasts
+```
+
+
+```{r}
+L_rand <- means_random$contrasts@linfct
+
+V_rand <- as.matrix(vcov(m_random))
+
+(se_mui_all_rand <- sqrt(diag(L_rand %*% V_rand %*% t(L_rand))))
+
+se_mui_rand <- se_mui_all_rand[1]
+```

@@ -395,8 +395,7 @@ Assuming observations 1 to 4 belong to:
 </body>
 
 
-$$\Sigma = \begin{bmatrix} 
-\sigma^2 + \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & 0 & 0 & \dots & 0 \\ 
+$$\Sigma = \begin{bmatrix}  \sigma^2 + \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & 0 & 0 & \dots & 0 \\ 
 \sigma^2_u +\sigma^2_v & \sigma^2 + \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & 0 & 0 & \dots & 0 \\
 \sigma^2_u + \sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2 + \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & 0 & 0 & \dots & 0 \\
 \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2_u +\sigma^2_v & \sigma^2 + \sigma^2_u +\sigma^2_v & \sigma^2_u & \sigma^2_u & \sigma^2_u & \sigma^2_u & 0 & 0 & \dots & 0 \\

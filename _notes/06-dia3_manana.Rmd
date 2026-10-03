@@ -1,59 +1,59 @@
-# Día 3 (mañana): Pensar un modelo jerárquico.
-
-## Discusión: qué dice Dixon? 
-
-- Discusión del paper [Yates (1940)]() -- 30 minutos. 
+# Día 3 (mañana): recuperación de información intergrupos
 
 
-## Review 
+## Pooling of information
 
-Consider the linear mixed model 
+In mixed models, pooling refers to how much information is shared across different groups (or clusters) in the data when estimating parameters.
 
-$$\mathbf{y} \sim N(\mathbf{X}\boldsymbol{\beta}, \mathbf{V}),$$
-where:
+The three pooling approaches represent different assumptions about the variance between these groups ($\sigma^2_{b}$).
 
-- $\mathbf{y}$ is the vector of the response, 
-- $\mathbf{X}$ is the model matrix (often containing treatment allocation), 
-- $\boldsymbol{\beta}$ is a vector containing the estimates for the effects of all variables in $\mathbf{X}$, 
-- $\mathbf{V}$ is the variance covariance matrix for $\mathbf{y}$. 
+To illustrate this concept, consider a scenario where we have yield observations $y_{ij}$ for the $i$th observation of location $j$. Then, $i = 1, \dots, n_j$ and $j = 1, \dots, J$.
+We want to estimate a mean for each location $L_j$.
 
-**All-fixed effects models typically assume**
+### Complete pooling
 
-```{r fig.height=4, fig.align='center', echo=FALSE, caption = 'Schematic diagram of a hierarchical model.'}
-knitr::include_graphics("figures/varcov_sigma2_I.jpg")
-```
+- All groups (i.e., locations) are similar and there is no meaningful variation between them. 
+- The group (i.e., location) identifier $j$ contains no useful information.
+- $y_{ij} \sim N(\mu, \sigma^2)$
+- The between-group (i.e., location) variance is assumed to be exactly zero ($\sigma^2_{L} = 0$) and thus, if $L_j \sim N(0, 0)$, all $L_j =0$. Thus, all locations have the same mean $\mu$. 
 
 
-## Statistical models 
+### No pooling (all-fixed model)
 
-Statistical models are combinations of deterministic and stochastic processes. 
-We often refer to the deterministic process as the equation that constitutes the linear predictor. 
-This outline is partly inspired by Chapter 10 in [Hooten and Hobbs (2025)]().
+- Each group is completely independent and unique (i.e., knowing something about Location 1 tells you absolutely nothing about Location 2). 
+- Equivalent to fitting a classical linear model with only fixed effects. 
+- $y_{ij} \sim N(\mu + L_j, \sigma^2)$ 
+- The between-group (i.e., location) variance is assumed to be infinite ($\sigma^2_{L} \to \infty$) and thus, $L_j$ is the BLUE for that group. 
+- Think about this for an IBD! 
 
-## Writing hierarchical models 
+### Partial pooling (mixed-effects model)
 
-**1. Start with the data.** 
+- Groups are different, but they are all drawn from a common overarching population distribution. 
+- Information is shared across groups to improve the estimates for each individual group. 
+- $y_{ij} \vert L_j \sim N(\mu + L_j, \sigma^2)$, where $L_j \sim N(0, \sigma^2_L)$, or...
+- $y_{ij} \sim N(\mu + L_j, \sigma^2_L+\sigma^2)$. 
+- The between-group (i.e., location) variance is estimated from the data (see methods of estimation). 
+- **Shrinkage: The estimate for group $j$ is a weighted average of the unpooled group mean ($\bar{y}_j$) and the completely pooled grand mean ($\mu$).** 
+$$L_j \approx \frac{\frac{n_j}{\sigma^2}\bar{y}_j + \frac{1}{\sigma_{L}^2}\mu}{\frac{n_j}{\sigma^2} + \frac{1}{\sigma_{L}^2}}$$
+- Think about this for an IBD! 
 
-What is the distribution of the data? Right now we will focus on Gaussian data, but be mindful that there are a myriad of probability distributions that can be used to analyze the data.  
-
-**2. Think about the structure in the data** 
-
-Draw the data blueprint. 
-
-```{r fig.height=5, fig.align='center', echo=FALSE, caption = 'Schematic diagram of data with a hierarchical structure.'}
-knitr::include_graphics("figures/structure_doodle.jpg")
-```
-
-**3. Think about **
-
-```{r fig.height=9, fig.align='center', echo=FALSE, caption = 'Schematic diagram of a hierarchical model.'}
-knitr::include_graphics("figures/hierarchical2.jpg")
-```
+- More on shrinkage: 
+  - If Loc has a lot of data ($n_j \to \infty$): first term dominates, and the partial pooling estimate approaches the no pooling estimate ($\bar{y}_j$). The model trusts the abundant local data. 
+  - If a group has very little data ($n_j \to 0$), the second term dominates, and the estimate shrinks toward the complete pooling estimate ($\mu$). The model borrows strength from the rest of the population to stabilize a noisy, low-information group.
 
 
-### Ejercicio 
+## Why does all of this actually work? Recovery of inter-group information
 
-example w IBD: what happens to $\hat{\boldsymbol{\beta}}$ if we assume blocks fixed versus random? 
+From Stroup et al. (2024):
+
+>"For unbalanced block designs, Yates (1940) showed that recovering inter-block information and combining it with intra-block information improves efficiency. Combined inter- intra-block analysis was shown later to be equivalent to random-block-effects mixed model analysis (see, e.g. Bhattacharya, 1998)." 
+
+
+## In-class exercise 
+
+What happens to $\hat{\boldsymbol{\beta}}$ if we assume blocks fixed versus random in an IBD? 
+
+[Get R code](../scripts/dia3_inclass_ex.qmd).
 
 
 

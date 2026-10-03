@@ -5,7 +5,7 @@ date: Octubre 2026 #"`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-# Bienvenidos!  
+# Prefacio {-}  
   
 
 ## Sobre el curso:  
@@ -52,13 +52,13 @@ Al final de este curso, deberían saber:
 
 - Escribir el modelo estadístico que represente el proceso generador de datos, usando notación matemática. 
 - Escribir la sección correspondiente al análisis estadístio en materiales y métodos. 
-- Reconocer los beneficios y desventajas de distintos modelos.
+- Reconocer los beneficios y desventajas de distintos modelos estadísticos.
 
 ## Notación utilizada en este curso  
 
-- scalars: $y$, $\sigma$, $\beta_0$  
-- vectors: $\mathbf{y} \equiv [y_1, y_2, ..., y_n]'$, $\boldsymbol{\beta} \equiv [\beta_1, \beta_2, ..., \beta_p]'$, $\boldsymbol{u}$  
+- escalares: $y$, $\sigma$, $\beta_0$  
+- vectores: $\mathbf{y} \equiv [y_1, y_2, ..., y_n]'$, $\boldsymbol{\beta} \equiv [\beta_1, \beta_2, ..., \beta_p]'$, $\boldsymbol{u}$  
 - matrices: $\mathbf{X}$, $\Sigma$  
-- probability distributions: $y \sim N(0, \sigma^2)$, $\mathbf{y} \sim N(\boldsymbol{0}, \sigma^2\mathbf{I})$.     
+- distribuciones de probabilidad: $y \sim N(0, \sigma^2)$, $\mathbf{y} \sim N(\boldsymbol{0}, \sigma^2\mathbf{I})$.     
 
 
