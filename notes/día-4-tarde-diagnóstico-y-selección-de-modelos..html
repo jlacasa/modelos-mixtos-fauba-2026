@@ -329,13 +329,13 @@ However, as we know, Statistics helps us summarize our data and make sense of it
 <span id="cb45-10"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-46-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-1" tabindex="-1"></a>y_sim <span class="sc">|&gt;</span> </span>
 <span id="cb47-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Total_N, value))<span class="sc">+</span></span>
 <span id="cb47-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb47-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(Total_N, Yield_SY), <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">&quot;gold&quot;</span>, <span class="at">alpha =</span> .<span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb47-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-46-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-2.png" alt="" width="672" /></p>
 <p>Discuss the plot above: how are the simulated data compared to the observed data?</p>
 </div>
 <div id="some-useful-metrics-to-compare-models" class="section level2 hasAnchor" number="8.3">
@@ -385,7 +385,7 @@ In essence, <span class="math inline">\(R^2\)</span> is the ratio between the <s
 <span id="cb50-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-7" tabindex="-1"></a>})</span>
 <span id="cb50-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-8" tabindex="-1"></a></span>
 <span id="cb50-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-9" tabindex="-1"></a><span class="fu">hist</span>(boot_r2, <span class="at">breaks =</span> <span class="dv">30</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-48-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-47-1.png" alt="" width="672" /></p>
 </div>
 <div id="out-of-sample-r2" class="section level3 hasAnchor" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> Out-of-sample R<sup>2</sup><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#out-of-sample-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>

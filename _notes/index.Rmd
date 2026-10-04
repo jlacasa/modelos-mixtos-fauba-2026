@@ -42,6 +42,7 @@ library(ggpubr)
 - [Yo ya hablaba de antes](https://www.youtube.com/watch?v=759IgGZgUlU) 
 - Requerimientos de programación  
 - Hoja de ruta del curso 
+- Ajuste del contenido para incluir problemas de su investigación (jueves + viernes)
 - Apuntes 
 - Asistencia  
 - Examen final

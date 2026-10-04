@@ -308,7 +308,7 @@ The data below come from a multi-environment trial evaluating barley height in d
 <span id="cb33-7"><a href="día-4-mañana-casos-aplicados.html#cb33-7" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span></span>
 <span id="cb33-8"><a href="día-4-mañana-casos-aplicados.html#cb33-8" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">110</span>))<span class="sc">+</span></span>
 <span id="cb33-9"><a href="día-4-mañana-casos-aplicados.html#cb33-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Year&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-36-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="día-4-mañana-casos-aplicados.html#cb34-1" tabindex="-1"></a>dat_merged <span class="sc">|&gt;</span> </span>
 <span id="cb34-2"><a href="día-4-mañana-casos-aplicados.html#cb34-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(gen, height)) <span class="sc">|&gt;</span> <span class="fu">unique</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb34-3"><a href="día-4-mañana-casos-aplicados.html#cb34-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> rainfall_1<span class="sc">:</span>temp_6) <span class="sc">|&gt;</span> </span>
@@ -318,7 +318,7 @@ The data below come from a multi-environment trial evaluating barley height in d
 <span id="cb34-7"><a href="día-4-mañana-casos-aplicados.html#cb34-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">4</span>)<span class="sc">+</span></span>
 <span id="cb34-8"><a href="día-4-mañana-casos-aplicados.html#cb34-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)<span class="sc">+</span></span>
 <span id="cb34-9"><a href="día-4-mañana-casos-aplicados.html#cb34-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Year&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-36-2.png" alt="" width="672" /></p>
 <p><strong>1. Start with the data.</strong></p>
 <p>What is the distribution of the data? For now let’s assume normal.</p>
 <p><strong>2. Think about the structure in the data</strong></p>
