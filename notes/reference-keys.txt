@@ -64,6 +64,7 @@ review
 statistical-models
 writing-hierarchical-models
 applied-example-2
+tarea-1
 día-4-mañana-casos-aplicados
 review-so-far
 environmental-covariates
@@ -80,8 +81,8 @@ adjusted-r2
 some-issues-with-r2
 akaike-information-criterion-aic
 bayesian-information-criterion-bic
+model-based-model-selection
 día-5-mañana-ejemplo-integrador
 anuncios
 ejercicio-integrador
 examen-final
-practical-reads

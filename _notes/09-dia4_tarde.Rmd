@@ -10,6 +10,10 @@ In what follows, we will demonstrate the model checking steps with an applied ex
 
 We revisit the Nitrogen example, where we describe yield as a quadratic function of N fertilizer. 
 
+```{r fig.height=4, fig.align='center', echo=FALSE, caption = 'Model selection tools (Figure 2 in [Hooten and Hobbs (2015)](https://doi.org/10.1890/14-0661.1).'}
+knitr::include_graphics("figures/hierarchical2.jpg")
+```
+
 
 ## Generate fake data based on the fitted model 
 
@@ -173,5 +177,12 @@ $$BIC = p\log(n) - 2\log(\hat{L}),$$
 
 where $p$ is the number of parameters estimated in the model, $n$ is the number of observations, and $\hat{L}$ is the maximized value of the likelihood function for the model (i.e., $\hat{L}=p(\mathbf{y}|\hat{\boldsymbol\beta}, M)$).
 
+### Model-based model selection 
 
+- Add penalty on $\hat{\boldsymbol\beta}$ via 
+  - Lasso regression 
+  - Ridge regression 
+  - Elastic net regression 
+  
+  
 

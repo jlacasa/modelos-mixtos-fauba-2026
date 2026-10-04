@@ -234,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#statistical-models"><i class="fa fa-check"></i><b>6.3</b> Statistical models</a></li>
 <li class="chapter" data-level="6.4" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#writing-hierarchical-models"><i class="fa fa-check"></i><b>6.4</b> Writing hierarchical models</a></li>
 <li class="chapter" data-level="6.5" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#applied-example-2"><i class="fa fa-check"></i><b>6.5</b> Applied example</a></li>
+<li class="chapter" data-level="6.6" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#tarea-1"><i class="fa fa-check"></i><b>6.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="día-4-mañana-casos-aplicados.html"><a href="día-4-mañana-casos-aplicados.html"><i class="fa fa-check"></i><b>7</b> Día 4 (mañana): Casos aplicados</a>
 <ul>
@@ -255,6 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.7" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#some-issues-with-r2"><i class="fa fa-check"></i><b>8.3.7</b> Some issues with R<sup>2</sup></a></li>
 <li class="chapter" data-level="8.3.8" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#akaike-information-criterion-aic"><i class="fa fa-check"></i><b>8.3.8</b> Akaike Information Criterion (AIC)</a></li>
 <li class="chapter" data-level="8.3.9" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>8.3.9</b> Bayesian Information Criterion (BIC)</a></li>
+<li class="chapter" data-level="8.3.10" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#model-based-model-selection"><i class="fa fa-check"></i><b>8.3.10</b> Model-based model selection</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html"><i class="fa fa-check"></i><b>9</b> Día 5 (mañana): Ejemplo integrador</a>
@@ -262,10 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html#anuncios"><i class="fa fa-check"></i><b>9.1</b> Anuncios</a></li>
 <li class="chapter" data-level="9.2" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html#ejercicio-integrador"><i class="fa fa-check"></i><b>9.2</b> Ejercicio integrador</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>10</b> Examen final</a>
-<ul>
-<li class="chapter" data-level="10.0.1" data-path="examen-final.html"><a href="examen-final.html#practical-reads"><i class="fa fa-check"></i><b>10.0.1</b> Practical reads</a></li>
-</ul></li>
+<li class="chapter" data-level="10" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>10</b> Examen final</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -294,6 +293,7 @@ Knowing that <a href="https://en.wikipedia.org/wiki/All_models_are_wrong">all mo
 However, as we know, Statistics helps us summarize our data and make sense of it.</p>
 <p>In what follows, we will demonstrate the model checking steps with an applied example:</p>
 <p>We revisit the Nitrogen example, where we describe yield as a quadratic function of N fertilizer.</p>
+<p><img src="figures/hierarchical2.jpg" alt="" width="480" style="display: block; margin: auto;" /></p>
 </div>
 <div id="generate-fake-data-based-on-the-fitted-model" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Generate fake data based on the fitted model<a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#generate-fake-data-based-on-the-fitted-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -329,13 +329,13 @@ However, as we know, Statistics helps us summarize our data and make sense of it
 <span id="cb45-10"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-279-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-46-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-1" tabindex="-1"></a>y_sim <span class="sc">|&gt;</span> </span>
 <span id="cb47-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Total_N, value))<span class="sc">+</span></span>
 <span id="cb47-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb47-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(Total_N, Yield_SY), <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">&quot;gold&quot;</span>, <span class="at">alpha =</span> .<span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb47-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-279-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-46-2.png" alt="" width="672" /></p>
 <p>Discuss the plot above: how are the simulated data compared to the observed data?</p>
 </div>
 <div id="some-useful-metrics-to-compare-models" class="section level2 hasAnchor" number="8.3">
@@ -385,7 +385,7 @@ In essence, <span class="math inline">\(R^2\)</span> is the ratio between the <s
 <span id="cb50-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-7" tabindex="-1"></a>})</span>
 <span id="cb50-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-8" tabindex="-1"></a></span>
 <span id="cb50-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-9" tabindex="-1"></a><span class="fu">hist</span>(boot_r2, <span class="at">breaks =</span> <span class="dv">30</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-281-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-48-1.png" alt="" width="672" /></p>
 </div>
 <div id="out-of-sample-r2" class="section level3 hasAnchor" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> Out-of-sample R<sup>2</sup><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#out-of-sample-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -446,6 +446,17 @@ In essence, <span class="math inline">\(R^2\)</span> is the ratio between the <s
 <p>The BIC of a given model (and observed data) is a variant of AIC and is calculated as</p>
 <p><span class="math display">\[BIC = p\log(n) - 2\log(\hat{L}),\]</span></p>
 <p>where <span class="math inline">\(p\)</span> is the number of parameters estimated in the model, <span class="math inline">\(n\)</span> is the number of observations, and <span class="math inline">\(\hat{L}\)</span> is the maximized value of the likelihood function for the model (i.e., <span class="math inline">\(\hat{L}=p(\mathbf{y}|\hat{\boldsymbol\beta}, M)\)</span>).</p>
+</div>
+<div id="model-based-model-selection" class="section level3 hasAnchor" number="8.3.10">
+<h3><span class="header-section-number">8.3.10</span> Model-based model selection<a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#model-based-model-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Add penalty on <span class="math inline">\(\hat{\boldsymbol\beta}\)</span> via
+<ul>
+<li>Lasso regression</li>
+<li>Ridge regression</li>
+<li>Elastic net regression</li>
+</ul></li>
+</ul>
 
 </div>
 </div>

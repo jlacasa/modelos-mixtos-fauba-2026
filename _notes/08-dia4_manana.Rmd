@@ -70,7 +70,9 @@ knitr::include_graphics("figures/structure_barley_weather.png")
 
 Thus, let's assume the data are nested within years. 
 
-**3. **
+**3. Think about the treatment effects (or covariates)**
+
+We can consider genotypes have different mean heights and rainfall on period 3 (i.e., vegetative stage) also affects height. 
 
 **4. Write the full statistical model**  
 
@@ -103,3 +105,11 @@ Note the degrees of freedom are 7, because the mixed model recognizes that the w
 mod_simple <- lm(height ~ gen + rainfall_3,  data = dat_merged)
 emtrends(mod_simple, ~rainfall_3, "rainfall_3")
 ```
+
+
+```{r eval=FALSE, include=FALSE}
+
+## Merging data with multiple resolutions 
+
+```
+

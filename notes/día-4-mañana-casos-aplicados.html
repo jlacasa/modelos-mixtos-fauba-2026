@@ -234,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#statistical-models"><i class="fa fa-check"></i><b>6.3</b> Statistical models</a></li>
 <li class="chapter" data-level="6.4" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#writing-hierarchical-models"><i class="fa fa-check"></i><b>6.4</b> Writing hierarchical models</a></li>
 <li class="chapter" data-level="6.5" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#applied-example-2"><i class="fa fa-check"></i><b>6.5</b> Applied example</a></li>
+<li class="chapter" data-level="6.6" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#tarea-1"><i class="fa fa-check"></i><b>6.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="día-4-mañana-casos-aplicados.html"><a href="día-4-mañana-casos-aplicados.html"><i class="fa fa-check"></i><b>7</b> Día 4 (mañana): Casos aplicados</a>
 <ul>
@@ -255,6 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.7" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#some-issues-with-r2"><i class="fa fa-check"></i><b>8.3.7</b> Some issues with R<sup>2</sup></a></li>
 <li class="chapter" data-level="8.3.8" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#akaike-information-criterion-aic"><i class="fa fa-check"></i><b>8.3.8</b> Akaike Information Criterion (AIC)</a></li>
 <li class="chapter" data-level="8.3.9" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>8.3.9</b> Bayesian Information Criterion (BIC)</a></li>
+<li class="chapter" data-level="8.3.10" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#model-based-model-selection"><i class="fa fa-check"></i><b>8.3.10</b> Model-based model selection</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html"><i class="fa fa-check"></i><b>9</b> Día 5 (mañana): Ejemplo integrador</a>
@@ -262,10 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html#anuncios"><i class="fa fa-check"></i><b>9.1</b> Anuncios</a></li>
 <li class="chapter" data-level="9.2" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html#ejercicio-integrador"><i class="fa fa-check"></i><b>9.2</b> Ejercicio integrador</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>10</b> Examen final</a>
-<ul>
-<li class="chapter" data-level="10.0.1" data-path="examen-final.html"><a href="examen-final.html#practical-reads"><i class="fa fa-check"></i><b>10.0.1</b> Practical reads</a></li>
-</ul></li>
+<li class="chapter" data-level="10" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>10</b> Examen final</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -309,7 +308,7 @@ The data below come from a multi-environment trial evaluating barley height in d
 <span id="cb33-7"><a href="día-4-mañana-casos-aplicados.html#cb33-7" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span></span>
 <span id="cb33-8"><a href="día-4-mañana-casos-aplicados.html#cb33-8" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">110</span>))<span class="sc">+</span></span>
 <span id="cb33-9"><a href="día-4-mañana-casos-aplicados.html#cb33-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Year&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-272-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="día-4-mañana-casos-aplicados.html#cb34-1" tabindex="-1"></a>dat_merged <span class="sc">|&gt;</span> </span>
 <span id="cb34-2"><a href="día-4-mañana-casos-aplicados.html#cb34-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(gen, height)) <span class="sc">|&gt;</span> <span class="fu">unique</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb34-3"><a href="día-4-mañana-casos-aplicados.html#cb34-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> rainfall_1<span class="sc">:</span>temp_6) <span class="sc">|&gt;</span> </span>
@@ -319,38 +318,32 @@ The data below come from a multi-environment trial evaluating barley height in d
 <span id="cb34-7"><a href="día-4-mañana-casos-aplicados.html#cb34-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">4</span>)<span class="sc">+</span></span>
 <span id="cb34-8"><a href="día-4-mañana-casos-aplicados.html#cb34-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)<span class="sc">+</span></span>
 <span id="cb34-9"><a href="día-4-mañana-casos-aplicados.html#cb34-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Year&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-272-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-2.png" alt="" width="672" /></p>
 <p><strong>1. Start with the data.</strong></p>
 <p>What is the distribution of the data? For now let’s assume normal.</p>
 <p><strong>2. Think about the structure in the data</strong></p>
 <p>Note that our data contain multiple rows of observed heights, yet the predictors (i.e., weather covariates) are just a few years repeated throughout.
 Thus, although we have multiple rows of data, the real independent data for the predictors are much fewer. Just take a look at the data:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="día-4-mañana-casos-aplicados.html#cb35-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">arrange</span>(dat_merged, year))</span></code></pre></div>
-<pre><code>##   year gen height rainfall_1 rainfall_2 rainfall_3 rainfall_4 rainfall_5 rainfall_6
-## 1 1974 G01   81.0          0       0.16       1.59       2.65        1.7       2.21
-## 2 1974 G02   72.3          0       0.16       1.59       2.65        1.7       2.21
-## 3 1974 G03   79.3          0       0.16       1.59       2.65        1.7       2.21
-## 4 1974 G04   88.5          0       0.16       1.59       2.65        1.7       2.21
-## 5 1974 G05   78.5          0       0.16       1.59       2.65        1.7       2.21
-## 6 1974 G06   89.3          0       0.16       1.59       2.65        1.7       2.21
-##   srad_1 srad_2 srad_3 srad_4 srad_5 srad_6 sowing_t temp_1 temp_2 temp_3 temp_4 temp_5
-## 1   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
-## 2   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
-## 3   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
-## 4   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
-## 5   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
-## 6   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
-##   temp_6
-## 1  13.75
-## 2  13.75
-## 3  13.75
-## 4  13.75
-## 5  13.75
-## 6  13.75</code></pre>
+<pre><code>##   year gen height rainfall_1 rainfall_2 rainfall_3 rainfall_4 rainfall_5 rainfall_6 srad_1 srad_2
+## 1 1974 G01   81.0          0       0.16       1.59       2.65        1.7       2.21   2.26   2.74
+## 2 1974 G02   72.3          0       0.16       1.59       2.65        1.7       2.21   2.26   2.74
+## 3 1974 G03   79.3          0       0.16       1.59       2.65        1.7       2.21   2.26   2.74
+## 4 1974 G04   88.5          0       0.16       1.59       2.65        1.7       2.21   2.26   2.74
+## 5 1974 G05   78.5          0       0.16       1.59       2.65        1.7       2.21   2.26   2.74
+## 6 1974 G06   89.3          0       0.16       1.59       2.65        1.7       2.21   2.26   2.74
+##   srad_3 srad_4 srad_5 srad_6 sowing_t temp_1 temp_2 temp_3 temp_4 temp_5 temp_6
+## 1   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43  13.75
+## 2   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43  13.75
+## 3   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43  13.75
+## 4   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43  13.75
+## 5   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43  13.75
+## 6   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43  13.75</code></pre>
 <p>Although the response shows different values, if we wish to study the relatoinship bewteen the weather covariates and the height, there is an obvious dependence structure.</p>
 <p><img src="figures/structure_barley_weather.png" alt="" width="640" style="display: block; margin: auto;" /></p>
 <p>Thus, let’s assume the data are nested within years.</p>
-<p><strong>3. </strong></p>
+<p><strong>3. Think about the treatment effects (or covariates)</strong></p>
+<p>We can consider genotypes have different mean heights and rainfall on period 3 (i.e., vegetative stage) also affects height.</p>
 <p><strong>4. Write the full statistical model</strong></p>
 <p>Given that the blocking structures are the years, the corresponding model is</p>
 <p><span class="math display">\[y_{ij}=\mu_0 + G_i +\beta_1x_{ij} +year_j + \varepsilon_{ij},  \\ year_j\sim N(0, \sigma^2_{year}), \\ \varepsilon_{ij}\sim N(0, \sigma^2_{\varepsilon}).\]</span></p>

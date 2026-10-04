@@ -6,8 +6,3 @@
 
 - Respuestas a resolver utilizando R 
 
-
-### Practical reads  
-
-- Casler, M.D. (2015), Fundamentals of Experimental Design: Guidelines for Designing Successful Experiments. Agronomy Journal, 107: 692-705. https://doi.org/10.2134/agronj2013.0114  
-- Casler, M.D. (2018). Power and Replication—Designing Powerful Experiments. In Applied Statistics in Agricultural, Biological, and Environmental Sciences (eds B. Glaz and K.M. Yeater). https://doi.org/10.2134/appliedstatistics.2015.0075.c4  

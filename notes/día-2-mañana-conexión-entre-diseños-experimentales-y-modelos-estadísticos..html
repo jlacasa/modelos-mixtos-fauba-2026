@@ -234,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#statistical-models"><i class="fa fa-check"></i><b>6.3</b> Statistical models</a></li>
 <li class="chapter" data-level="6.4" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#writing-hierarchical-models"><i class="fa fa-check"></i><b>6.4</b> Writing hierarchical models</a></li>
 <li class="chapter" data-level="6.5" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#applied-example-2"><i class="fa fa-check"></i><b>6.5</b> Applied example</a></li>
+<li class="chapter" data-level="6.6" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#tarea-1"><i class="fa fa-check"></i><b>6.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="día-4-mañana-casos-aplicados.html"><a href="día-4-mañana-casos-aplicados.html"><i class="fa fa-check"></i><b>7</b> Día 4 (mañana): Casos aplicados</a>
 <ul>
@@ -255,6 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.7" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#some-issues-with-r2"><i class="fa fa-check"></i><b>8.3.7</b> Some issues with R<sup>2</sup></a></li>
 <li class="chapter" data-level="8.3.8" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#akaike-information-criterion-aic"><i class="fa fa-check"></i><b>8.3.8</b> Akaike Information Criterion (AIC)</a></li>
 <li class="chapter" data-level="8.3.9" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>8.3.9</b> Bayesian Information Criterion (BIC)</a></li>
+<li class="chapter" data-level="8.3.10" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#model-based-model-selection"><i class="fa fa-check"></i><b>8.3.10</b> Model-based model selection</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html"><i class="fa fa-check"></i><b>9</b> Día 5 (mañana): Ejemplo integrador</a>
@@ -262,10 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html#anuncios"><i class="fa fa-check"></i><b>9.1</b> Anuncios</a></li>
 <li class="chapter" data-level="9.2" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html#ejercicio-integrador"><i class="fa fa-check"></i><b>9.2</b> Ejercicio integrador</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>10</b> Examen final</a>
-<ul>
-<li class="chapter" data-level="10.0.1" data-path="examen-final.html"><a href="examen-final.html#practical-reads"><i class="fa fa-check"></i><b>10.0.1</b> Practical reads</a></li>
-</ul></li>
+<li class="chapter" data-level="10" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>10</b> Examen final</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -381,7 +380,7 @@ of animals studied for the same timeframe).
 In a laboratory setting,this could be a day or a week where the scientists
 run the experiment.</p>
 <p><img src="figures/designs_rcbd.PNG" alt="" width="640" style="display: block; margin: auto;" /></p>
-<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_232299').style.display='block'">RCBD example for animal science.</button>     </div>     <div id="modal_232299" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_232299').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what an RCBD for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_rcbd.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
+<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_532502').style.display='block'">RCBD example for animal science.</button>     </div>     <div id="modal_532502" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_532502').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what an RCBD for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_rcbd.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
 <p>All observations from the same block shared the same conditions and thus,
 shared a random effect for the intercept.
 Said common random effect for the intercept means that observations
@@ -582,7 +581,7 @@ randomly assigned to its experimental units (split plots), which are
 subsections of the whole plots. Note: we could think of the whole plots acting
 as “mini blocks” for the second treatment factor.</p>
 <p><img src="figures/designs_splitplot.PNG" alt="" width="640" style="display: block; margin: auto;" /></p>
-<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_960535').style.display='block'">Split-plot example for animal science.</button>     </div>     <div id="modal_960535" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_960535').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what a split-plot for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_splitplot.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
+<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_338149').style.display='block'">Split-plot example for animal science.</button>     </div>     <div id="modal_338149" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_338149').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what a split-plot for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_splitplot.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
 <p>Again, all observations from the same block share the same random effect and are correlated.<br />
 Likewise, all observations from the same whole plot (i.e., “mini block”) are correlated.</p>
 <p><span class="math display">\[y_{ijk} = \mu + \tau_i + \alpha_j + (\tau \alpha)_{ij} + u_k + v_{i \vert k} + \varepsilon_{ijk},\\
@@ -828,6 +827,7 @@ w_{j \vert ik} \sim N(0, \sigma^2_w), \\
 <span class="math inline">\(v_{i \vert k}\)</span> is the random effect of the <span class="math inline">\(i\)</span>th “miniblock” (whole plot) in the <span class="math inline">\(k\)</span>th block,
 <span class="math inline">\(w_{j \vert ik}\)</span> is the random effect of the splitplot with the <span class="math inline">\(j\)</span>th level of <span class="math inline">\(\alpha\)</span> in the wholeplot with the <span class="math inline">\(k\)</span>th block and <span class="math inline">\(i\)</span>th level of <span class="math inline">\(tau\)</span>,
 and <span class="math inline">\(\varepsilon_{ij}\)</span> is the residual.</p>
+<p><img src="figures/ZGZ_R_split_plot_subsamples.png" alt="" width="1050" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

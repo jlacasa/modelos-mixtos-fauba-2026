@@ -234,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#statistical-models"><i class="fa fa-check"></i><b>6.3</b> Statistical models</a></li>
 <li class="chapter" data-level="6.4" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#writing-hierarchical-models"><i class="fa fa-check"></i><b>6.4</b> Writing hierarchical models</a></li>
 <li class="chapter" data-level="6.5" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#applied-example-2"><i class="fa fa-check"></i><b>6.5</b> Applied example</a></li>
+<li class="chapter" data-level="6.6" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#tarea-1"><i class="fa fa-check"></i><b>6.6</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="día-4-mañana-casos-aplicados.html"><a href="día-4-mañana-casos-aplicados.html"><i class="fa fa-check"></i><b>7</b> Día 4 (mañana): Casos aplicados</a>
 <ul>
@@ -255,6 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.7" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#some-issues-with-r2"><i class="fa fa-check"></i><b>8.3.7</b> Some issues with R<sup>2</sup></a></li>
 <li class="chapter" data-level="8.3.8" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#akaike-information-criterion-aic"><i class="fa fa-check"></i><b>8.3.8</b> Akaike Information Criterion (AIC)</a></li>
 <li class="chapter" data-level="8.3.9" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#bayesian-information-criterion-bic"><i class="fa fa-check"></i><b>8.3.9</b> Bayesian Information Criterion (BIC)</a></li>
+<li class="chapter" data-level="8.3.10" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#model-based-model-selection"><i class="fa fa-check"></i><b>8.3.10</b> Model-based model selection</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html"><i class="fa fa-check"></i><b>9</b> Día 5 (mañana): Ejemplo integrador</a>
@@ -262,10 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.1" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html#anuncios"><i class="fa fa-check"></i><b>9.1</b> Anuncios</a></li>
 <li class="chapter" data-level="9.2" data-path="día-5-mañana-ejemplo-integrador.html"><a href="día-5-mañana-ejemplo-integrador.html#ejercicio-integrador"><i class="fa fa-check"></i><b>9.2</b> Ejercicio integrador</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>10</b> Examen final</a>
-<ul>
-<li class="chapter" data-level="10.0.1" data-path="examen-final.html"><a href="examen-final.html#practical-reads"><i class="fa fa-check"></i><b>10.0.1</b> Practical reads</a></li>
-</ul></li>
+<li class="chapter" data-level="10" data-path="examen-final.html"><a href="examen-final.html"><i class="fa fa-check"></i><b>10</b> Examen final</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -356,16 +355,16 @@ Generally, these elements of the model are added independently of the blueprint 
 <span id="cb23-11"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb23-11" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span></span>
 <span id="cb23-12"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb23-12" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span></span>
 <span id="cb23-13"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb23-13" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>loc, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-265-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-30-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(yield <span class="sc">~</span> (<span class="dv">1</span><span class="sc">|</span>gen) <span class="sc">+</span> </span>
 <span id="cb24-2"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-2" tabindex="-1"></a>                (<span class="dv">1</span><span class="sc">|</span>gen<span class="sc">:</span>loc) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>gen<span class="sc">:</span>year) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>gen<span class="sc">:</span>year<span class="sc">:</span>loc) <span class="sc">+</span></span>
 <span id="cb24-3"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-3" tabindex="-1"></a>                (<span class="dv">1</span><span class="sc">|</span>year) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>loc) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>year<span class="sc">:</span>loc) <span class="sc">+</span> </span>
 <span id="cb24-4"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-4" tabindex="-1"></a>                (<span class="dv">1</span><span class="sc">|</span>block<span class="sc">:</span>year<span class="sc">:</span>loc),</span>
 <span id="cb24-5"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-5" tabindex="-1"></a>              <span class="at">data =</span> dat)</span></code></pre></div>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb25-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">resid</span>(model))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-267-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb26-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">predict</span>(model), <span class="fu">resid</span>(model))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-267-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-2.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb27-1" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by REML [&#39;lmerMod&#39;]
 ## Formula: yield ~ (1 | gen) + (1 | gen:loc) + (1 | gen:year) + (1 | gen:year:loc) +  
@@ -414,11 +413,17 @@ Generally, these elements of the model are added independently of the blueprint 
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-1" tabindex="-1"></a>dat_pred <span class="sc">|&gt;</span> </span>
 <span id="cb32-2"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(gen, yhat))<span class="sc">+</span></span>
 <span id="cb32-3"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-3" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> yhat <span class="sc">-</span> se<span class="sc">*</span><span class="fl">1.96</span>,<span class="at">ymax =</span> yhat <span class="sc">+</span> se<span class="sc">*</span><span class="fl">1.96</span>), <span class="at">shape =</span><span class="dv">21</span>)<span class="sc">+</span></span>
-<span id="cb32-4"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> present), <span class="at">shape =</span><span class="dv">21</span>)<span class="sc">+</span></span>
+<span id="cb32-4"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> loc), <span class="at">shape =</span><span class="dv">21</span>)<span class="sc">+</span></span>
 <span id="cb32-5"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;Location&quot;</span>)<span class="sc">+</span></span>
 <span id="cb32-6"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span></span>
 <span id="cb32-7"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>loc, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-270-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-35-1.png" alt="" width="672" /></p>
+</div>
+<div id="tarea-1" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Tarea<a href="día-3-tarde-pensar-un-modelo-jerárquico..html#tarea-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Leer capítulo 11 en <a href="https://www.amazon.com/Analysis-Regression-Multilevel-Hierarchical-Models/dp/052168689X/ref=pd_lpo_sccl_3/131-3172861-4727912?pd_rd_w=mjiqJ&amp;content-id=amzn1.sym.4c8c52db-06f8-4e42-8e56-912796f2ea6c&amp;pf_rd_p=4c8c52db-06f8-4e42-8e56-912796f2ea6c&amp;pf_rd_r=G0DJKJDQA9GM5S2RABKA&amp;pd_rd_wg=Apa9i&amp;pd_rd_r=e8be25f9-32fa-442e-a7e6-e51f94e5d229&amp;pd_rd_i=052168689X&amp;psc=1">Gelman and Hill (2006)</a></li>
+</ul>
 
 </div>
 </div>
