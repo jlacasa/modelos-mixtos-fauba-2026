@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Modelos Lineales Mixtos Aplicados</title>
-  <meta name="description" content="Modelos Lineales Mixtos Aplicados" />
+  <title>7 Día 4 (mañana): Casos aplicados | Modelos Lineales Mixtos Aplicados</title>
+  <meta name="description" content="7 Día 4 (mañana): Casos aplicados | Modelos Lineales Mixtos Aplicados" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Modelos Lineales Mixtos Aplicados" />
+  <meta property="og:title" content="7 Día 4 (mañana): Casos aplicados | Modelos Lineales Mixtos Aplicados" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Modelos Lineales Mixtos Aplicados" />
+  <meta name="twitter:title" content="7 Día 4 (mañana): Casos aplicados | Modelos Lineales Mixtos Aplicados" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="día-1-mañana-introducción-y-repaso..html"/>
+<link rel="prev" href="día-3-tarde-pensar-un-modelo-jerárquico..html"/>
+<link rel="next" href="día-4-tarde-diagnóstico-y-selección-de-modelos..html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -285,60 +285,139 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Modelos Lineales Mixtos Aplicados</h1>
-<p class="author"><em>Josefina Lacasa</em></p>
-<p class="date"><em>Octubre 2026</em></p>
-</div>
-<div id="prefacio" class="section level1 unnumbered hasAnchor">
-<h1>Prefacio<a href="index.html#prefacio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="sobre-el-curso" class="section level2 hasAnchor" number="0.1">
-<h2><span class="header-section-number">0.1</span> Sobre el curso:<a href="index.html#sobre-el-curso" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="día-4-mañana-casos-aplicados" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Día 4 (mañana): Casos aplicados<a href="día-4-mañana-casos-aplicados.html#d%C3%ADa-4-ma%C3%B1ana-casos-aplicados" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="review-so-far" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Review so far<a href="día-4-mañana-casos-aplicados.html#review-so-far" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p><a href="https://jlacasa.github.io/">Sobre mí</a></p></li>
-<li><p>Sobre ustedes:</p></li>
-<li><p>Presentaciones:</p>
-<ul>
-<li>Cuál es el tema de tu investigación/cuáles son tus preguntas?</li>
-<li>Qué esperás aprender en este curso?</li>
-</ul></li>
-</ul>
-<div id="logística" class="section level3 hasAnchor" number="0.1.1">
-<h3><span class="header-section-number">0.1.1</span> Logística<a href="index.html#log%C3%ADstica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Página web</li>
-<li>Idioma</li>
-<li><a href="https://www.youtube.com/watch?v=759IgGZgUlU">Yo ya hablaba de antes</a></li>
-<li>Requerimientos de programación<br />
-</li>
-<li>Hoja de ruta del curso</li>
-<li>Apuntes</li>
-<li>Asistencia<br />
-</li>
-<li>Examen final</li>
+<li>Study objectives may include <a href="https://www.tandfonline.com/doi/abs/10.1080/01621459.2020.1762613">prediction, estimation, and attribution</a></li>
+<li>Statistical methods have different strengths and may be more (or less) useful depending on the data-method combination.</li>
+<li>Statistical inference is the most rich when we focus on effect sizes and confidence intervals.</li>
+<li>Mixed models are especially useful to model data that show dependence</li>
 </ul>
 </div>
-</div>
-<div id="objetivos-de-aprendizaje" class="section level2 hasAnchor" number="0.2">
-<h2><span class="header-section-number">0.2</span> Objetivos de aprendizaje<a href="index.html#objetivos-de-aprendizaje" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Al final de este curso, deberían saber:</p>
+<div id="environmental-covariates" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Environmental covariates<a href="día-4-mañana-casos-aplicados.html#environmental-covariates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Just like nested designs (e.g., split-plot designs), we can model multi-year environment data fairly easily using mixed models.
+The data below come from a multi-environment trial evaluating barley height in different environments with multiple weather covariates (i.e., years with different environmental covariates).</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="día-4-mañana-casos-aplicados.html#cb33-1" tabindex="-1"></a><span class="co"># data adapted from the agridat R package</span></span>
+<span id="cb33-2"><a href="día-4-mañana-casos-aplicados.html#cb33-2" tabindex="-1"></a>dat_merged <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../data/data_barley.csv&quot;</span>)</span>
+<span id="cb33-3"><a href="día-4-mañana-casos-aplicados.html#cb33-3" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="día-4-mañana-casos-aplicados.html#cb33-4" tabindex="-1"></a>dat_merged <span class="sc">|&gt;</span> </span>
+<span id="cb33-5"><a href="día-4-mañana-casos-aplicados.html#cb33-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, height))<span class="sc">+</span></span>
+<span id="cb33-6"><a href="día-4-mañana-casos-aplicados.html#cb33-6" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb33-7"><a href="día-4-mañana-casos-aplicados.html#cb33-7" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span></span>
+<span id="cb33-8"><a href="día-4-mañana-casos-aplicados.html#cb33-8" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">110</span>))<span class="sc">+</span></span>
+<span id="cb33-9"><a href="día-4-mañana-casos-aplicados.html#cb33-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Year&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-272-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="día-4-mañana-casos-aplicados.html#cb34-1" tabindex="-1"></a>dat_merged <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a href="día-4-mañana-casos-aplicados.html#cb34-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(gen, height)) <span class="sc">|&gt;</span> <span class="fu">unique</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href="día-4-mañana-casos-aplicados.html#cb34-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> rainfall_1<span class="sc">:</span>temp_6) <span class="sc">|&gt;</span> </span>
+<span id="cb34-4"><a href="día-4-mañana-casos-aplicados.html#cb34-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, value))<span class="sc">+</span></span>
+<span id="cb34-5"><a href="día-4-mañana-casos-aplicados.html#cb34-5" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb34-6"><a href="día-4-mañana-casos-aplicados.html#cb34-6" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span></span>
+<span id="cb34-7"><a href="día-4-mañana-casos-aplicados.html#cb34-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb34-8"><a href="día-4-mañana-casos-aplicados.html#cb34-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)<span class="sc">+</span></span>
+<span id="cb34-9"><a href="día-4-mañana-casos-aplicados.html#cb34-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Year&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-272-2.png" alt="" width="672" /></p>
+<p><strong>1. Start with the data.</strong></p>
+<p>What is the distribution of the data? For now let’s assume normal.</p>
+<p><strong>2. Think about the structure in the data</strong></p>
+<p>Note that our data contain multiple rows of observed heights, yet the predictors (i.e., weather covariates) are just a few years repeated throughout.
+Thus, although we have multiple rows of data, the real independent data for the predictors are much fewer. Just take a look at the data:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="día-4-mañana-casos-aplicados.html#cb35-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">arrange</span>(dat_merged, year))</span></code></pre></div>
+<pre><code>##   year gen height rainfall_1 rainfall_2 rainfall_3 rainfall_4 rainfall_5 rainfall_6
+## 1 1974 G01   81.0          0       0.16       1.59       2.65        1.7       2.21
+## 2 1974 G02   72.3          0       0.16       1.59       2.65        1.7       2.21
+## 3 1974 G03   79.3          0       0.16       1.59       2.65        1.7       2.21
+## 4 1974 G04   88.5          0       0.16       1.59       2.65        1.7       2.21
+## 5 1974 G05   78.5          0       0.16       1.59       2.65        1.7       2.21
+## 6 1974 G06   89.3          0       0.16       1.59       2.65        1.7       2.21
+##   srad_1 srad_2 srad_3 srad_4 srad_5 srad_6 sowing_t temp_1 temp_2 temp_3 temp_4 temp_5
+## 1   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
+## 2   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
+## 3   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
+## 4   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
+## 5   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
+## 6   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13  18.43
+##   temp_6
+## 1  13.75
+## 2  13.75
+## 3  13.75
+## 4  13.75
+## 5  13.75
+## 6  13.75</code></pre>
+<p>Although the response shows different values, if we wish to study the relatoinship bewteen the weather covariates and the height, there is an obvious dependence structure.</p>
+<p><img src="figures/structure_barley_weather.png" alt="" width="640" style="display: block; margin: auto;" /></p>
+<p>Thus, let’s assume the data are nested within years.</p>
+<p><strong>3. </strong></p>
+<p><strong>4. Write the full statistical model</strong></p>
+<p>Given that the blocking structures are the years, the corresponding model is</p>
+<p><span class="math display">\[y_{ij}=\mu_0 + G_i +\beta_1x_{ij} +year_j + \varepsilon_{ij},  \\ year_j\sim N(0, \sigma^2_{year}), \\ \varepsilon_{ij}\sim N(0, \sigma^2_{\varepsilon}).\]</span></p>
+<p>The matching R code is</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="día-4-mañana-casos-aplicados.html#cb37-1" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lmer</span>(height <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> gen <span class="sc">+</span> rainfall_3 <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>year),  <span class="at">data =</span> dat_merged)</span>
+<span id="cb37-2"><a href="día-4-mañana-casos-aplicados.html#cb37-2" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="día-4-mañana-casos-aplicados.html#cb37-3" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
+<pre><code>## Linear mixed model fit by REML [&#39;lmerMod&#39;]
+## Formula: height ~ 1 + gen + rainfall_3 + (1 | year)
+##    Data: dat_merged
+## 
+## REML criterion at convergence: 776.3
+## 
+## Scaled residuals: 
+##      Min       1Q   Median       3Q      Max 
+## -3.14642 -0.51931 -0.03119  0.56487  2.08029 
+## 
+## Random effects:
+##  Groups   Name        Variance Std.Dev.
+##  year     (Intercept) 90.67    9.522   
+##  Residual             22.69    4.764   
+## Number of obs: 135, groups:  year, 9
+## 
+## Fixed effects:
+##             Estimate Std. Error t value
+## (Intercept)   65.523      5.154  12.713
+## genG02        -6.656      2.246  -2.964
+## genG03        -3.689      2.246  -1.643
+## genG04         7.778      2.246   3.464
+## genG05        -2.944      2.246  -1.311
+## genG06         6.633      2.246   2.954
+## genG07        10.822      2.246   4.819
+## genG08         8.011      2.246   3.568
+## genG09         9.844      2.246   4.384
+## genG10        10.978      2.246   4.889
+## genG11        10.800      2.246   4.810
+## genG12         3.900      2.246   1.737
+## genG13        -1.022      2.246  -0.455
+## genG14        11.711      2.246   5.215
+## genG15         8.844      2.246   3.939
+## rainfall_3     6.085      2.518   2.417</code></pre>
+<pre><code>## 
+## Correlation matrix not shown by default, as p = 16 &gt; 12.
+## Use print(x, correlation=TRUE)  or
+##     vcov(x)        if you need it</code></pre>
+<p>After appropriate model checking, we can evaluate the effect of rainfall:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="día-4-mañana-casos-aplicados.html#cb40-1" tabindex="-1"></a><span class="fu">emtrends</span>(mod, <span class="sc">~</span>rainfall_3, <span class="st">&quot;rainfall_3&quot;</span>)</span></code></pre></div>
+<pre><code>##  rainfall_3 rainfall_3.trend   SE df lower.CL upper.CL
+##        1.48             6.09 2.52  7    0.131       12
+## 
+## Results are averaged over the levels of: gen 
+## Degrees-of-freedom method: kenward-roger 
+## Confidence level used: 0.95</code></pre>
+<p>Note the degrees of freedom are 7, because the mixed model recognizes that the weather data are the same for each year, and there is a total of 9 years.</p>
+<p><strong>What would have happened if we didn’t account for this dependence structure in the data?</strong></p>
 <ul>
-<li>Escribir el modelo estadístico que represente el proceso generador de datos, usando notación matemática.</li>
-<li>Escribir la sección correspondiente al análisis estadístio en materiales y métodos.</li>
-<li>Reconocer los beneficios y desventajas de distintos modelos estadísticos.</li>
+<li>We would have assumed independent observations.<br />
+</li>
+<li>Overconfidence in precision of <span class="math inline">\(\hat{\beta_1}\)</span>.</li>
 </ul>
-</div>
-<div id="notación-utilizada-en-este-curso" class="section level2 hasAnchor" number="0.3">
-<h2><span class="header-section-number">0.3</span> Notación utilizada en este curso<a href="index.html#notaci%C3%B3n-utilizada-en-este-curso" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>escalares: <span class="math inline">\(y\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\beta_0\)</span><br />
-</li>
-<li>vectores: <span class="math inline">\(\mathbf{y} \equiv [y_1, y_2, ..., y_n]&#39;\)</span>, <span class="math inline">\(\boldsymbol{\beta} \equiv [\beta_1, \beta_2, ..., \beta_p]&#39;\)</span>, <span class="math inline">\(\boldsymbol{u}\)</span><br />
-</li>
-<li>matrices: <span class="math inline">\(\mathbf{X}\)</span>, <span class="math inline">\(\Sigma\)</span><br />
-</li>
-<li>distribuciones de probabilidad: <span class="math inline">\(y \sim N(0, \sigma^2)\)</span>, <span class="math inline">\(\mathbf{y} \sim N(\boldsymbol{0}, \sigma^2\mathbf{I})\)</span>.</li>
-</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="día-4-mañana-casos-aplicados.html#cb42-1" tabindex="-1"></a>mod_simple <span class="ot">&lt;-</span> <span class="fu">lm</span>(height <span class="sc">~</span> gen <span class="sc">+</span> rainfall_3,  <span class="at">data =</span> dat_merged)</span>
+<span id="cb42-2"><a href="día-4-mañana-casos-aplicados.html#cb42-2" tabindex="-1"></a><span class="fu">emtrends</span>(mod_simple, <span class="sc">~</span>rainfall_3, <span class="st">&quot;rainfall_3&quot;</span>)</span></code></pre></div>
+<pre><code>##  rainfall_3 rainfall_3.trend    SE  df lower.CL upper.CL
+##        1.48             6.09 0.686 119     4.73     7.44
+## 
+## Results are averaged over the levels of: gen 
+## Confidence level used: 0.95</code></pre>
 
 </div>
 </div>
@@ -347,8 +426,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="día-1-mañana-introducción-y-repaso..html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="día-3-tarde-pensar-un-modelo-jerárquico..html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -379,7 +458,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/index.Rmd",
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/edit/main/08-dia4_manana.Rmd",
     "text": "Edit"
   },
   "history": {
@@ -387,7 +466,7 @@ gitbook.start({
     "text": null
   },
   "view": {
-    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/index.Rmd",
+    "link": "https://github.com/jlacasa/modelos-mixtos-fauba-2026/blob/main/08-dia4_manana.Rmd",
     "text": null
   },
   "download": null,

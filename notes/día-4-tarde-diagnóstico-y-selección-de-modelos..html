@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="día-4-mañana-análisis-de-ensayos-multi-sitios.html"/>
+<link rel="prev" href="día-4-mañana-casos-aplicados.html"/>
 <link rel="next" href="día-5-mañana-ejemplo-integrador.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -235,10 +235,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#writing-hierarchical-models"><i class="fa fa-check"></i><b>6.4</b> Writing hierarchical models</a></li>
 <li class="chapter" data-level="6.5" data-path="día-3-tarde-pensar-un-modelo-jerárquico..html"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#applied-example-2"><i class="fa fa-check"></i><b>6.5</b> Applied example</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="día-4-mañana-análisis-de-ensayos-multi-sitios.html"><a href="día-4-mañana-análisis-de-ensayos-multi-sitios.html"><i class="fa fa-check"></i><b>7</b> Día 4 (mañana): Análisis de ensayos multi-sitios</a>
+<li class="chapter" data-level="7" data-path="día-4-mañana-casos-aplicados.html"><a href="día-4-mañana-casos-aplicados.html"><i class="fa fa-check"></i><b>7</b> Día 4 (mañana): Casos aplicados</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="día-4-mañana-análisis-de-ensayos-multi-sitios.html"><a href="día-4-mañana-análisis-de-ensayos-multi-sitios.html#review-so-far"><i class="fa fa-check"></i><b>7.1</b> Review so far</a></li>
-<li class="chapter" data-level="7.2" data-path="día-4-mañana-análisis-de-ensayos-multi-sitios.html"><a href="día-4-mañana-análisis-de-ensayos-multi-sitios.html#multi-location-models"><i class="fa fa-check"></i><b>7.2</b> Multi-location models</a></li>
+<li class="chapter" data-level="7.1" data-path="día-4-mañana-casos-aplicados.html"><a href="día-4-mañana-casos-aplicados.html#review-so-far"><i class="fa fa-check"></i><b>7.1</b> Review so far</a></li>
+<li class="chapter" data-level="7.2" data-path="día-4-mañana-casos-aplicados.html"><a href="día-4-mañana-casos-aplicados.html#environmental-covariates"><i class="fa fa-check"></i><b>7.2</b> Environmental covariates</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html"><i class="fa fa-check"></i><b>8</b> Día 4 (tarde): Diagnóstico y selección de modelos.</a>
 <ul>
@@ -304,38 +304,38 @@ However, as we know, Statistics helps us summarize our data and make sense of it
 <li>Any discrepancies between fitted model and data will show up here.</li>
 <li>Sometimes, all our models with have flaws, but it’s good to be aware what they are.</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-1" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
-<span id="cb25-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb25-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-3" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
-<span id="cb25-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-4" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb25-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-5" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb25-6"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-6" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-7" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../data/N_fert.csv&quot;</span>)</span>
-<span id="cb25-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-8" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-9" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Yield_SY <span class="sc">~</span> Total_N, <span class="at">data=</span> dat)</span>
-<span id="cb25-10"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-10" tabindex="-1"></a>dat<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">resid</span>(m1)</span>
-<span id="cb25-11"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-11" tabindex="-1"></a>dat<span class="sc">$</span>yhat <span class="ot">&lt;-</span> <span class="fu">predict</span>(m1)</span>
-<span id="cb25-12"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-12" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb25-13" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_pubr</span>())</span></code></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-1" tabindex="-1"></a>y_sim <span class="ot">&lt;-</span> <span class="fu">simulate</span>(m1, <span class="at">nsim =</span><span class="dv">30</span>, <span class="at">seed =</span> <span class="dv">42</span>) <span class="sc">|&gt;</span></span>
-<span id="cb26-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Total_N =</span> dat<span class="sc">$</span>Total_N, </span>
-<span id="cb26-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-3" tabindex="-1"></a>         <span class="at">Yield_SY =</span> dat<span class="sc">$</span>Yield_SY) <span class="sc">|&gt;</span> </span>
-<span id="cb26-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(Total_N, Yield_SY))</span>
-<span id="cb26-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-5" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-6" tabindex="-1"></a>y_sim <span class="sc">|&gt;</span> </span>
-<span id="cb26-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
-<span id="cb26-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-8" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
-<span id="cb26-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-9" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(Yield_SY), <span class="at">fill =</span> <span class="st">&quot;gold&quot;</span>, <span class="at">alpha =</span> .<span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb26-10"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb26-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-1" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb44-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb44-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-3" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb44-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-4" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb44-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-5" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb44-6"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-6" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-7" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../data/N_fert.csv&quot;</span>)</span>
+<span id="cb44-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-8" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-9" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Yield_SY <span class="sc">~</span> Total_N, <span class="at">data=</span> dat)</span>
+<span id="cb44-10"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-10" tabindex="-1"></a>dat<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">resid</span>(m1)</span>
+<span id="cb44-11"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-11" tabindex="-1"></a>dat<span class="sc">$</span>yhat <span class="ot">&lt;-</span> <span class="fu">predict</span>(m1)</span>
+<span id="cb44-12"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-12" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb44-13" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_pubr</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-1" tabindex="-1"></a>y_sim <span class="ot">&lt;-</span> <span class="fu">simulate</span>(m1, <span class="at">nsim =</span><span class="dv">30</span>, <span class="at">seed =</span> <span class="dv">42</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Total_N =</span> dat<span class="sc">$</span>Total_N, </span>
+<span id="cb45-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-3" tabindex="-1"></a>         <span class="at">Yield_SY =</span> dat<span class="sc">$</span>Yield_SY) <span class="sc">|&gt;</span> </span>
+<span id="cb45-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-4" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(Total_N, Yield_SY))</span>
+<span id="cb45-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-5" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-6" tabindex="-1"></a>y_sim <span class="sc">|&gt;</span> </span>
+<span id="cb45-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value))<span class="sc">+</span></span>
+<span id="cb45-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-8" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
+<span id="cb45-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-9" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(Yield_SY), <span class="at">fill =</span> <span class="st">&quot;gold&quot;</span>, <span class="at">alpha =</span> .<span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb45-10"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-1.png" alt="" width="672" /></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb28-1" tabindex="-1"></a>y_sim <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb28-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Total_N, value))<span class="sc">+</span></span>
-<span id="cb28-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb28-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb28-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb28-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(Total_N, Yield_SY), <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">&quot;gold&quot;</span>, <span class="at">alpha =</span> .<span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb28-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb28-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-279-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-1" tabindex="-1"></a>y_sim <span class="sc">|&gt;</span> </span>
+<span id="cb47-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Total_N, value))<span class="sc">+</span></span>
+<span id="cb47-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb47-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(Total_N, Yield_SY), <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">&quot;gold&quot;</span>, <span class="at">alpha =</span> .<span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb47-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-279-2.png" alt="" width="672" /></p>
 <p>Discuss the plot above: how are the simulated data compared to the observed data?</p>
 </div>
 <div id="some-useful-metrics-to-compare-models" class="section level2 hasAnchor" number="8.3">
@@ -370,47 +370,47 @@ In essence, <span class="math inline">\(R^2\)</span> is the ratio between the <s
 <p>HOWEVER…</p>
 <p><strong>Uncertainty in R<sup>2</sup></strong></p>
 <p>We don’t get any uncertainty on R<sup>2</sup> for free. However, we can find out how good (or bad) an R<sup>2</sup> is.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb29-1" tabindex="-1"></a><span class="fu">summary</span>(m1)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb48-1" tabindex="-1"></a><span class="fu">summary</span>(m1)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.6652527</code></pre>
 </div>
 <div id="bootstrapped-r2" class="section level3 hasAnchor" number="8.3.4">
 <h3><span class="header-section-number">8.3.4</span> Bootstrapped R<sup>2</sup><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#bootstrapped-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On one hand, we can obtain a bootstrapped confidence interval of R<sup>2</sup> by resampling the data and fitting the same model multiple times:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb31-1" tabindex="-1"></a>boot_r2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, {</span>
-<span id="cb31-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb31-2" tabindex="-1"></a>  dat_boot <span class="ot">&lt;-</span> dat[<span class="fu">sample</span>(<span class="fu">nrow</span>(dat), <span class="at">replace =</span> <span class="cn">TRUE</span>), ]</span>
-<span id="cb31-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb31-3" tabindex="-1"></a>  </span>
-<span id="cb31-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb31-4" tabindex="-1"></a>  m_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(Yield_SY <span class="sc">~</span> Total_N <span class="sc">+</span> <span class="fu">I</span>(Total_N<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> dat_boot)</span>
-<span id="cb31-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb31-5" tabindex="-1"></a>  </span>
-<span id="cb31-6"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb31-6" tabindex="-1"></a>  <span class="fu">summary</span>(m_boot)<span class="sc">$</span>r.squared</span>
-<span id="cb31-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb31-7" tabindex="-1"></a>})</span>
-<span id="cb31-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb31-8" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb31-9" tabindex="-1"></a><span class="fu">hist</span>(boot_r2, <span class="at">breaks =</span> <span class="dv">30</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-34-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-1" tabindex="-1"></a>boot_r2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, {</span>
+<span id="cb50-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-2" tabindex="-1"></a>  dat_boot <span class="ot">&lt;-</span> dat[<span class="fu">sample</span>(<span class="fu">nrow</span>(dat), <span class="at">replace =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb50-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-3" tabindex="-1"></a>  </span>
+<span id="cb50-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-4" tabindex="-1"></a>  m_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(Yield_SY <span class="sc">~</span> Total_N <span class="sc">+</span> <span class="fu">I</span>(Total_N<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> dat_boot)</span>
+<span id="cb50-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-5" tabindex="-1"></a>  </span>
+<span id="cb50-6"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-6" tabindex="-1"></a>  <span class="fu">summary</span>(m_boot)<span class="sc">$</span>r.squared</span>
+<span id="cb50-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-7" tabindex="-1"></a>})</span>
+<span id="cb50-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-8" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-9" tabindex="-1"></a><span class="fu">hist</span>(boot_r2, <span class="at">breaks =</span> <span class="dv">30</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-281-1.png" alt="" width="672" /></p>
 </div>
 <div id="out-of-sample-r2" class="section level3 hasAnchor" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> Out-of-sample R<sup>2</sup><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#out-of-sample-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Given the obvios structure of the data, a more appropriate way to obtain uncertainty on R<sup>2</sup> would be an out-of-sample (oos) cross-validation:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-1" tabindex="-1"></a>R2_oos <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
-<span id="cb32-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-2" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(dat<span class="sc">$</span>sy)) {</span>
-<span id="cb32-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-4" tabindex="-1"></a>  <span class="co"># leave-one-sy-out </span></span>
-<span id="cb32-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-5" tabindex="-1"></a>  d_is <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(sy <span class="sc">!=</span> i) </span>
-<span id="cb32-6"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-6" tabindex="-1"></a>  d_oos <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(sy <span class="sc">==</span> i)</span>
-<span id="cb32-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-7" tabindex="-1"></a>  </span>
-<span id="cb32-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-8" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Yield_SY <span class="sc">~</span> Total_N <span class="sc">+</span> <span class="fu">I</span>(Total_N<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> d_is)</span>
-<span id="cb32-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-9" tabindex="-1"></a>  </span>
-<span id="cb32-10"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-10" tabindex="-1"></a>  SST_oos <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="fu">resid</span>(<span class="fu">lm</span>(Yield_SY <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span>d_oos)))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb32-11"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-11" tabindex="-1"></a>  SSE_oos <span class="ot">&lt;-</span> <span class="fu">sum</span>((d_oos<span class="sc">$</span>Yield_SY <span class="sc">-</span> <span class="fu">predict</span>(m, <span class="at">newdata =</span> d_oos))<span class="sc">^</span><span class="dv">2</span>) </span>
-<span id="cb32-12"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-12" tabindex="-1"></a>  </span>
-<span id="cb32-13"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-13" tabindex="-1"></a>  R2_oos[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> SSE_oos<span class="sc">/</span>SST_oos</span>
-<span id="cb32-14"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-14" tabindex="-1"></a>  </span>
-<span id="cb32-15"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-15" tabindex="-1"></a>}</span>
-<span id="cb32-16"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-16" tabindex="-1"></a></span>
-<span id="cb32-17"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb32-17" tabindex="-1"></a>R2_oos</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-1" tabindex="-1"></a>R2_oos <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
+<span id="cb51-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-2" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(dat<span class="sc">$</span>sy)) {</span>
+<span id="cb51-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-4" tabindex="-1"></a>  <span class="co"># leave-one-sy-out </span></span>
+<span id="cb51-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-5" tabindex="-1"></a>  d_is <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(sy <span class="sc">!=</span> i) </span>
+<span id="cb51-6"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-6" tabindex="-1"></a>  d_oos <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span> <span class="fu">filter</span>(sy <span class="sc">==</span> i)</span>
+<span id="cb51-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-7" tabindex="-1"></a>  </span>
+<span id="cb51-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-8" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Yield_SY <span class="sc">~</span> Total_N <span class="sc">+</span> <span class="fu">I</span>(Total_N<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> d_is)</span>
+<span id="cb51-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-9" tabindex="-1"></a>  </span>
+<span id="cb51-10"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-10" tabindex="-1"></a>  SST_oos <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="fu">resid</span>(<span class="fu">lm</span>(Yield_SY <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span>d_oos)))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb51-11"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-11" tabindex="-1"></a>  SSE_oos <span class="ot">&lt;-</span> <span class="fu">sum</span>((d_oos<span class="sc">$</span>Yield_SY <span class="sc">-</span> <span class="fu">predict</span>(m, <span class="at">newdata =</span> d_oos))<span class="sc">^</span><span class="dv">2</span>) </span>
+<span id="cb51-12"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-12" tabindex="-1"></a>  </span>
+<span id="cb51-13"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-13" tabindex="-1"></a>  R2_oos[i] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> SSE_oos<span class="sc">/</span>SST_oos</span>
+<span id="cb51-14"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-14" tabindex="-1"></a>  </span>
+<span id="cb51-15"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-15" tabindex="-1"></a>}</span>
+<span id="cb51-16"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-16" tabindex="-1"></a></span>
+<span id="cb51-17"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb51-17" tabindex="-1"></a>R2_oos</span></code></pre></div>
 <pre><code>## [1] 0.7341245 0.3494678 0.3219911 0.8376546 0.9103108</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb34-1" tabindex="-1"></a><span class="fu">mean</span>(R2_oos)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb53-1" tabindex="-1"></a><span class="fu">mean</span>(R2_oos)</span></code></pre></div>
 <pre><code>## [1] 0.6307098</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb36-1" tabindex="-1"></a><span class="fu">sd</span>(R2_oos)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb55-1" tabindex="-1"></a><span class="fu">sd</span>(R2_oos)</span></code></pre></div>
 <pre><code>## [1] 0.2766323</code></pre>
 <ul>
 <li>Compare all the R<sup>2</sup></li>
@@ -455,7 +455,7 @@ In essence, <span class="math inline">\(R^2\)</span> is the ratio between the <s
           </div>
         </div>
       </div>
-<a href="día-4-mañana-análisis-de-ensayos-multi-sitios.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="día-4-mañana-casos-aplicados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="día-5-mañana-ejemplo-integrador.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
