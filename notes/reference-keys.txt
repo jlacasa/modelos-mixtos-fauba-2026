@@ -18,7 +18,7 @@ discussions
 summary
 día-1-tarde-introducción-a-los-modelos-mixtos-cont.
 review-of-some-elements-for-statistical-inference
-live-demonstration-s.e.hatmu-and-s.e.hatmu_1---hatmu_2
+live-demonstration-s.e.hatmu
 hypothesis-tests
 on-p-values
 summary-1
@@ -49,7 +49,7 @@ selecting-the-covariance-structure
 applied-example-1
 modeling-the-time-dependence-conditional-versus-marginal
 in-class-exercise
-resources
+more-resources-for-repeated-measures
 tarea
 día-3-mañana-recuperación-de-información-intergrupos
 pooling-of-information

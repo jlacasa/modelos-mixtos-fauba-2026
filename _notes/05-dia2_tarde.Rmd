@@ -98,7 +98,6 @@ How do we know what the best covariance structure is?
     </tr>
     <tr>
         <th>No covariance</th>
-        <td></td>
         <td>1: $\sigma$</td>
         <td>$\boldsymbol{\Sigma}_{ik} =
             \sigma^2 

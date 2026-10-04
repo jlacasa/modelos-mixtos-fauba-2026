@@ -1,5 +1,5 @@
 ---
-title: "Dia 1 -- Standard Error Demonstration"
+title: "Dia 2 -- Standard Error Demonstration"
 format: html
 ---
 
@@ -49,16 +49,16 @@ The standard error of the mean is $se(\hat{\mu_i}) = \sqrt{\frac{\sigma^2_\varep
 
 Then:
 ```{r}
-sigma2 <- sigma(m_fixed)^2
+sigma2_fixed <- sigma(m_fixed)^2
 n_blocks <- n_distinct(df$rep)
 
-(se_mui <- sqrt(sigma2/n_blocks))
+(se_mui_fixed <- sqrt(sigma2_fixed/n_blocks))
 ```
 
 Which is the same as the SE of the marginal means: 
 
 ```{r}
-(means <- emmeans(m_fixed, ~K2O_lbac))
+(means_fixed <- emmeans(m_fixed, ~K2O_lbac))
 ```
 
 Likewise, the confidence interval comes from doing 
@@ -71,12 +71,12 @@ For $dfe = 8$ and $\alpha = .05$ we get
 df_fixed <- df.residual(m_fixed)
 t_crit <- qt(p = 0.975, df = df_fixed)
 
-mu_1 <- as.data.frame(means)$emmean[1]
+mu_1 <- as.data.frame(means_fixed)$emmean[1]
 
 #lower CI
-mu_1 - (se_mui * t_crit)
+mu_1 - (se_mui_fixed * t_crit)
 #upper CI
-mu_1 + (se_mui * t_crit)
+mu_1 + (se_mui_fixed * t_crit)
 ```
 
 
@@ -91,18 +91,18 @@ The standard error of the mean is $se(\hat{\mu_i}) = \sqrt{\frac{\sigma^2_\varep
 
 Then:
 ```{r}
-sigma2 <- sigma(m_random)^2
+sigma2_random <- sigma(m_random)^2
 sigma2_block <- VarCorr(m_random)$rep[1]
 
 n_blocks <- n_distinct(df$rep)
 
-(se_mui <- sqrt((sigma2 + sigma2_block)/n_blocks))
+(se_mui_random <- sqrt((sigma2_random + sigma2_block)/n_blocks))
 ```
 
 Which is the same as the SE of the marginal means: 
 
 ```{r}
-(means <- emmeans(m_random, ~K2O_lbac))
+(means_random <- emmeans(m_random, ~K2O_lbac))
 ```
 
 Likewise, the confidence interval comes from doing 
@@ -112,18 +112,85 @@ $$\hat{\mu_i} \pm se(\hat{\mu_i})\cdot t_{dfe}.$$
 For $dfe = 5.57$ and $\alpha = .05$ we get
 
 ```{r}
-df_random <- as.data.frame(means)$df[1]
+df_random <- as.data.frame(means_random)$df[1]
 t_crit <- qt(p = 0.975, df = df_random) 
 
-mu_1 <- as.data.frame(means)$emmean[1]
+mu_1 <- as.data.frame(means_random)$emmean[1]
 
 #lower CI
-mu_1 - (se_mui * t_crit) 
+mu_1 - (se_mui_random * t_crit) 
 #upper CI
-mu_1 + (se_mui * t_crit) 
+mu_1 + (se_mui_random * t_crit) 
 ```
 
 ## Now, let's take a look at the se of mean differences
+
+The standard error of mean differences for an RCBD is 
+
+$$se(\hat{\mu_i}-\hat{\mu_{i'}}) = \sqrt{\frac{\sigma^2_\varepsilon}{\#blocks}}$$
+
+Thus: 
+
+For blocks as fixed: 
+```{r}
+# update se(mean difference)
+(se_theta_fixed <- sqrt((2*sigma2_fixed)/n_blocks))
+
+#do one mean comparison
+(contr_fixed <- emmeans(m_fixed, ~K2O_lbac,
+                        contr = list(c(1, -1, 0, 0, 0)))$contr)
+
+df_fixed <- as.data.frame(contr_fixed)$df[1]
+t_crit <- qt(p = 0.975, df = df_fixed) 
+
+theta_1 <- as.data.frame(means_fixed)$emmean[1] - as.data.frame(means_fixed)$emmean[2]
+
+#lower CI
+theta_1 - (se_theta_fixed * t_crit) 
+#upper CI
+theta_1 + (se_theta_fixed * t_crit) 
+
+#t-test
+tstar <- theta_1 / se_theta_fixed
+pt(tstar, df = df_fixed) * 2
+```
+
+For blocks as random: 
+```{r}
+# update se(mean difference)
+(se_theta_random <- sqrt((2*sigma2_random)/n_blocks))
+
+#do one mean comparison
+(contr_random <- emmeans(m_random, ~K2O_lbac,
+                        contr = list(c(1, -1, 0, 0, 0)))$contr)
+
+df_random <- as.data.frame(contr_random)$df[1]
+t_crit <- qt(p = 0.975, df = df_random) 
+
+theta_1 <- as.data.frame(means_random)$emmean[1] - as.data.frame(means_random)$emmean[2]
+
+#lower CI
+theta_1 - (se_theta_random * t_crit) 
+#upper CI
+theta_1 + (se_theta_random * t_crit) 
+
+#t-test
+tstar <- theta_1 / se_theta_random
+pt(tstar, df = df_random) * 2
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
