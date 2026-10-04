@@ -29,7 +29,7 @@
 
 - What is a statistical model? 
 
->Scientific models are, above all erlse, abstractions. They are statements about the operation of nature that purposefully omit many details and thus achieve insight that would otherwise be discursively obscured. They provide unambiguous statements of what we believe is important. A key principle in modeling and statistics -- in science for that matter -- is the need to reduce the dimensions of a problem. ([Hooten and Hobbs, 2025](https://www.amazon.com/dp/B0DVWZ4YWV?lv=shuf&channelId=500&plpRedirect=mhFallback))
+>Scientific models are, above all else, abstractions. They are statements about the operation of nature that purposefully omit many details and thus achieve insight that would otherwise be discursively obscured. They provide unambiguous statements of what we believe is important. A key principle in modeling and statistics -- in science for that matter -- is the need to reduce the dimensions of a problem. ([Hooten and Hobbs, 2025](https://www.amazon.com/dp/B0DVWZ4YWV?lv=shuf&channelId=500&plpRedirect=mhFallback))
 
 
 - A statistical model combines **deterministic components** with **stochastic components**. 
@@ -137,7 +137,7 @@ The formula for the variance of any random variable $Y$ is
 $$Var(Y) = E(Y^2) - E(Y)^2.$$
 
 <center>
-![](figures/normal_univariate.jpg)
+![](figures/normal_univariate.png)
 </center>
 
 
@@ -158,7 +158,7 @@ $$\begin{bmatrix}y_1 \\ y_2 \end{bmatrix} \sim MVN \left( \begin{bmatrix} E(y_1)
 
 
 <center>
-![](figures/normal_multivariate.jpg)
+![](figures/normal_multivariate.png)
 </center>
 
 Discuss in the plot above:
@@ -207,7 +207,7 @@ popup_btn <- function(button_text, modal_text, modal_image = NULL) {
 ```
 
 
-`r popup_btn(button_text = "What would two random variables with zero covariance look like?", modal_text = "Here is what zero covariance looks like:", modal_image = "figures/normal_multivariate_0cov.jpg")`
+`r popup_btn(button_text = "What would two random variables with zero covariance look like?", modal_text = "Here is what zero covariance looks like:", modal_image = "figures/normal_multivariate_0cov.png")`
 
 
 

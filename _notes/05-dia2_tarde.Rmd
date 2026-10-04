@@ -93,7 +93,6 @@ How do we know what the best covariance structure is?
 <table>
     <tr>
         <th>Covariance function</th>
-        <th>Abbreviations</th>
         <th>Number of parameters estimated</th>
         <th>Formula</th>
     </tr>
@@ -112,8 +111,7 @@ How do we know what the best covariance structure is?
             \end{bmatrix}$</td>
     </tr>
     <tr>
-        <th>Compound symmetry (homogeneous)</th>
-        <td>CS</td>
+        <th>Compound symmetry (CS)</th>
         <td>2: $\sigma$ and $\rho$</td>
         <td>$\boldsymbol{\Sigma}_{ik} =
             \sigma^2 
@@ -126,8 +124,7 @@ How do we know what the best covariance structure is?
             \end{bmatrix}$</td>
     </tr>
     <tr>
-        <th>First-order autoregressive (homogeneous)</th>
-        <td>AR(1)</td>
+        <th>First-order autoregressive (AR(1))</th>
         <td>2: $\sigma$ and $\rho$</td>
         <td>$\boldsymbol{\Sigma}_{ik} =
             \sigma^2 
@@ -141,7 +138,6 @@ How do we know what the best covariance structure is?
     </tr>
     <tr>
         <th>Toeplitz (homogeneous)</th>
-        <td>Toeplitz</td>
         <td>$t$</td>
         <td>$\boldsymbol{\Sigma}_{ik} =
             \begin{bmatrix}
@@ -153,8 +149,7 @@ How do we know what the best covariance structure is?
             \end{bmatrix}$</td>
     </tr>
     <tr>
-        <th>Heterogeneous compound symmetry</th>
-        <td>CS</td>
+        <th>Heterogeneous compound symmetry (HCS)</th>
         <td>$t+1$</td>
         <td>$\boldsymbol{\Sigma}_{ik} =
             \sigma^2 
@@ -167,8 +162,7 @@ How do we know what the best covariance structure is?
             \end{bmatrix}$</td>
     </tr>
     <tr>
-        <th>Unstructured</th>
-        <td>UN</td>
+        <th>Unstructured (UN)</th>
         <td>$t(t+1)/2$</td>
         <td>$\boldsymbol{\Sigma}_{ik} =
             \begin{bmatrix}
@@ -300,14 +294,13 @@ Time dependencies can be specified on the $\mathbf{G}$ matrix, or in the $\mathb
 - "Conditional and Marginal Models: Another View" [Lee and Nelder (2004)](https://projecteuclid.org/journals/statistical-science/volume-19/issue-2/Conditional-and-Marginal-Models-Another-View/10.1214/088342304000000305.full)
 
 
-## In-class exercise 
+## In-class exercise
 
-([Get R code.](../scripts/dia2_inclass_ex.qmd)). 
-Re-analyze the data and provide the answer to the client. 
+Analyze the data. [Get R code.](../scripts/dia2_inclass_ex.qmd).
 
-## Resources 
+## More resources for repeated measures 
 
-- Guidelines for Selecting the Covariance Structure in Mixed Model Analysis  [[link](https://support.sas.com/resources/papers/proceedings/proceedings/sugi30/198-30.pdf)] 
+- Guidelines for Selecting the Covariance Structure in Mixed Model Analysis [[link](https://support.sas.com/resources/papers/proceedings/proceedings/sugi30/198-30.pdf)] 
 
 ## Tarea 
 

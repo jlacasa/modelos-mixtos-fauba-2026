@@ -321,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>What is a statistical model?</li>
 </ul>
 <blockquote>
-<p>Scientific models are, above all erlse, abstractions. They are statements about the operation of nature that purposefully omit many details and thus achieve insight that would otherwise be discursively obscured. They provide unambiguous statements of what we believe is important. A key principle in modeling and statistics – in science for that matter – is the need to reduce the dimensions of a problem. (<a href="https://www.amazon.com/dp/B0DVWZ4YWV?lv=shuf&amp;channelId=500&amp;plpRedirect=mhFallback">Hooten and Hobbs, 2025</a>)</p>
+<p>Scientific models are, above all else, abstractions. They are statements about the operation of nature that purposefully omit many details and thus achieve insight that would otherwise be discursively obscured. They provide unambiguous statements of what we believe is important. A key principle in modeling and statistics – in science for that matter – is the need to reduce the dimensions of a problem. (<a href="https://www.amazon.com/dp/B0DVWZ4YWV?lv=shuf&amp;channelId=500&amp;plpRedirect=mhFallback">Hooten and Hobbs, 2025</a>)</p>
 </blockquote>
 <ul>
 <li>A statistical model combines <strong>deterministic components</strong> with <strong>stochastic components</strong>.</li>
@@ -407,7 +407,7 @@ The probability distribution form makes it easier to switch to other distributio
 The formula for the variance of any random variable <span class="math inline">\(Y\)</span> is
 <span class="math display">\[Var(Y) = E(Y^2) - E(Y)^2.\]</span></p>
 <center>
-<img src="figures/normal_univariate.jpg" />
+<img src="figures/normal_univariate.png" />
 </center>
 <p>Discuss in the plot above:</p>
 <ul>
@@ -422,7 +422,7 @@ Essentially, it quantifies the relationship between their joint variability. The
 where the means of <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> are 10 and 8, respectively, and their covariance structure is represented in the variance-covariance matrix. Remember,</p>
 <p><span class="math display">\[\begin{bmatrix}y_1 \\ y_2 \end{bmatrix} \sim MVN \left( \begin{bmatrix} E(y_1) \\ E(y_2) \end{bmatrix} , \begin{bmatrix} Var(y_1) &amp; Cov(y_1, y_2) \\ Cov(y_2,y_2) &amp; Var(y_2) \end{bmatrix} \right).\]</span></p>
 <center>
-<img src="figures/normal_multivariate.jpg" />
+<img src="figures/normal_multivariate.png" />
 </center>
 <p>Discuss in the plot above:</p>
 <ul>
@@ -430,7 +430,7 @@ where the means of <span class="math inline">\(y_1\)</span> and <span class="mat
 <li>Variance</li>
 <li>Covariance</li>
 </ul>
-<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_832804').style.display='block'">What would two random variables with zero covariance look like?</button>     </div>     <div id="modal_832804" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_832804').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what zero covariance looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/normal_multivariate_0cov.jpg" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
+<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_557662').style.display='block'">What would two random variables with zero covariance look like?</button>     </div>     <div id="modal_557662" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_557662').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what zero covariance looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/normal_multivariate_0cov.png" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
 <p><strong>On the variance-covariance matrix:</strong></p>
 <p>The variance-covariance matrix contains information about the covariance between all data points in the model. Consider the variance covariance matrix is a <span class="math inline">\(n \times n\)</span> square of tiles, where <span class="math inline">\(n\)</span> is the total number of observations.
 Each tile contains the information about the correlation between the data point <span class="math inline">\(i\)</span> (i.e., tile row number) and data point <span class="math inline">\(i&#39;\)</span> (i.e., tile column number).

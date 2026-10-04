@@ -18,7 +18,7 @@ Some desirable characteristics of our estimators are
   - Confidence intervals indicate the amount of information we have around our point estimates $CI_{\hat{\theta} \ 95\%} = \hat{\theta} \pm se(\hat{\theta}) \cdot t_{df, \ 1 - \frac{\alpha}{2}}$
 
 
-### Live demonstration: $s.e.(\hat\mu)$ and $s.e.(\hat{\mu_1} - \hat{\mu_2})$
+### Live demonstration: $s.e.(\hat\mu)$ 
 
 [Get R code](../scripts/dia1_se_demo.qmd)
 

@@ -5,7 +5,7 @@
 ## Discusión: qué dice Dixon? 
 
 - Discusión del paper [Dixon (2016)](../handouts/2016_Dixon_ShouldBlocks.pdf) -- 30 minutos. 
-
+- Demonstration of $se(\hat{\mu_i})$ and $se(\hat{\mu_i} - \hat{\mu_{i'}})$ -- [get R code](../scripts/dia2_se_demo.qmd)
 
 ## Review: designed experiments
 
