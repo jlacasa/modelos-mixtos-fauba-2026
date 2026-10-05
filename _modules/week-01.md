@@ -4,7 +4,7 @@ title: Semana del 5 de octubre
 
 05/10 
 : Introducción a los modelos mixtos
-  : Leer [Dixon (2016)](https://doi.org/10.4148/2475-7772.1474)
+  : Leer [Dixon (2016)](../handouts/2016_Dixon_ShouldBlocks.pdf)
 
 06/10 
 : Conexión entre diseños experimentales y modelos mixtos
