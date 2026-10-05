@@ -1,0 +1,34 @@
+---
+title: "Day 2 -- Analysis of a split-plot design"
+format: html
+---
+
+
+The data in `df` below correspond to an experiment grown in 1995-1996 at the Scottish Crop Research Institute. The treatment design was a 2x70 factorial, and the design structure was a split-plot design with 4 blocks, 2 whole-plot fungicide treatments, and 70 barley varieties. The total area was 10 rows (North/South) by 56 beds (East/West). 
+
+```{r}
+library(agridat)
+data("durban.splitplot")
+df <- durban.splitplot
+```
+
+### 2.a. 
+
+Using math notation, write the statistical model to analyze that data. Define all model components. 
+
+### 2.b. 
+
+Write an ANOVA table including source of variation and degrees of freedom. Include both the treatment and the design sources of variability. 
+
+### 2.c. 
+
+Fit the model in (2.a.) to the data using R software. 
+
+### 2.d. 
+
+Please provide the estimated treatment means for fungicide treatment "F1" and genotype "G42" and their 95% confidence intervals.  
+
+### 2.e. 
+
+Please provide the estimated variance components (i.e., the $\sigma$s in (2.a.). 
+

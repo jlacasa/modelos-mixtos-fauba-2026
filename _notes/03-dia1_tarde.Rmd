@@ -181,8 +181,9 @@ Using the m_random model object below:
 
 ```{r}
 library(lme4)
-
-df <- read.csv("../data/cochrancox_kfert.csv")
+url <- "https://raw.githubusercontent.com/jlacasa/modelos-mixtos-fauba-2026/refs/heads/main/data/cochrancox_kfert.csv"
+df <- read.csv(url)
+# df <- read.csv("../data/cochrancox_kfert.csv")
 df$rep <- as.factor(df$rep)
 df$K2O_lbac <- as.factor(df$K2O_lbac)
 m_random <- lmer(yield ~ K2O_lbac + (1|rep), REML = TRUE, data = df)

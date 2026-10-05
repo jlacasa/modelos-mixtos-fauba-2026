@@ -1,0 +1,153 @@
+---
+title: "Script escrito durante la clase del lunes"
+author: "J Lacasa"
+date: "2026-10-05"
+output: html_document
+---
+
+## Lunes por la mañana
+
+### paquetes de R a utilizar
+```{r}
+library(lme4)
+library(tidyverse)
+library(emmeans)
+library(latex2exp)
+```
+
+### datos 
+```{r}
+df <- read.csv("../data/cochrancox_kfert.csv")
+```
+
+```{r}
+df |> 
+  ggplot(aes( K2O_lbac, yield))+
+  geom_point()
+```
+
+### Demostración de la matriz $\mathbf{X}$ con predictores continuos y categoricos 
+
+```{r}
+m_fixed <- lm(yield ~ K2O_lbac +I(K2O_lbac^2), data = df)
+
+(X <- model.matrix(m_fixed))
+```
+
+```{r}
+beta_hat <- coef(m_fixed)
+```
+
+```{r}
+X %*% beta_hat
+```
+
+```{r}
+m_fixed$fitted.values
+```
+
+```{r}
+df$rep <- as.factor(df$rep)
+df$K2O_lbac <- as.factor(df$K2O_lbac)
+```
+
+
+```{r}
+m_fixed <- lm(yield ~ K2O_lbac, data = df)
+
+(X <- model.matrix(m_fixed))
+```
+
+```{r}
+(beta_hat <- coef(m_fixed))
+```
+
+```{r}
+X %*% beta_hat
+```
+
+
+## Ajustar modelos con todos los efectos fijos, y modelos mixtos
+
+
+```{r}
+library(lme4)
+library(nlme)
+library(glmmTMB)
+
+library(tidyverse)
+library(emmeans)
+library(latex2exp)
+
+df <- read.csv("../data/cochrancox_kfert.csv")
+```
+
+```{r}
+str(df)
+
+df$rep <- as.factor(df$rep)
+df$K2O_lbac <- as.factor(df$K2O_lbac)
+str(df)
+```
+
+```{r}
+m_fijos <- lm(yield ~ 0+ K2O_lbac + rep, data = df)
+
+summary(m_fijos)
+```
+
+```{r}
+emmeans(m_fijos, ~ K2O_lbac )
+```
+
+```{r}
+emmeans(m_fijos, ~ rep )
+```
+
+
+```{r}
+car::Anova(m_fijos, type = "II")
+```
+
+```{r}
+m_aleat <- lmer(yield ~ 1 + K2O_lbac + (1|rep), data = df)
+```
+
+```{r}
+summary(m_aleat)
+```
+
+
+```{r}
+emmeans(m_fijos, ~K2O_lbac)
+emmeans(m_aleat, ~K2O_lbac)
+```
+
+```{r}
+VarCorr(m_aleat)
+Z <- getME(m_aleat, "Z")
+```
+
+```{r}
+(round(0.18737^2,2) * Z %*% t(Z))
+```
+```{r}
+round(sigma(m_aleat)^2,2) * diag(1, nrow = 15)
+```
+
+```{r}
+(round(0.18737^2,2) * Z %*% t(Z)) + round(sigma(m_aleat)^2,2) * diag(1, nrow = 15)
+```
+
+
+## Lunes por la tarde
+
+
+### Medias marginales 
+
+```{r}
+emmeans(m_aleat, ~K2O_lbac, contr = list(c(1, -1, 0, 0, 0), 
+                                         c(1, 1, 1, -3/2, -3/2)))
+```
+
+
