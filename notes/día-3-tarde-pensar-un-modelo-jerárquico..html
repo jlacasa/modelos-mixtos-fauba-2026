@@ -353,16 +353,16 @@ Assume that our objective is to predict the performance of the genotypes under a
 <span id="cb23-7"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb23-7" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span></span>
 <span id="cb23-8"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb23-8" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span></span>
 <span id="cb23-9"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb23-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>loc, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-61-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-75-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(yield <span class="sc">~</span> loc <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>gen) <span class="sc">+</span> </span>
 <span id="cb24-2"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-2" tabindex="-1"></a>                (<span class="dv">1</span><span class="sc">|</span>gen<span class="sc">:</span>loc) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>gen<span class="sc">:</span>year) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>gen<span class="sc">:</span>year<span class="sc">:</span>loc) <span class="sc">+</span></span>
 <span id="cb24-3"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-3" tabindex="-1"></a>                (<span class="dv">1</span><span class="sc">|</span>year) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>year<span class="sc">:</span>loc) <span class="sc">+</span> </span>
 <span id="cb24-4"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-4" tabindex="-1"></a>                (<span class="dv">1</span><span class="sc">|</span>block<span class="sc">:</span>year<span class="sc">:</span>loc),</span>
 <span id="cb24-5"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb24-5" tabindex="-1"></a>              <span class="at">data =</span> dat)</span></code></pre></div>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb25-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">resid</span>(model))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-63-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-77-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb26-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">predict</span>(model), <span class="fu">resid</span>(model))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-63-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-77-2.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb27-1" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by REML [&#39;lmerMod&#39;]
 ## Formula: 
@@ -401,22 +401,14 @@ Assume that our objective is to predict the performance of the genotypes under a
 ## locYolo2     -1665.9      926.3  -1.798
 ## 
 ## Correlation of Fixed Effects:
-##             (Intr) locDlt lcImpr locKrn lcKngs locTlr
-## locDelta    -0.450                                   
-## locImperial -0.653  0.401                            
-## locKern     -0.653  0.401  0.581                     
-## locKings    -0.610  0.386  0.543  0.543              
-## locTulare   -0.525  0.291  0.467  0.467  0.421       
-## locYolo1    -0.653  0.401  0.581  0.581  0.543  0.467
-## locYolo2    -0.549  0.369  0.488  0.488  0.442  0.393
-##             locYl1
-## locDelta          
-## locImperial       
-## locKern           
-## locKings          
-## locTulare         
-## locYolo1          
-## locYolo2     0.488</code></pre>
+##             (Intr) locDlt lcImpr locKrn lcKngs locTlr locYl1
+## locDelta    -0.450                                          
+## locImperial -0.653  0.401                                   
+## locKern     -0.653  0.401  0.581                            
+## locKings    -0.610  0.386  0.543  0.543                     
+## locTulare   -0.525  0.291  0.467  0.467  0.421              
+## locYolo1    -0.653  0.401  0.581  0.581  0.543  0.467       
+## locYolo2    -0.549  0.369  0.488  0.488  0.442  0.393  0.488</code></pre>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb29-1" tabindex="-1"></a><span class="co"># plot(emmeans(model, ~gen))</span></span>
 <span id="cb29-2"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb29-2" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb29-3" tabindex="-1"></a>dat_pred <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">loc =</span> <span class="fu">unique</span>(dat<span class="sc">$</span>loc), </span>
@@ -440,7 +432,7 @@ Assume that our objective is to predict the performance of the genotypes under a
 <span id="cb32-5"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;Location&quot;</span>)<span class="sc">+</span></span>
 <span id="cb32-6"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span></span>
 <span id="cb32-7"><a href="día-3-tarde-pensar-un-modelo-jerárquico..html#cb32-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>loc, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-66-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-80-1.png" alt="" width="672" /></p>
 </div>
 <div id="tarea-1" class="section level2 hasAnchor" number="6.6">
 <h2><span class="header-section-number">6.6</span> Tarea<a href="día-3-tarde-pensar-un-modelo-jerárquico..html#tarea-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>

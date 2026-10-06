@@ -4,13 +4,39 @@ format: html
 ---
 
 
-The data in `df` below correspond to an experiment grown in 1995-1996 at the Scottish Crop Research Institute. The treatment design was a 2x70 factorial, and the design structure was a split-plot design with 4 blocks, 2 whole-plot fungicide treatments, and 70 barley varieties. The total area was 10 rows (North/South) by 56 beds (East/West). 
+The data in `df` below correspond to an experiment grown in 1995-1996 at the Scottish Crop Research Institute. 
+
+The treatment design was a 2x70 factorial, and the design structure was a split-plot design with 4 blocks, 2 whole-plot fungicide treatments, and 70 barley varieties. 
+
+The total area was 10 rows (North/South) by 56 beds (East/West). 
 
 ```{r}
 library(agridat)
 data("durban.splitplot")
 df <- durban.splitplot
 ```
+
+
+```{r}
+df |> 
+  ggplot(aes(bed, row))+
+  geom_tile(aes(fill = block))
+```
+```{r}
+df |> 
+  ggplot(aes(bed, row))+
+  geom_tile(aes(fill = paste(fung, block)), color = "black")+
+  coord_fixed()
+```
+
+```{r}
+df |> 
+  ggplot(aes(bed, row))+
+  geom_tile(aes(fill = gen), color = "black")+
+  coord_fixed()
+```
+
+
 
 ### 2.a. 
 
@@ -20,9 +46,38 @@ Using math notation, write the statistical model to analyze that data. Define al
 
 Write an ANOVA table including source of variation and degrees of freedom. Include both the treatment and the design sources of variability. 
 
+```{r}
+modelo_mal <- lm(yield ~ fung*gen , data = df )
+
+modelo_mal$df.residual
+
+car::Anova(modelo_mal)
+```
+
+
+
 ### 2.c. 
 
 Fit the model in (2.a.) to the data using R software. 
+
+```{r}
+modelo_bien <-
+  lmer(yield ~ fung*gen + (1|block) + (1|block:fung)  , data = df)
+
+
+car::Anova(modelo_bien, test.statistic = "F")
+```
+
+```{r}
+emmeans(modelo_mal, ~ fung, contr = list(c(1, -1)))
+emmeans(modelo_bien, ~ fung, contr = list(c(1, -1)))
+```
+
+
+```{r}
+emmeans(modelo_bien, ~ gen:fung, contr =
+          list(c(1, -1, rep(0, (68+70)))))
+```
 
 ### 2.d. 
 
@@ -31,4 +86,74 @@ Please provide the estimated treatment means for fungicide treatment "F1" and ge
 ### 2.e. 
 
 Please provide the estimated variance components (i.e., the $\sigma$s in (2.a.). 
+
+```{r}
+VarCorr(modelo_bien)
+```
+
+
+```{r}
+modelo_bien <-
+  lmer(yield ~ fung*gen*nitro +
+         (1|block) + (1|block:fung) + (1|block:fung:gen) , data = df)
+
+
+```
+
+
+##split split plot design 
+
+
+The field had 4 blocks.
+
+Each block has 2 whole plots for the genotypes.
+
+Each whole-plot had 10 sub-plots for the 5 different kinds of dust and 2 methods of application.
+
+Each sub-plot had 2 sub-sub-plots, one for inoculated soil and the other one for uninoculated soil.
+
+
+bloque > genotipo > dust:metodo > suelo inoculado/no 
+
+```{r}
+df <- agridat::goulden.splitsplit
+
+df |> 
+  ggplot(aes(col, row))+
+  coord_fixed()+
+  geom_tile(aes(fill = block), color = "black")
+```
+
+```{r}
+df |> 
+  ggplot(aes(col, row))+
+  coord_fixed()+
+  geom_tile(aes(fill = paste(block, gen)),
+            color = "black")
+
+```
+
+
+```{r}
+df |> 
+  filter(block == "B1") |> 
+  ggplot(aes(col, row))+
+  coord_fixed()+
+  geom_tile(aes(fill = paste(dust, dry)),
+            color = "black")+
+  geom_point(aes(color = inoc), size =4)
+```
+
+
+```{r}
+m <- lmer(yield ~ gen*dry*dust*inoc +
+            (1|block)+
+            (1|block:gen) +
+            (1|block:gen:dust:dry),
+          data = df)
+
+# lmer(yield ~ gen*dry*dust*inoc +
+#        (1|block/gen/dust:dry),
+#        data = df)
+```
 
