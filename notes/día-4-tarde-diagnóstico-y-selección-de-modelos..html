@@ -200,6 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#design-structure"><i class="fa fa-check"></i><b>3.2.2</b> Design structure</a></li>
 <li class="chapter" data-level="3.2.3" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#skeleton-anova-process"><i class="fa fa-check"></i><b>3.2.3</b> Skeleton ANOVA process</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-mañana-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#in-class-exercise"><i class="fa fa-check"></i><b>3.3</b> In-class exercise</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><i class="fa fa-check"></i><b>4</b> Día 2 (tarde): Conexión entre diseños experimentales y modelos estadísticos.</a>
 <ul>
@@ -212,9 +213,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.1" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#applied-example-1"><i class="fa fa-check"></i><b>4.2.1</b> Applied example</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#modeling-the-time-dependence-conditional-versus-marginal"><i class="fa fa-check"></i><b>4.3</b> Modeling the time dependence: conditional versus marginal</a></li>
-<li class="chapter" data-level="4.4" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#in-class-exercise"><i class="fa fa-check"></i><b>4.4</b> In-class exercise</a></li>
-<li class="chapter" data-level="4.5" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#more-resources-for-repeated-measures"><i class="fa fa-check"></i><b>4.5</b> More resources for repeated measures</a></li>
-<li class="chapter" data-level="4.6" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#tarea"><i class="fa fa-check"></i><b>4.6</b> Tarea</a></li>
+<li class="chapter" data-level="4.4" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#more-resources-for-repeated-measures"><i class="fa fa-check"></i><b>4.4</b> More resources for repeated measures</a></li>
+<li class="chapter" data-level="4.5" data-path="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#tarea"><i class="fa fa-check"></i><b>4.5</b> Tarea</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="día-3-mañana-recuperación-de-información-intergrupos.html"><a href="día-3-mañana-recuperación-de-información-intergrupos.html"><i class="fa fa-check"></i><b>5</b> Día 3 (mañana): recuperación de información intergrupos</a>
 <ul>
@@ -327,15 +327,17 @@ However, as we know, Statistics helps us summarize our data and make sense of it
 <span id="cb45-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-8" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()<span class="sc">+</span></span>
 <span id="cb45-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-9" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(Yield_SY), <span class="at">fill =</span> <span class="st">&quot;gold&quot;</span>, <span class="at">alpha =</span> .<span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb45-10"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb45-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-125-1.png" alt="" width="672" /></p>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value
+## `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value
+## `binwidth`.</code></pre>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-77-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-1" tabindex="-1"></a>y_sim <span class="sc">|&gt;</span> </span>
 <span id="cb47-2"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Total_N, value))<span class="sc">+</span></span>
 <span id="cb47-3"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
 <span id="cb47-4"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(Total_N, Yield_SY), <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="st">&quot;gold&quot;</span>, <span class="at">alpha =</span> .<span class="dv">3</span>)<span class="sc">+</span></span>
 <span id="cb47-5"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb47-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-125-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-77-2.png" alt="" width="672" /></p>
 <p>Discuss the plot above: how are the simulated data compared to the observed data?</p>
 </div>
 <div id="some-useful-metrics-to-compare-models" class="section level2 hasAnchor" number="8.3">
@@ -385,7 +387,7 @@ In essence, <span class="math inline">\(R^2\)</span> is the ratio between the <s
 <span id="cb50-7"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-7" tabindex="-1"></a>})</span>
 <span id="cb50-8"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-8" tabindex="-1"></a></span>
 <span id="cb50-9"><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#cb50-9" tabindex="-1"></a><span class="fu">hist</span>(boot_r2, <span class="at">breaks =</span> <span class="dv">30</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-127-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-79-1.png" alt="" width="672" /></p>
 </div>
 <div id="out-of-sample-r2" class="section level3 hasAnchor" number="8.3.5">
 <h3><span class="header-section-number">8.3.5</span> Out-of-sample R<sup>2</sup><a href="día-4-tarde-diagnóstico-y-selección-de-modelos..html#out-of-sample-r2" class="anchor-section" aria-label="Anchor link to header"></a></h3>

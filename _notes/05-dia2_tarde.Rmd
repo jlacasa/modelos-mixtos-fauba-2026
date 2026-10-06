@@ -298,10 +298,6 @@ Time dependencies can be specified on the $\mathbf{G}$ matrix, or in the $\mathb
 - "Conditional and Marginal Models: Another View" [Lee and Nelder (2004)](https://projecteuclid.org/journals/statistical-science/volume-19/issue-2/Conditional-and-Marginal-Models-Another-View/10.1214/088342304000000305.full)
 
 
-## In-class exercise
-
-Analyze the data. [Get R code.](../scripts/dia2_inclass_ex.qmd).
-
 ## More resources for repeated measures 
 
 - Guidelines for Selecting the Covariance Structure in Mixed Model Analysis [[link](https://support.sas.com/resources/papers/proceedings/proceedings/sugi30/198-30.pdf)] 

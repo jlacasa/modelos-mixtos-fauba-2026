@@ -296,6 +296,15 @@ $u_k$ is the random effect of the $k$th block,
 $v_{i \vert k}$ is the random effect of the $i$th "miniblock" (whole plot) in the $k$th block,
 and $\varepsilon_{ij}$ is the residual. 
 
+
+Given this model, here are some important standard error formulas:
+
+- Mean differences at the whole-plot level: $se(\hat\mu-\mu') = \sqrt{\frac{2(\sigma^2_\varepsilon + S \ \sigma^2_{wp})}{b \cdot S}}$ (where $S$ is the number of levels of the factor in the whole plot and $b$ is the number of blocks). 
+
+- Mean differences at the split-plot level (gen): $se(\hat\mu-\mu') = \sqrt{\frac{2(\sigma^2_\varepsilon)}{b \cdot W}}$ (where $W$ is the number of levels of the factor in the whole plot and $b$ is the number of blocks). 
+
+
+
 Assuming observations 1 to 4 belong to:  
 <head>
     <meta charset="UTF-8">
@@ -453,11 +462,23 @@ $w_{j \vert ik}$ is the random effect of the splitplot with the $j$th level of $
 and $\varepsilon_{ij}$ is the residual. 
 
 
+Given this model, here are some important standard error formulas:
+
+- Mean differences for the whole-plot main effect (comparing $\tau_i$ vs $\tau_{i'}$):$$se(\bar{y}_{i...}-\bar{y}_{i'...}) = \sqrt{\frac{2(\sigma^2_\varepsilon + n \sigma^2_w + n S \sigma^2_v)}{b \cdot S \cdot n}}$$(where $S$ is the number of levels of the split-plot factor, $n$ is the number of subsamples per split plot, and $b$ is the number of blocks).
+
+- Mean differences for the split-plot main effect (comparing $\alpha_j$ vs $\alpha_{j'}$):$$se(\bar{y}_{.j..}-\bar{y}_{.j'...}) = \sqrt{\frac{2(\sigma^2_\varepsilon + n \sigma^2_w)}{b \cdot W \cdot n}}$$(where $W$ is the number of levels of the whole-plot factor).
+
+
+
 ```{r fig.height=5, fig.align='center', echo=FALSE, caption = 'Schematic diagram of the variance-covariance matrix for a split-plot with subsamples in a randomized complete block design (RCBD)'}
 knitr::include_graphics("figures/ZGZ_R_split_plot_subsamples.png")
 ```
 
 
+
+## In-class exercise
+
+Analyze the data. [Get R code.](../scripts/dia2_inclass_ex.qmd).
 
 
 
