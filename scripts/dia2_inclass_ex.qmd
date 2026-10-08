@@ -11,6 +11,9 @@ The treatment design was a 2x70 factorial, and the design structure was a split-
 The total area was 10 rows (North/South) by 56 beds (East/West). 
 
 ```{r}
+library(tidyverse)
+library(emmeans)
+library(lme4)
 library(agridat)
 data("durban.splitplot")
 df <- durban.splitplot
@@ -155,5 +158,115 @@ m <- lmer(yield ~ gen*dry*dust*inoc +
 # lmer(yield ~ gen*dry*dust*inoc +
 #        (1|block/gen/dust:dry),
 #        data = df)
+```
+
+```{r}
+car::Anova(m, test.statistic = "F")
+```
+
+```{r}
+DHARMa::simulateResiduals(m, plot = T)
+```
+
+
+```{r}
+emmeans(m, ~gen*dry*dust*inoc)
+```
+
+186 observations on the following 5 variables.
+
+
+PP: management
+SP: time (moment)
+subm: 1,2
+
+```{r}
+dat <- agridat::gomez.splitplot.subsample
+dat
+```
+ 
+```{r}
+m_subsamp <- 
+  lmer(height ~ 1 + manage + time + manage:time +
+       rep +
+       # (1|block:manage)+ (1|block:manage:time)
+       (1|rep:manage/time),
+     data = dat)
+```
+
+```{r }
+car::Anova(m_subsamp, test.statistic ="F")
+```
+
+```{r}
+(8*4*3*2)-2-7-14-3-21-48
+```
+
+
+```{r}
+m_subsamp_mal <- 
+  lmer(height ~ 1 + manage + time + manage:time +
+       rep +
+       # (1|block:manage)+ (1|block:manage:time)
+       (1|rep:manage),
+     data = dat )
+```
+
+```{r }
+car::Anova(m_subsamp_mal, test.statistic ="F")
+```
+
+```{r}
+m_subsamp_promedio <- 
+  lmer(height ~ 1 + manage + time + manage:time +
+       rep +
+       # (1|block:manage)+ (1|block:manage:time)
+       (1|rep:manage),
+     data = dat |> 
+       group_by(rep, manage, time) |> 
+       summarise(height = mean(height)))
+```
+
+
+```{r}
+emmeans(m_subsamp, ~ time, 
+        contr = list(c(1, -1, 0, 0)))
+emmeans(m_subsamp_promedio, ~ time, 
+        contr = list(c(1, -1, 0, 0)))
+```
+
+```{r}
+VarCorr(m_subsamp)
+VarCorr(m_subsamp_promedio)
+```
+
+
+```{r}
+predict(m_subsamp, 
+        newdata = dat[1,], re.form = ~0, 
+        se = T)
+```
+
+```{r}
+df_predict <- data.frame(
+  time = factor("T4"), manage = factor("M1"), rep = factor("R1") 
+)
+
+predict(m_subsamp_promedio, 
+        newdata = df_predict, 
+        re.form = ~ (1|rep:manage), 
+        se = T)
+
+predict(m_subsamp, 
+        newdata = df_predict, 
+        re.form = ~ (1|rep:manage/time),
+        se = T)
+```
+
+
+
+```{r}
+# crossed random effects
+.... + (1|site) + (1|year) + (1|site:year)
 ```
 

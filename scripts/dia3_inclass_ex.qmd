@@ -20,6 +20,7 @@ library(lme4)
 
 ```{r}
 dat <- agridat::cochran.bib
+unique(dat$loc)
 ```
 
 ## Model fitting 
@@ -107,6 +108,8 @@ Which is the same as the SE of the marginal means:
 
 ```{r}
 means_random
+means_fixed
+
 ```
 
 Likewise, the confidence interval comes from doing 
@@ -147,6 +150,9 @@ means_random$contrasts
 ```
 
 
+
+
+
 ```{r}
 L_rand <- means_random$contrasts@linfct
 
@@ -156,3 +162,31 @@ V_rand <- as.matrix(vcov(m_random))
 
 se_mui_rand <- se_mui_all_rand[1]
 ```
+
+```{r}
+getME(m_random, "b")[,1]
+```
+
+```{r}
+data.frame(emmeans(m_fixed, ~loc))$emmean - mean(data.frame(emmeans(m_fixed, ~loc))$emmean)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

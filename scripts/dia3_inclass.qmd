@@ -1,0 +1,179 @@
+---
+title: "Untitled"
+format: html
+---
+
+```{r}
+dd_temp <- read.csv("../data/temperature_2.csv")
+options(contrasts = c("contr.treatment", "contr.poly"))
+
+dd_temp$Pig <- as.factor(dd_temp$Pig)
+dd_temp$Treatment <- as.factor(dd_temp$Treatment)
+dd_temp$Pen <- as.factor(dd_temp$Pen)
+dd_temp$Pen_n <- as.numeric(dd_temp$Pen)
+dd_temp$Time <- as.factor(dd_temp$Time)
+dd_temp$Time_n <- as.numeric(dd_temp$Time)
+dd_temp$Temperature_F <- (dd_temp$Temperature_C *9/5) + 32
+unique(dd_temp$Treatment)
+
+dd_temp |> 
+  group_by(Time, Treatment) |> 
+  summarise(n())
+```
+
+```{r}
+dd_temp |> 
+  ggplot(aes(Time, Temperature_C))+
+  facet_wrap(~Treatment)+
+  geom_point()
+```
+
+```{r}
+library(glmmTMB)
+
+m_ar1 <- 
+  glmmTMB(Temperature_F ~ Treatment*Time + ar1(0 + Time | Pen),
+          REML = T,
+          data = dd_temp )
+
+m_toep <- 
+  glmmTMB(Temperature_F ~ Treatment*Time + toep(0 + Time | Pen),
+          REML = T,
+          data = dd_temp )
+
+```
+
+```{r}
+AIC(m_ar1, m_toep)
+BIC(m_ar1, m_toep)
+performance::performance_aicc(m_ar1)
+performance::performance_aicc(m_toep)
+```
+
+```{r}
+plot(predict(m_ar1), resid(m_ar1, type = "pearson"))
+
+```
+
+```{r}
+DHARMa::simulateResiduals(m_ar1, plot = T)
+```
+
+```{r}
+DHARMa::simulateResiduals(m_toep, plot = T)
+```
+
+```{r}
+summary(m_toep)
+
+car::Anova(m_toep)
+```
+
+
+```{r}
+(medias <- emmeans(m_toep, ~ Treatment | Time))
+```
+
+```{r}
+library(multcomp)
+
+cld(medias)
+```
+
+
+
+
+## Tarde
+
+```{r}
+dat_yor <- data.frame(yor = seq(1980, 2020, by= 4))
+beta0 <- 6
+beta1 <- .1
+
+dat_yor$mu <- beta0 + beta1*(dat_yor$yor-1980) + rnorm(length(dat_yor$yor), 0, 2)
+
+dat_yor |> 
+  ggplot(aes(yor, mu))+
+  geom_point()
+```
+
+
+```{r}
+dat_yor2 <- 
+  data.frame(yor = c(dat_yor$yor, dat_yor$yor, dat_yor$yor), 
+           mu = c(dat_yor$mu, dat_yor$mu, dat_yor$mu)) |> 
+  mutate(y = mu + rnorm(length(dat_yor$yor)*3, 0, 2))
+```
+
+
+```{r}
+dat_yor2 <- 
+  dat_yor2 |> 
+  mutate(y = abs(y), gen = yor) 
+
+dat_yor2|> 
+  ggplot(aes(yor, y))+
+  geom_point()+
+  labs(y = "Yield", x= "YOR")
+```
+
+
+
+```{r}
+m_blup <- lmer(y ~ 1 + (1|gen), data = dat_yor2)
+```
+
+```{r}
+n_distinct(dat_yor2$gen)
+```
+
+```{r}
+blups <- (getME(m_blup, "b"))
+```
+
+
+```{r}
+m_blue <- lm(y ~ 1 + factor(gen), data = dat_yor2)
+
+blues <- data.frame(emmeans(m_blue, ~gen))$emmean - mean(data.frame(emmeans(m_blue, ~gen))$emmean)
+
+```
+
+```{r}
+dat_reg <- data.frame(blups = blups[,1], blues, yor = dat_yor$yor)
+```
+
+```{r}
+dat_reg |> 
+  ggplot(aes(yor, blues))+
+  geom_point(aes(y = blups), color = "tomato")+
+  geom_point(color = "blue")
+```
+
+
+```{r}
+lm(blups ~ yor, dat_reg)
+```
+
+```{r}
+lm(blues ~ yor, dat_reg)
+```
+
+## 
+
+```{r}
+
+```
+
+
+### Ejercicio 
+
+
+```{r}
+url <- "https://raw.githubusercontent.com/jlacasa/modelos-mixtos-fauba-2026/refs/heads/main/data/fecal_dm.csv"
+
+dat <- read.csv(url)
+
+unique(dat$Day)
+```
+
