@@ -20,6 +20,15 @@ nav_order: 5
 - Schielzeth, H. and Nakagawa, S. (2013), Nested by design: model fitting and interpretation in a mixed model era. Methods Ecol Evol, 4: 14-24. https://doi.org/10.1111/j.2041-210x.2012.00251.x
 
 
+**Otros articulos discutidos en clase**
+
+- Can Spatial Modeling Substitute for Experimental Design in Agricultural Experiments?
+ [[link](https://acsess.onlinelibrary.wiley.com/doi/full/10.2135/cropsci2018.03.0177)]
+- Power analysis based on spatial effects mixed models: A tool for comparing design and analysis strategies in the presence of spatial variability [[link](https://link.springer.com/article/10.1198/108571102780)]
+- A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative treatment factor levels
+ [[link](https://onlinelibrary.wiley.com/doi/full/10.1111/jac.12267)]
+
+
 **Otras recomendaciones:**
 
 - [WTF](https://rstats.wtf/)

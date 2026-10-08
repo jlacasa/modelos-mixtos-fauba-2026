@@ -291,7 +291,7 @@ However, an important difference is that time cannot be randomly allocated,
 because it is unidirectional!
 The independence assumption does not hold and should be included in the model.</p>
 <p><img src="figures/designs_repeated.PNG" alt="" width="640" style="display: block; margin: auto;" /></p>
-<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_925493').style.display='block'">Repeated measures example for animal science.</button>     </div>     <div id="modal_925493" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_925493').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what a repeated measures for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_repeated.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
+<p><div style="text-align: center; margin: 15px 0;">       <button type="button" style="background-color: #e7c6ff; border: 1px solid #d1a8f0; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: 500;" onclick="document.getElementById('modal_996652').style.display='block'">Repeated measures example for animal science.</button>     </div>     <div id="modal_996652" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align: left;">       <div style="background-color:#fff; margin:15% auto; padding:20px; border:1px solid #888; width:80%; max-width:600px; border-radius:8px; font-family: sans-serif;">         <span onclick="document.getElementById('modal_996652').style.display='none'" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>         <p style="margin-top: 10px; font-size: 16px;">Here is what a repeated measures for a barn experiment looks like:</p>         <div style="text-align: center; margin-top: 15px;">                           <img src="figures/pigs_repeated.PNG" style="max-width: 100%; height: auto; border-radius: 4px;">                         </div>       </div>     </div></p>
 <p><span class="math display">\[y_{ijk} = \mu + \tau_i + \alpha_j + (\tau \alpha)_{ij} + u_{k} + v_{ijk} + \varepsilon_{ijk},\\
 u_{k} \sim N(0, \sigma^2_u),\]</span></p>
 <p>where <span class="math inline">\(y_{ijk}\)</span> is the observation for the <span class="math inline">\(i\)</span>th treatment, <span class="math inline">\(j\)</span>th time, in the <span class="math inline">\(k\)</span>th block,
@@ -564,9 +564,9 @@ Assuming a first-order autoregressive structure, we can say</p>
 <span id="cb10-4"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#cb10-4" tabindex="-1"></a>          <span class="at">family =</span> <span class="fu">gaussian</span>(<span class="at">link =</span> <span class="st">&quot;identity&quot;</span>),</span>
 <span id="cb10-5"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#cb10-5" tabindex="-1"></a>          <span class="at">data =</span> dd_temp)</span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#cb11-1" tabindex="-1"></a>res_repeated <span class="ot">&lt;-</span> <span class="fu">simulateResiduals</span>(m_repeated_ar1, <span class="at">plot =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-201-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-90-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#cb12-1" tabindex="-1"></a>res_repeated <span class="ot">&lt;-</span> <span class="fu">simulateResiduals</span>(m_repeated_toep, <span class="at">plot =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-201-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-90-2.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#cb13-1" tabindex="-1"></a><span class="fu">AIC</span>(m_repeated_ar1, m_repeated_toep)</span></code></pre></div>
 <pre><code>##                 df     AIC
 ## m_repeated_ar1  28 888.730
@@ -585,44 +585,74 @@ Assuming a first-order autoregressive structure, we can say</p>
 <span id="cb21-4"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#cb21-4" tabindex="-1"></a>    <span class="at">adjust =</span> <span class="st">&quot;sidak&quot;</span>, </span>
 <span id="cb21-5"><a href="día-2-tarde-conexión-entre-diseños-experimentales-y-modelos-estadísticos..html#cb21-5" tabindex="-1"></a>    <span class="at">Letters =</span> letters)</span></code></pre></div>
 <pre><code>## Time = 0:
-##  Treatment emmean    SE  df asymp.LCL asymp.UCL .group
-##  A          103.7 0.142 Inf     103.3     104.1  a    
-##  D          103.8 0.142 Inf     103.5     104.2  a    
-##  B          103.9 0.142 Inf     103.5     104.3  a    
-##  E          103.9 0.142 Inf     103.6     104.3  a    
-##  C          104.0 0.142 Inf     103.6     104.3  a    
+##  Treatment emmean    SE  df asymp.LCL
+##  A          103.7 0.142 Inf     103.3
+##  D          103.8 0.142 Inf     103.5
+##  B          103.9 0.142 Inf     103.5
+##  E          103.9 0.142 Inf     103.6
+##  C          104.0 0.142 Inf     103.6
+##  asymp.UCL .group
+##      104.1  a    
+##      104.2  a    
+##      104.3  a    
+##      104.3  a    
+##      104.3  a    
 ## 
 ## Time = 2:
-##  Treatment emmean    SE  df asymp.LCL asymp.UCL .group
-##  A          104.8 0.253 Inf     104.2     105.5  a    
-##  E          105.0 0.253 Inf     104.3     105.6  a    
-##  B          105.1 0.253 Inf     104.5     105.8  a    
-##  C          105.4 0.253 Inf     104.8     106.1  a    
-##  D          105.7 0.253 Inf     105.0     106.3  a    
+##  Treatment emmean    SE  df asymp.LCL
+##  A          104.8 0.253 Inf     104.2
+##  E          105.0 0.253 Inf     104.3
+##  B          105.1 0.253 Inf     104.5
+##  C          105.4 0.253 Inf     104.8
+##  D          105.7 0.253 Inf     105.0
+##  asymp.UCL .group
+##      105.5  a    
+##      105.6  a    
+##      105.8  a    
+##      106.1  a    
+##      106.3  a    
 ## 
 ## Time = 4:
-##  Treatment emmean    SE  df asymp.LCL asymp.UCL .group
-##  B          104.4 0.344 Inf     103.6     105.3  a    
-##  A          104.8 0.344 Inf     103.9     105.7  a    
-##  E          104.9 0.344 Inf     104.0     105.8  a    
-##  C          105.1 0.344 Inf     104.2     106.0  a    
-##  D          105.3 0.344 Inf     104.4     106.2  a    
+##  Treatment emmean    SE  df asymp.LCL
+##  B          104.4 0.344 Inf     103.6
+##  A          104.8 0.344 Inf     103.9
+##  E          104.9 0.344 Inf     104.0
+##  C          105.1 0.344 Inf     104.2
+##  D          105.3 0.344 Inf     104.4
+##  asymp.UCL .group
+##      105.3  a    
+##      105.7  a    
+##      105.8  a    
+##      106.0  a    
+##      106.2  a    
 ## 
 ## Time = 6:
-##  Treatment emmean    SE  df asymp.LCL asymp.UCL .group
-##  E          104.1 0.221 Inf     103.6     104.7  a    
-##  B          104.5 0.221 Inf     103.9     105.1  a    
-##  A          104.5 0.221 Inf     103.9     105.1  a    
-##  D          104.8 0.221 Inf     104.3     105.4  a    
-##  C          104.9 0.221 Inf     104.3     105.4  a    
+##  Treatment emmean    SE  df asymp.LCL
+##  E          104.1 0.221 Inf     103.6
+##  B          104.5 0.221 Inf     103.9
+##  A          104.5 0.221 Inf     103.9
+##  D          104.8 0.221 Inf     104.3
+##  C          104.9 0.221 Inf     104.3
+##  asymp.UCL .group
+##      104.7  a    
+##      105.1  a    
+##      105.1  a    
+##      105.4  a    
+##      105.4  a    
 ## 
 ## Time = 12:
-##  Treatment emmean    SE  df asymp.LCL asymp.UCL .group
-##  E          103.8 0.213 Inf     103.2     104.3  a    
-##  A          103.9 0.213 Inf     103.4     104.5  a    
-##  B          104.0 0.213 Inf     103.5     104.6  a    
-##  D          104.1 0.213 Inf     103.5     104.6  a    
-##  C          104.3 0.213 Inf     103.7     104.8  a    
+##  Treatment emmean    SE  df asymp.LCL
+##  E          103.8 0.213 Inf     103.2
+##  A          103.9 0.213 Inf     103.4
+##  B          104.0 0.213 Inf     103.5
+##  D          104.1 0.213 Inf     103.5
+##  C          104.3 0.213 Inf     103.7
+##  asymp.UCL .group
+##      104.3  a    
+##      104.5  a    
+##      104.6  a    
+##      104.6  a    
+##      104.8  a    
 ## 
 ## Confidence level used: 0.95 
 ## Conf-level adjustment: sidak method for 5 estimates 

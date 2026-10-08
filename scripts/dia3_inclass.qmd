@@ -3,6 +3,13 @@ title: "Untitled"
 format: html
 ---
 
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(glmmTMB)
+```
+
+
+
 ```{r}
 dd_temp <- read.csv("../data/temperature_2.csv")
 options(contrasts = c("contr.treatment", "contr.poly"))
@@ -172,8 +179,103 @@ lm(blues ~ yor, dat_reg)
 ```{r}
 url <- "https://raw.githubusercontent.com/jlacasa/modelos-mixtos-fauba-2026/refs/heads/main/data/fecal_dm.csv"
 
-dat <- read.csv(url)
+dat <- read.csv(url) |> 
+  mutate(Day = as.factor(Day), 
+         Room = as.factor(Room))
+```
 
-unique(dat$Day)
+```{r}
+colnames(dat)
+dat |> 
+  mutate(Room = as.factor(Room)) |>
+  ggplot(aes(Trt, dry_matter_perc))+
+  geom_boxplot()
+```
+
+```{r}
+colnames(dat)
+unique(dat$Room)
+n_distinct(dat$Pen)
+n_distinct(dat$Pig)
+
+m_ar1 <- glmmTMB(dry_matter_perc/100 ~
+                   1 + Trt + Day + Trt:Day +
+                   Room +
+                   (1|Room:Trt:Pen) +
+                   ar1( 0 + Day | Pig),
+                 family = gaussian(),
+                 REML = T,
+                 data = dat)
+
+m_us <- glmmTMB(dry_matter_perc/100 ~
+                   1 + Trt + Day + Trt:Day +
+                   Room +
+                   (1|Room:Trt:Pen) +
+                   us( 0 + Day | Pig),
+                 family = gaussian(),
+                 REML = T,
+                 data = dat)
+
+# m_toep <- glmmTMB(dry_matter_perc ~
+#                    1 + Trt + Day + Trt:Day +
+#                    Room +
+#                    (1|Room:Trt:Pen) +
+#                    us( 0 + Day | Pig),
+#     control = 
+#       glmmTMBControl(
+#         optCtrl = list(iter.max = 1000),
+#         optArgs = list(method="Nelder-Mead"),
+#                      #“CG”, “L-BFGS-B”, “SANN”, “Brent”
+#                      optimizer = optim),
+#                   
+#                  family = gaussian(),
+#                  REML = T,
+#                  data = dat)
+```
+
+
+```{r}
+DHARMa::simulateResiduals(m_ar1, plot = T)
+DHARMa::simulateResiduals(m_us, plot = T)
+
+
+AIC(m_ar1, m_us)
+BIC(m_ar1, m_us)
+```
+
+```{r}
+performance::performance_aicc(m_ar1)
+performance::performance_aicc(m_us)
+```
+
+
+```{r}
+summary(m_us)
+```
+
+
+```{r}
+plot(emmeans(m_us, ~ Trt, at = list(Day = factor(17))))
+```
+
+
+```{r}
+emmeans(m_us, ~ Trt, at = list(Day = factor(17)), 
+        contr = list(
+          c(-1, 1, 0, 0, 0, 0),
+          c(0, 1, -1, 0, 0, 0),
+          c(0, 1, 0, -1, 0, 0),
+          c(0, 1, 0, 0, -1, 0),
+          c(0, 1, 0, 0, 0, -1),
+          c(-1/5, 5/5, -1/5, -1/5, -1/5, -1/5)))
+```
+
+```{r}
+0.0316 - (0.0112 * 1.96)
+0.0316 + (0.0112 * 1.96)
+
+
+0.0267 - (0.0144 * 1.96)
+0.0267 + (0.0144 * 1.96)
 ```
 

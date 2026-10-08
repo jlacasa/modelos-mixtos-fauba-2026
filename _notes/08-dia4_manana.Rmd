@@ -95,7 +95,8 @@ dat <- agridat::george.wheat |>
 
 
 ```{r message=FALSE, warning=FALSE}
-dat <- read.csv("../data/multienv_data.csv")
+dat <- read.csv("../data/multienv_data.csv") |> 
+  mutate(gen =as.factor(gen))
 
 dat |> 
   ggplot(aes(yield))+
