@@ -1,0 +1,243 @@
+---
+title: "Untitled"
+format: html
+---
+
+```{r}
+# data adapted from the agridat R package
+dat_merged <- read.csv("../data/data_barley.csv") |> 
+  mutate(year =as.factor(year))
+unique(dat_merged$gen)
+View(arrange(dat_merged, year))
+```
+
+```{r}
+dat_merged |> summary()
+```
+
+```{r}
+# agrupacion parcial
+m_anio_aleat <- lmer(height ~ 1 + gen*rainfall_3+ srad_3 +
+                       (1|year),
+                     data = dat_merged
+     )
+
+# sin agrupar 
+m_anio_fijo <- lm(height ~ 1 + gen*rainfall_3 +
+                    year,
+                     data = dat_merged )
+
+m_anio_fijo_int <- lm(height ~ 1 + gen*rainfall_3*year,
+                     data = dat_merged )
+
+# agrupacion total
+m_solo <- lm(height ~ 1 + gen*rainfall_3,
+             data = dat_merged )
+```
+
+```{r}
+emtrends(m_solo, ~rainfall_3, "rainfall_3")
+
+emtrends(m_anio_aleat, ~rainfall_3, "rainfall_3")
+
+emtrends(m_anio_aleat, ~srad_3, "rainfall_3")
+```
+
+```{r}
+emtrends(m_anio_fijo, ~rainfall_3, "rainfall_3")
+emtrends(m_anio_fijo_int, ~rainfall_3, "rainfall_3")
+```
+
+
+
+### Ejemplo Victor
+
+```{r}
+
+dat_merged <- read.csv("../data/data_barley.csv") |> 
+  mutate(year =as.factor(year)) |> 
+  transmute(gen, year, height, rainfall_3 = rainfall_3+rnorm(n(), 0,1))
+```
+
+```{r}
+# data adapted from the agridat R package
+dat_merged |> 
+  ggplot(aes(year, rainfall_3))+
+  geom_point()+
+  theme_pubr()
+```
+
+
+```{r}
+# agrupacion parcial
+m_anio_aleat <- lmer(height ~ 1 + gen*rainfall_3 +
+                       (1|year),
+                     data = dat_merged)
+
+# agrupacion total
+m_solo <- lm(height ~ 1 + gen*rainfall_3,
+             data = dat_merged )
+```
+
+```{r}
+emtrends(m_solo, ~rainfall_3, "rainfall_3")
+
+emtrends(m_anio_aleat, ~rainfall_3, "rainfall_3")
+```
+
+## Tarde
+
+
+```{r}
+library(lme4)
+library(tidyverse)
+library(latex2exp)
+library(ggpubr)
+library(mosaic)
+
+dat <- read.csv("../data/N_fert.csv")
+
+m1 <- lm(Yield_SY ~ Total_N, data= dat)
+dat$residuals <- resid(m1)
+dat$yhat <- predict(m1)
+
+theme_set(theme_pubr())
+
+dat |> 
+  ggplot(aes(Total_N, Yield_SY))+
+  geom_point()
+```
+
+
+```{r}
+plot(m1$fitted.values, m1$residuals)
+```
+
+```{r}
+DHARMa::simulateResiduals(m1, plot = T)
+```
+
+
+```{r}
+m2 <- lm(Yield_SY ~ Total_N + I(Total_N^2), data= dat)
+
+```
+
+```{r}
+plot(m2$fitted.values, m2$residuals)
+simulateResiduals(m2 ,plot = T)
+```
+
+
+```{r}
+dat |> 
+  ggplot(aes(Total_N, Yield_SY))+
+  geom_point()+
+  stat_function(fun = function(x){
+    coef(m2)[1] + coef(m2)[2] * x +coef(m2)[3]*x^2
+  })
+```
+
+
+```{r}
+df_pred <- 
+  expand.grid(Total_N = seq(min(dat$Total_N), max(dat$Total_N), by =5),
+              Yield_SY = seq(min(dat$Yield_SY), max(dat$Yield_SY), by =5))
+
+pred_conf <- predict(m2, newdata = df_pred, se = T, interval =  "confidence")
+pred_pred <- predict(m2, newdata = df_pred, interval =  "prediction")
+
+df_pred$fitted <-  pred_conf$fit
+df_pred$se.estim <-  pred_conf$se.fit
+df_pred$lwr <-  pred_pred[,2]
+df_pred$upr <-  pred_pred[,3]
+```
+
+
+```{r}
+df_pred |> 
+  ggplot(aes(Total_N, fitted))+
+  geom_ribbon(aes(ymin  = lwr, ymax = upr), 
+              fill ='orange')+
+  geom_ribbon(aes(ymin  = fitted - 1.96*se.estim, ymax = fitted + 1.96*se.estim), 
+              fill ='gold')+
+  geom_point(aes(y = Yield_SY), data = dat)+
+  geom_line()
+```
+
+```{r}
+summary(m2)
+```
+
+
+## Seleccion de modelos 
+
+```{r}
+dat_merged <-
+  read.csv("../data/data_barley.csv") |> 
+  mutate(year =as.factor(year))
+```
+
+```{r}
+dat_merged |> 
+  ggplot(aes(sowing_t, rainfall_4))+
+  geom_point(aes(color = year))
+```
+
+
+```{r}
+
+
+```
+
+
+```{r}
+lmer(height ~ (1|year) + gen + rainfall_1 + rainfall_2 + rainfall_3 + ,
+     data = dat_merged)
+```
+
+
+
+```{r}
+library(glmnet)
+```
+
+
+```{r}
+X <- model.matrix(~0+., data = dat_merged[,-c(1:3)])
+
+X <- dat_merged[,-c(1:3)]
+y <- dat_merged$height
+
+fit <- glmnet(X, y, alpha = 0.3)
+
+labs <- rownames(fit$beta)
+plot(fit, label = TRUE);legend("topleft", legend = labs, col = 1:length(labs), lty = 1, cex = 0.8)
+```
+
+
+```{r}
+fit.cv <- cv.glmnet(as.matrix(X),y, alpha = .3)
+
+plot(fit.cv)
+```
+
+```{r}
+log(fit.cv$lambda.1se)
+
+coef(glmnet(X, y, lambda = fit.cv$lambda.1se, alpha = .3))
+```
+
+
+```{r}
+plot(cv.glmnet(as.matrix(X),y, alpha = .3))
+```
+
+
+
+
+
+
+
+
+

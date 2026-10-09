@@ -4,7 +4,7 @@
 
 **Examen**
 
-- El examen se enviará mañana (sábado) y habrá 2 semanas para devolverlo. 
+- El examen se enviará el martes y habrá 2 semanas para devolverlo. 
 - Respuestas 
 
 ## Ejercicio integrador 
@@ -15,4 +15,8 @@ Cronograma de hoy:
 
 **1:30-5:00**: presentaciones de los casos, discusión, puesta en común.  
 
+
+Caso 1: Nitrógeno [[Get R code](../handouts/ej_integrador_a_09octubre_student_version.qmd)]
+
+Caso 1: Alelos como predictores [[Get R code](../handouts/ej_integrador_b_09octubre_student_version.qmd)]
 

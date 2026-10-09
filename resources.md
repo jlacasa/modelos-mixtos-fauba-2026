@@ -22,11 +22,21 @@ nav_order: 5
 
 **Otros articulos discutidos en clase**
 
+**Martes** 
+
 - Can Spatial Modeling Substitute for Experimental Design in Agricultural Experiments?
  [[link](https://acsess.onlinelibrary.wiley.com/doi/full/10.2135/cropsci2018.03.0177)]
 - Power analysis based on spatial effects mixed models: A tool for comparing design and analysis strategies in the presence of spatial variability [[link](https://link.springer.com/article/10.1198/108571102780)]
 - A tutorial on the statistical analysis of factorial experiments with qualitative and quantitative treatment factor levels
  [[link](https://onlinelibrary.wiley.com/doi/full/10.1111/jac.12267)]
+
+**Jueves** 
+
+- The Difference Between “Significant” and “Not Significant” is not Itself Statistically Significant [[link](https://www.tandfonline.com/doi/abs/10.1198/000313006X152649)]
+- Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure [[link](https://nsojournals.onlinelibrary.wiley.com/doi/10.1111/ecog.02881)]
+- A guide to Bayesian model selection for ecologists [[link](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/14-0661.1)]
+- Regularization and Variable Selection Via the Elastic Net [[link](https://academic.oup.com/jrsssb/article/67/2/301/7109482)]
+- Bayesian Models: A Statistical Primer for Ecologists, 2nd Edition [[link](https://www.amazon.com/Bayesian-Models-Statistical-Primer-Ecologists/dp/069125012X/ref=sr_1_1?crid=25D7UI5GM79F8&dib=eyJ2IjoiMSJ9.Ytu7t8c709OWiIqfK6SwFf-nO2yltLWvL-58n9Jf1fap2vsALeq7dfhuMiubpo5ZKEaoHYxihEggE6PZpDPH9PtmU3BWRx0w3tJYT6hxtwVivGmDDlE2j3_KiqpovA1JM1QcOBpmJU1M_J0HYKsiAxMpk1MLtSh7_-K-M5LdJo-HgK9Zeu7_TpFT-Ctf9OggFgr-XkscLQP8wGRJsKY9rXKOnkT0gmEwxIWFAvEh3Hc.-a7LvtzmgktCplm5kF8zlwlMov9HDeNLDUzgT1ugJ5w&dib_tag=se&keywords=Bayesian+Models%3A+A+Statistical+Primer+for+Ecologists&qid=1791461944&sprefix=bayesian+models+a+statistical+primer+for+ecologists+%2Caps%2C301&sr=8-1&ufe=app_do%3Aamzn1.fos.9fe8cbfa-bf43-43d1-a707-3f4e65a4b666)]
 
 
 **Otras recomendaciones:**
