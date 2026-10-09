@@ -18,5 +18,5 @@ Cronograma de hoy:
 
 Caso 1: Nitrógeno [[Get R code](../handouts/ej_integrador_a_09octubre_student_version.qmd)]
 
-Caso 1: Alelos como predictores [[Get R code](../handouts/ej_integrador_b_09octubre_student_version.qmd)]
+Caso 2: Alelos como predictores [[Get R code](../handouts/ej_integrador_b_09octubre_student_version.qmd)]
 

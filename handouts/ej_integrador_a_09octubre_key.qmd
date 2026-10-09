@@ -1,0 +1,170 @@
+---
+title: "Ejercicio integrador -- 09 de octubre de 2026"
+format: pdf
+---
+
+This document contains the information needed for the comprehensive example for the last day of the short course on mixed models. 
+Students are expected to load the data, comprehend it, propose a statistical model, and analyze it within the morning. 
+Then, students will prepare a presentation on their data, model, and solution. 
+
+## Libraries 
+
+```{r warning=TRUE, message=FALSE}
+library(tidyverse)
+library(lme4)
+```
+
+## Data 
+
+A researcher has spent their past 10 years studying the effect of nitrogen management on corn crops. 
+They have collected all their data on this topic on a tidy and detailed data set, named `data_detailed` below. 
+All trials were randomized complete block designs. 
+
+
+Last week, they received a dataset with more data on the same topic, from a fellow researcher. 
+Said researcher, however, could only recover site-level data from their dataset. All trials were randomized complete block designs. 
+
+Their data is stored in the dataframe `data_rough` below. 
+
+### Exercises 
+
+Take a look at the data below and complete the following exercises:
+
+0. Make sure you explore the data properly and are able to answer: 
+
+- How many years does `data_detailed` contain? 
+- Do all years contain all treatments? 
+- Do all years contain the same number of repetitions? 
+- Do `data_detailed` and `data_rough` contain the same number of observations?
+
+
+1. What is the structure in the data? Please provide a drawing of the data. 
+
+2. Write a statistical model describing the data. 
+
+3. What is the between-year variance? What does it mean?
+
+4. Is your model the only option to solve this problem? What are other ways someone could turn these data into results and indicate why your solution is better. 
+
+5. Provide two other applied data examples. 
+
+ 
+
+```{r}
+set.seed(33)
+data_detailed <- expand.grid(year = factor(2015:2020),
+                             block = factor(1:3),
+                             nitrogen = c(0,  100, 200)) |> 
+  bind_rows( expand.grid(year = factor(2021:2026),
+                             block = factor(1:4),
+                             nitrogen = c(0, 50, 100, 150, 200)))
+  
+n_years <- n_distinct(data_detailed$year)
+n_blocks <- n_distinct(data_detailed$year)* n_distinct(data_detailed$block)
+
+year_eff <- rnorm(n_years, 0, 3)
+block_eff <- rnorm(n_blocks, 0, 1.5)
+resid <- rnorm(nrow(data_detailed), 0, 1.5)
+
+
+data_detailed$mu <- ifelse(data_detailed$nitrogen<150, 
+             7.3 + .062*data_detailed$nitrogen -0.00013*data_detailed$nitrogen,
+             7.3 + .062*150 -0.00013*150 )
+
+data_detailed <- data_detailed |> 
+  mutate(y = mu + year_eff[year] + block_eff[block]) 
+
+data_detailed |> 
+  ggplot(aes(nitrogen, y))+
+  geom_point(aes(color = year))
+```
+
+
+```{r}
+set.seed(22)
+data_rough <- expand.grid(year = factor(2006:2014),
+                          block = factor(1:4),
+                          nitrogen = c(0, 50, 100, 150, 200))  
+  
+n_years <- n_distinct(data_rough$year)
+n_blocks <- n_distinct(data_rough$year)* n_distinct(data_rough$block)
+
+year_eff <- rnorm(n_years, 0, 2.5)
+block_eff <- rnorm(n_blocks, 0, 1.5)
+resid <- rnorm(nrow(data_rough), 0, 1.5)
+
+
+data_rough$mu <- ifelse(data_rough$nitrogen<150,  
+             7.3 + .062*data_rough$nitrogen -0.00013*data_rough$nitrogen,
+             7.3 + .062*150 -0.00013*150 )
+
+data_rough <- data_rough |> 
+  mutate(y_d = mu + year_eff[year] + block_eff[block]) |> 
+  group_by(year, nitrogen) |> 
+  mutate(y = mean(y_d)) |> 
+  ungroup() 
+
+data_rough |> 
+  ggplot(aes(nitrogen, y_d))+
+  geom_point(aes(color = year))+
+  geom_point(aes(y = y))
+```
+
+
+```{r}
+data_merged <- 
+  bind_rows(data_detailed, 
+            data_rough |> dplyr::select(-c(y_d, block)) |> unique() |> 
+              mutate(block = factor(1)))
+```
+
+```{r}
+m <- lmer(y ~ nitrogen + I(nitrogen^2) + (1|year/block), data = data_merged)
+```
+
+```{r}
+fixef(m)
+```
+
+
+```{r}
+m_check <- lmer(y ~ nitrogen + I(nitrogen^2) + (1|year/block),
+                data =   bind_rows(data_detailed, data_rough))
+```
+
+```{r}
+data_merged_alt <- 
+  bind_rows(data_detailed |> group_by(year, nitrogen) |>
+              mutate(y = mean(y)) |> ungroup() |>
+              dplyr::select(-c(block)) |> unique(), 
+            data_rough |> dplyr::select(-c(y_d, block)) |> unique())
+
+m_alt <- lmer(y ~ nitrogen + I(nitrogen^2) + (1|year),
+              data = data_merged_alt)
+
+```
+
+
+
+```{r}
+emtrends(m, ~nitrogen, "nitrogen")
+emtrends(m_alt, ~nitrogen, "nitrogen")
+emtrends(m_check, ~nitrogen, "nitrogen")
+```
+
+
+
+
+
+
+
+```{r}
+data_detailed |> write.csv("../data/final_A_data_detailed.csv", row.names = F)
+
+data_rough |> write.csv("../data/final_A_data_rough.csv", row.names = F)
+```
+
+
+
+
+

@@ -358,20 +358,19 @@ Assume that our objective is to predict the performance of the genotypes under a
 <span id="cb23-8"><a href="día-4-mañana-casos-aplicados.html#cb23-8" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span></span>
 <span id="cb23-9"><a href="día-4-mañana-casos-aplicados.html#cb23-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span></span>
 <span id="cb23-10"><a href="día-4-mañana-casos-aplicados.html#cb23-10" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>loc, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-284-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-30-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="día-4-mañana-casos-aplicados.html#cb24-1" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lmer</span>(yield <span class="sc">~</span> loc <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>gen) <span class="sc">+</span> </span>
 <span id="cb24-2"><a href="día-4-mañana-casos-aplicados.html#cb24-2" tabindex="-1"></a>                (<span class="dv">1</span><span class="sc">|</span>gen<span class="sc">:</span>loc) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>gen<span class="sc">:</span>year) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>gen<span class="sc">:</span>year<span class="sc">:</span>loc) <span class="sc">+</span></span>
 <span id="cb24-3"><a href="día-4-mañana-casos-aplicados.html#cb24-3" tabindex="-1"></a>                (<span class="dv">1</span><span class="sc">|</span>year) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>year<span class="sc">:</span>loc) <span class="sc">+</span> </span>
 <span id="cb24-4"><a href="día-4-mañana-casos-aplicados.html#cb24-4" tabindex="-1"></a>                (<span class="dv">1</span><span class="sc">|</span>block<span class="sc">:</span>year<span class="sc">:</span>loc),</span>
 <span id="cb24-5"><a href="día-4-mañana-casos-aplicados.html#cb24-5" tabindex="-1"></a>              <span class="at">data =</span> dat)</span></code></pre></div>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="día-4-mañana-casos-aplicados.html#cb25-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">resid</span>(model))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-286-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="día-4-mañana-casos-aplicados.html#cb26-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">predict</span>(model), <span class="fu">resid</span>(model))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-286-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-32-2.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="día-4-mañana-casos-aplicados.html#cb27-1" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
 <pre><code>## Linear mixed model fit by REML [&#39;lmerMod&#39;]
-## Formula: 
-## yield ~ loc + (1 | gen) + (1 | gen:loc) + (1 | gen:year) + (1 |  
+## Formula: yield ~ loc + (1 | gen) + (1 | gen:loc) + (1 | gen:year) + (1 |  
 ##     gen:year:loc) + (1 | year) + (1 | year:loc) + (1 | block:year:loc)
 ##    Data: dat
 ## 
@@ -437,7 +436,7 @@ Assume that our objective is to predict the performance of the genotypes under a
 <span id="cb32-5"><a href="día-4-mañana-casos-aplicados.html#cb32-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">&quot;Location&quot;</span>)<span class="sc">+</span></span>
 <span id="cb32-6"><a href="día-4-mañana-casos-aplicados.html#cb32-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)<span class="sc">+</span></span>
 <span id="cb32-7"><a href="día-4-mañana-casos-aplicados.html#cb32-7" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>loc, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-289-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-35-1.png" alt="" width="672" /></p>
 </div>
 <div id="environmental-covariates" class="section level2 hasAnchor" number="6.6">
 <h2><span class="header-section-number">6.6</span> Environmental covariates<a href="día-4-mañana-casos-aplicados.html#environmental-covariates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -452,7 +451,7 @@ The data below come from a multi-environment trial evaluating barley height in d
 <span id="cb33-7"><a href="día-4-mañana-casos-aplicados.html#cb33-7" tabindex="-1"></a>  <span class="fu">theme_pubr</span>()<span class="sc">+</span></span>
 <span id="cb33-8"><a href="día-4-mañana-casos-aplicados.html#cb33-8" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">110</span>))<span class="sc">+</span></span>
 <span id="cb33-9"><a href="día-4-mañana-casos-aplicados.html#cb33-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Year&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-291-1.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="día-4-mañana-casos-aplicados.html#cb34-1" tabindex="-1"></a>dat_merged <span class="sc">|&gt;</span> </span>
 <span id="cb34-2"><a href="día-4-mañana-casos-aplicados.html#cb34-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(gen, height)) <span class="sc">|&gt;</span> <span class="fu">unique</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb34-3"><a href="día-4-mañana-casos-aplicados.html#cb34-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> rainfall_1<span class="sc">:</span>temp_6) <span class="sc">|&gt;</span> </span>
@@ -462,34 +461,34 @@ The data below come from a multi-environment trial evaluating barley height in d
 <span id="cb34-7"><a href="día-4-mañana-casos-aplicados.html#cb34-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio =</span> .<span class="dv">4</span>)<span class="sc">+</span></span>
 <span id="cb34-8"><a href="día-4-mañana-casos-aplicados.html#cb34-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>)<span class="sc">+</span></span>
 <span id="cb34-9"><a href="día-4-mañana-casos-aplicados.html#cb34-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Height (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Year&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-291-2.png" alt="" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-2.png" alt="" width="672" /></p>
 <p><strong>1. Start with the data.</strong></p>
 <p>What is the distribution of the data? For now let’s assume normal.</p>
 <p><strong>2. Think about the structure in the data</strong></p>
 <p>Note that our data contain multiple rows of observed heights, yet the predictors (i.e., weather covariates) are just a few years repeated throughout.
 Thus, although we have multiple rows of data, the real independent data for the predictors are much fewer. Just take a look at the data:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="día-4-mañana-casos-aplicados.html#cb35-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">arrange</span>(dat_merged, year))</span></code></pre></div>
-<pre><code>##   year gen height rainfall_1 rainfall_2 rainfall_3 rainfall_4
-## 1 1974 G01   81.0          0       0.16       1.59       2.65
-## 2 1974 G02   72.3          0       0.16       1.59       2.65
-## 3 1974 G03   79.3          0       0.16       1.59       2.65
-## 4 1974 G04   88.5          0       0.16       1.59       2.65
-## 5 1974 G05   78.5          0       0.16       1.59       2.65
-## 6 1974 G06   89.3          0       0.16       1.59       2.65
-##   rainfall_5 rainfall_6 srad_1 srad_2 srad_3 srad_4 srad_5 srad_6
-## 1        1.7       2.21   2.26   2.74   2.57   2.25   2.67   2.36
-## 2        1.7       2.21   2.26   2.74   2.57   2.25   2.67   2.36
-## 3        1.7       2.21   2.26   2.74   2.57   2.25   2.67   2.36
-## 4        1.7       2.21   2.26   2.74   2.57   2.25   2.67   2.36
-## 5        1.7       2.21   2.26   2.74   2.57   2.25   2.67   2.36
-## 6        1.7       2.21   2.26   2.74   2.57   2.25   2.67   2.36
-##   sowing_t temp_1 temp_2 temp_3 temp_4 temp_5 temp_6
-## 1       17   8.36    9.6  12.11  12.13  18.43  13.75
-## 2       17   8.36    9.6  12.11  12.13  18.43  13.75
-## 3       17   8.36    9.6  12.11  12.13  18.43  13.75
-## 4       17   8.36    9.6  12.11  12.13  18.43  13.75
-## 5       17   8.36    9.6  12.11  12.13  18.43  13.75
-## 6       17   8.36    9.6  12.11  12.13  18.43  13.75</code></pre>
+<pre><code>##   year gen height rainfall_1 rainfall_2 rainfall_3 rainfall_4 rainfall_5 rainfall_6
+## 1 1974 G01   81.0          0       0.16       1.59       2.65        1.7       2.21
+## 2 1974 G02   72.3          0       0.16       1.59       2.65        1.7       2.21
+## 3 1974 G03   79.3          0       0.16       1.59       2.65        1.7       2.21
+## 4 1974 G04   88.5          0       0.16       1.59       2.65        1.7       2.21
+## 5 1974 G05   78.5          0       0.16       1.59       2.65        1.7       2.21
+## 6 1974 G06   89.3          0       0.16       1.59       2.65        1.7       2.21
+##   srad_1 srad_2 srad_3 srad_4 srad_5 srad_6 sowing_t temp_1 temp_2 temp_3 temp_4
+## 1   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13
+## 2   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13
+## 3   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13
+## 4   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13
+## 5   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13
+## 6   2.26   2.74   2.57   2.25   2.67   2.36       17   8.36    9.6  12.11  12.13
+##   temp_5 temp_6
+## 1  18.43  13.75
+## 2  18.43  13.75
+## 3  18.43  13.75
+## 4  18.43  13.75
+## 5  18.43  13.75
+## 6  18.43  13.75</code></pre>
 <p>Although the response shows different values, if we wish to study the relatoinship bewteen the weather covariates and the height, there is an obvious dependence structure.</p>
 <p><img src="figures/structure_barley_weather.png" alt="" width="640" style="display: block; margin: auto;" /></p>
 <p>Thus, let’s assume the data are nested within years.</p>

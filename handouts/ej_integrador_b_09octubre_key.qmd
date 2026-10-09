@@ -1,0 +1,111 @@
+---
+title: "Ejercicio integrador -- 09 de octubre de 2026 (Genotipos)"
+format: pdf
+---
+
+This document contains the information needed for the comprehensive example for the last day of the short course on mixed models. 
+Students are expected to load the data, comprehend it, propose a statistical model, and analyze it within the morning. 
+Then, students will prepare a presentation on their data, model, and solution. 
+
+
+## Libraries 
+
+```{r warning=TRUE, message=FALSE}
+library(tidyverse)
+library(lme4)
+```
+
+## Data 
+
+```{r}
+y1 <- expand.grid(A = c(0, 1), B = c(0, 1), C = c(0, 1), 
+                  D = c(0, 1), E = c(0, 1),
+                  block = 1:2,
+                  year = 1:2) 
+
+y1 <- y1 |> filter(A != 1, E !=1)
+
+y1 <- y1 |> bind_rows(
+  expand.grid(A = c(0, 1), B = c(0, 1), C = c(0, 1),
+              D = c(0, 1), E = c(0, 1),
+              block = 1:2,
+              year = 1:2) |> filter(A != 1, E !=1) )
+
+y2 <- expand.grid(A = c(0, 1), B = c(0, 1), C = c(0, 1), 
+                  D = c(0, 1), E = c(0, 1),
+                  block = 1:6,
+                  year = 3:4) |> filter(C != 1 )
+
+data <- bind_rows(y1, y2) |> 
+  mutate(block_id = as.numeric(as.factor(paste(year, block)))) |> 
+  mutate(across(c(block_id, year), ~as.factor(.)))
+
+set.seed(2)
+eff_alelo <- rnorm(5, 0, 30)
+eff_block <- rnorm(n_distinct(data$block_id), 0, 3)
+eff_year <- rnorm(n_distinct(data$year), 0, 5)
+
+data <- data |>
+  mutate(mu_i =
+           150+ eff_block[block] + eff_year[year] + 
+           A * eff_alelo[1] + B * eff_alelo[2] + C * eff_alelo[3] +
+           D * eff_alelo[4] + E * eff_alelo[5],
+  y =  mu_i  + rnorm(n(), 0, 4))
+```
+
+```{r}
+m_simple <- lm(y ~ A*B*C*D*E, data = data)
+
+m_simple2 <- lm(y ~ A*B*C*D*E + year + year:block, data = data)
+
+m_design <- lmer(y ~ A*B*C*D*E +
+                 (1|year/block), data = data)
+```
+
+
+
+
+```{r}
+results <- data.frame(simple = coef(m_simple)) |> 
+  rownames_to_column("coef") |> 
+  left_join(data.frame(simple2 = coef(m_simple2)) |>
+              rownames_to_column("coef")) |> 
+  left_join(data.frame(design = fixef(m_design)) |>
+              rownames_to_column("coef"))
+
+results |> 
+  ggplot(aes(simple2, design))+
+  geom_abline(slope = 1)+
+  geom_point()
+```
+
+
+```{r}
+emmeans(m_simple, ~ A:B:C:D:E)
+
+emmeans(m_design, ~ A:B:C:D:E)
+```
+
+```{r}
+data$yhat_simple <- predict(m_simple)
+data$yhat_simple2 <- predict(m_simple2)
+data$yhat_design <- predict(m_design)
+```
+
+```{r}
+data |> 
+  ggplot(aes(mu_i , yhat_simple2))+
+  geom_abline(slope = 1)+
+  geom_point()+
+  geom_point(aes(y = yhat_simple), color = "tomato")+
+  geom_point(aes(y = yhat_design), color = "blue")
+```
+
+
+```{r}
+data |> 
+  transmute(A, B, C, D, E, year, GDD_C_day = y) |> 
+  write.csv("../data/final_B_data.csv")
+```
+
+
