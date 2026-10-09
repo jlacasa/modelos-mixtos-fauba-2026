@@ -1,0 +1,68 @@
+---
+title: "Ejercicio integrador -- 09 de octubre de 2026 (Nitrogeno)"
+format: pdf
+---
+
+This document contains the information needed for the comprehensive example for the last day of the short course on mixed models. 
+Students are expected to load the data, comprehend it, propose a statistical model, and analyze it within the morning. 
+Then, students will prepare a presentation on their data, model, and solution. 
+
+## Libraries 
+
+```{r warning=TRUE, message=FALSE}
+library(tidyverse)
+library(lme4)
+```
+
+## Data 
+
+A researcher has spent their past 10 years studying the effect of nitrogen management on corn crops. 
+They have collected all their data on this topic on a tidy and detailed data set, named `data_detailed` below. 
+All trials were randomized complete block designs. 
+
+
+Last week, they received a dataset with more data on the same topic, from a fellow researcher. 
+Said researcher, however, could only recover site-level data from their dataset. All trials were randomized complete block designs. 
+
+Their data is stored in the dataframe `data_rough` below. 
+
+### Exercises 
+
+Take a look at the data below and complete the following exercises:
+
+0. Make sure you explore the data properly and are able to answer: 
+
+- How many years does `data_detailed` contain? 
+- Do all years contain all treatments? 
+- Do all years contain the same number of repetitions? 
+- Do `data_detailed` and `data_rough` contain the same number of observations?
+
+
+1. What is the structure in the data? Please provide a drawing of the data. 
+
+2. Write a statistical model describing the data. 
+
+3. What is the between-year variance? What does it mean?
+
+4. Is your model the only option to solve this problem? What are other ways someone could turn these data into results and indicate why your solution is better. 
+
+5. Mention and describe two other applied examples where this methodology would be helpful. In your presentation, develop these examples to share with the group and generate discussions. 
+
+```{r}
+url <- "https://raw.githubusercontent.com/jlacasa/modelos-mixtos-fauba-2026/refs/heads/main/data/final_A_data_detailed.csv"
+# read.csv("../data/final_A_data_detailed.csv")
+data_detailed <- read.csv(url)
+
+
+url <- "https://raw.githubusercontent.com/jlacasa/modelos-mixtos-fauba-2026/refs/heads/main/data/final_A_data_rough.csv"
+# read.csv("../data/final_A_data_rough.csv")
+data_rough <- read.csv(url)
+```
+ 
+
+
+
+
+
+
+
